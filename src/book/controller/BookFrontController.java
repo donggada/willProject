@@ -15,6 +15,7 @@ import book.action.BookListAction;
 import book.action.BookProAction;
 import book.action.CarListAction;
 import book.action.ChatBotAction;
+import book.action.CoronaDataParsingAction;
 import book.vo.ActionForward;
 
 @WebServlet("*.bk")
@@ -79,6 +80,14 @@ public class BookFrontController extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+		} else if (command.equals("/coronaData.bk")) {
+			action = new CoronaDataParsingAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} // coronaData.bk
 		}
 
 		if (forward != null) {

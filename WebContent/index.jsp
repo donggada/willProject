@@ -174,7 +174,7 @@
 						<div class="display-table">
 							<div class="display-table-cell">
 								<div class="slider-right-text">
-									<h1>빛나는 제주, 빛나는 휴가</h1>
+									<h1>빛나는 한국, 빛나는 휴가</h1>
 									<p>
 										최고의 서비스 그리고 최고의 차량<br>당신의 휴가를 더 특별하게
 									</p>
@@ -241,6 +241,8 @@
 	<!--         </div> -->
 	<!--     </div> -->
 	<!--     == Partner Area End == -->
+	
+	<%@ include file="/map/maptest.jsp" %>
 
 	<!--== Services Area Start ==-->
 	<section id="service-area" class="section-padding">
@@ -983,6 +985,7 @@
 
 		</div>
 	</article>
+	
 
 	<!-- 개편된 기간,지점 선택 (끝) -->
 	<!--== Testimonials Area Start ==-->
