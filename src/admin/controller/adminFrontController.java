@@ -10,13 +10,28 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import admin.action.AdminPageAction;
 import admin.action.CarListAction;
+import admin.action.DetailCarListAction;
 import admin.action.GraphProAction;
+import admin.action.MemberDeleteProAction;
 import admin.action.MemberListAction;
+import admin.action.MemberModifyAction;
+import admin.action.MemberModifyProAction;
+import admin.action.PopUpPageOffAction;
+import admin.action.PopUpPageOnAction;
+import admin.action.PopupPageUploadAction;
 import admin.action.QnABoardAction;
+import admin.action.ReviewListAction;
+import admin.action.SalesChartAction;
+import admin.action.SelectCarListAction;
+import admin.action.SelectMemberListAction;
+import admin.action.reviewDeleteProAction;
+import admin.action.sellingListAction;
 import member.action.Action;
 
 import member.vo.ActionForward;
+
 
 @WebServlet("*.ad")
 public class adminFrontController extends HttpServlet {
@@ -31,8 +46,13 @@ public class adminFrontController extends HttpServlet {
 		ActionForward forward=null;
 		
 		if(command.equals("/adminpage.ad")) { //회원가입 화면 이동 
-			forward=new ActionForward();
-			forward.setPath("/Admin/AdminPage.jsp");
+			action=new AdminPageAction();
+			try {
+				forward=action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
 		}else if(command.equals("/MemberList.ad")) {
 			action=new MemberListAction();
 			try {
@@ -64,7 +84,134 @@ public class adminFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 			
+		}else if(command.equals("/PopupPage.ad")) {
+			forward=new ActionForward();
+			forward.setPath("/Admin/PoP-UpPage.jsp");
+			
+		}else if(command.equals("/PopupPageOn.ad")) {
+			action=new PopUpPageOnAction();
+			try {
+				forward=action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		}else if(command.equals("/PopupPageOff.ad")) {
+			action=new PopUpPageOffAction();
+			try {
+				forward=action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(command.equals("/PopupPageUpload.ad")) {
+			action=new PopupPageUploadAction();
+			try {
+				forward=action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(command.equals("/SalesChart.ad")) {
+			action=new SalesChartAction();
+			try {
+				forward=action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(command.equals("/CarSelectList.ad")) {
+			action=new SelectCarListAction();
+			try {
+				forward=action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(command.equals("/Admin/DetailCarInfo.ad")) {
+			action=new DetailCarListAction();
+			try {
+				forward=action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(command.equals("/MemberSelectList.ad")) {
+			action=new SelectMemberListAction();
+			try {
+				forward=action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
 		}
+		
+		
+		
+	
+		
+		
+		else if(command.equals("/mmmodify.ad")) {
+			action=new MemberModifyAction();
+			try {
+				forward=action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		}
+		
+		
+		else if(command.equals("/mmmodifypro.ad")) { //회원수정
+					action=new MemberModifyProAction();
+					try {
+						forward=action.execute(request, response);
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+					
+				}
+		
+		
+		
+		
+		else if(command.equals("/mmdelete.ad")) { // 회원삭제
+			action=new MemberDeleteProAction();
+			try {
+				forward=action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		}
+		
+	
+		else if(command.equals("/sellinglist.ad")) { // 매출현황
+			action=new sellingListAction();
+			try {
+				forward=action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		}
+		
+		else if(command.equals("/ReviewList.ad")) { //리뷰글 목록
+			action = new ReviewListAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		
+		}
+		
+		
+		else if(command.equals("/reviewdelete.ad")) { //리뷰글 삭제
+			action = new reviewDeleteProAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		
+		}
+		
 	
 		
 		if(forward!=null) {

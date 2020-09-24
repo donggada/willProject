@@ -1,12 +1,19 @@
 package admin.vo;
 
 public class CarBean {
-private String car_maker,car_type,car_name;
+private String car_maker,car_type,car_name,car_num;
 private int car_id;
+
 
 
 public String getCar_maker() {
 	return car_maker;
+}
+public String getCar_num() {
+	return car_num;
+}
+public void setCar_num(String car_num) {
+	this.car_num = car_num;
 }
 public void setCar_maker(String car_maker) {
 	this.car_maker = car_maker;

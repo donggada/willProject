@@ -17,6 +17,7 @@ public class GraphProAction implements Action {
 		ActionForward forward=null;
 		String target1=request.getParameter("target1");
 		String target2=request.getParameter("target2");
+		String title=request.getParameter("title");
 		
 		GraphProService gps=new GraphProService();
 		
@@ -25,16 +26,17 @@ public class GraphProAction implements Action {
 			
 		ArrayList<CarBean> cb=gps.GraphPro(target1);
 		request.setAttribute("cb", cb);
+		request.setAttribute("title",title);
 		
 		}else if(target1!=null && target2!=null){
 			
 		ArrayList<CarBean> cb=gps.GraphPro(target1,target2);
 		request.setAttribute("cb", cb);
-		
+		request.setAttribute("title",title);
 		}
 		
 		forward=new ActionForward();
-		forward.setPath("/Admin/AdminPage.jsp");
+		forward.setPath("/Admin/Graph.jsp");
 		forward.setRedirect(false);
 		
 		

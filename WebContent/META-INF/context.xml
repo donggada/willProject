@@ -1,19 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Context>
-
-
-	<Resource
+<context>
+<Resource 
 		name="jdbc/MySQL"
-		auth="container"
+		auth="Container"
 		type="javax.sql.DataSource"
-		driveClassName="com.mysql.jdbc.Driver"
+		driverClassName="com.mysql.jdbc.Driver"
 		url="jdbc:mysql://localhost:3306/willdb"
 		username="root"
-		password="1234"
+		password="12345678"
 		maxActive="100"
-		maxidle="20"
-		
-		/>
+		maxIdle="20"
+	/>
 
-
-</Context>
+</context>

@@ -48,5 +48,137 @@ public class BookListService {
 		return booklist;
 
 	}
+	
+	
+	public ArrayList<BookBean> getBookList2(String str1, String str2) {
+		Connection con = getConnection();
 
+		BookDAO bookDAO = BookDAO.getInstance();
+
+		bookDAO.setConnection(con);
+
+		ArrayList<BookBean> booklist = bookDAO.selectBookListadmin(str1, str2);
+
+		close(con);
+
+		return booklist;
+
+	}
+	
+	
+	public int getBooksum(String str1, String str2) {
+		int result=0;
+		Connection con = getConnection();
+
+		BookDAO bookDAO = BookDAO.getInstance();
+
+		bookDAO.setConnection(con);
+
+		result= bookDAO.selectBookListsum(str1, str2);
+
+		close(con);
+
+		return result;
+
+	}
+	
+	
+	public int getBookcount(String str1, String str2) {
+		int result=0;
+		Connection con = getConnection();
+
+		BookDAO bookDAO = BookDAO.getInstance();
+
+		bookDAO.setConnection(con);
+
+		result= bookDAO.selectBookListcount(str1, str2);
+
+		close(con);
+
+		return result;
+
+	}
+	
+	
+	public int getBookc(String str1, String str2) {
+		int result=0;
+		Connection con = getConnection();
+
+		BookDAO bookDAO = BookDAO.getInstance();
+
+		bookDAO.setConnection(con);
+
+		result= bookDAO.selectBookListp1(str1, str2);
+
+		close(con);
+
+		return result;
+
+	}
+	public int getBookc2(String str1, String str2) {
+		int result=0;
+		Connection con = getConnection();
+
+		BookDAO bookDAO = BookDAO.getInstance();
+
+		bookDAO.setConnection(con);
+
+		result= bookDAO.selectBookListp2(str1, str2);
+
+		close(con);
+
+		return result;
+
+	}
+
+	public int getBookf(String str1, String str2) {
+		int result=0;
+		Connection con = getConnection();
+
+		BookDAO bookDAO = BookDAO.getInstance();
+
+		bookDAO.setConnection(con);
+
+		result= bookDAO.selectBookListf(str1, str2);
+
+		close(con);
+
+
+		return result;
+
+	}
+	
+	public int getBookfs(String str1, String str2) {
+		int result=0;
+		Connection con = getConnection();
+
+		BookDAO bookDAO = BookDAO.getInstance();
+
+		bookDAO.setConnection(con);
+
+		result= bookDAO.selectBookListfs(str1, str2);
+
+		close(con);
+
+		return result;
+
+	}
+	
+	
+	public int getBookfs2(String str1, String str2) {
+		int result=0;
+		Connection con = getConnection();
+
+		BookDAO bookDAO = BookDAO.getInstance();
+
+		bookDAO.setConnection(con);
+
+		result= bookDAO.selectBookListfs2(str1, str2);
+
+		close(con);
+
+		return result;
+
+	}
+	
 }

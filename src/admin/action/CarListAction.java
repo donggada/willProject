@@ -56,11 +56,11 @@ public class CarListAction implements Action {
 		
 		
 		request.setAttribute("pageInfo", pageInfo);
-		request.setAttribute("CarList", CarList);
+		request.setAttribute("articlelist", CarList);
 		
 		
 		forward = new ActionForward();
-		forward.setPath("/Admin/AdminPage.jsp");
+		forward.setPath("/Admin/AdminCarList.jsp");
 		forward.setRedirect(false);
 		
 		

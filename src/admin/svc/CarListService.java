@@ -33,6 +33,30 @@ public class CarListService {
 		
 		return listCount;	
 	}
+	
+	public int getListCount(String taget,String table,String carsearch1,String carsearch2) {
+		System.out.println("CarListService - getListCount()");
+		System.out.println(table);
+		int listCount = 0;
+		
+		
+		Connection con = getConnection();
+		
+		
+		AdminDAO adao = AdminDAO.adao;
+		
+		
+		adao.setConnection(con);
+		
+		
+		
+	
+		listCount = adao.selectListCount(taget,table,carsearch1,carsearch2);
+		
+		close(con);
+		
+		return listCount;	
+	}
 
 	public ArrayList<CarBean> getArticleList(int page, int limit) {
 		System.out.println("CarListService - getArticleList()");
@@ -55,26 +79,9 @@ public class CarListService {
 		return memberList;
 	}
 	
-//	public ArrayList<CarBean> getArticleList(int page, int limit) {
-//		System.out.println("CarListService - getArticleList()");
-//		ArrayList<CarBean> memberList = null;
-//		
-//		
-//		Connection con = getConnection();
-//		
-//		AdminDAO adao = AdminDAO.adao;
-//		
-//		
-//		adao.setConnection(con);
-//		
-//		
-//		memberList = adao.selectgrap(page, limit);
-//		
-//		
-//		close(con);
-//		
-//		return memberList;
-//	}
+	
+	
+	
 
 	
 
