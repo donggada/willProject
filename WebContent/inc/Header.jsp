@@ -33,28 +33,25 @@
 						<%
 						String id=(String)session.getAttribute("Member_id");
 						String snsid=(String)session.getAttribute("Member_snsid");
-						System.out.print(snsid);
-						System.out.print(id);
+						String totalId = null;
+						if(id !=null){
+							totalId=id;
+						}else if(snsid!=null){
+							totalId=snsid;
+						}else{
+							totalId=null;
+						}
 
 						
-						if (id == null && snsid == null) {
+						if (totalId==null) {
 						%>
 						<a href="LoginForm.me">로그인</a> | <a href="JoinForm.me">회원가입</a>
 						|<a href="adminpage.ad">admin page</a>
 						<%
 							}
-						else{
-						if (id != null) {
-						%>
-						<%-- 	<%=id %>님  |	<a href="member/qna_member_logout.jsp">로그아웃</a> | <a href="MemberList.me">회원리스트</a> --%>
-						<%=id%>님 | <a href="MemberLogout.me">logout</a> | <a href="adminpage.ad">admin page</a>
-						<%
-							} else {
-						%>
-						<%=snsid%>님 |<a href="Member/MemberSnsLogout.jsp">logout2</a> |<a href="MemberLogout.me">logout</a>
-						<%
-							}
-						}
+						else{%> <%=totalId%>님 | <a href="MemberLogout.me">logout</a> | <a href="adminpage.ad">admin page</a>
+						
+						<%	 }
 						%>
 						<%
 						//if (ip.equals("0:0:0:0:0:0:0:1")) {

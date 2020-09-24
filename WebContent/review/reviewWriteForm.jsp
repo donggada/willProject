@@ -2,13 +2,15 @@
     pageEncoding="UTF-8"%>
     
 <%
-String id=(String)session.getAttribute("id");
-String snsid=(String)session.getAttribute("snsid");
+String id=(String)session.getAttribute("Member_id");
+String snsid=(String)session.getAttribute("Member_snsid");
 String totalId = null;
 if(id !=null){
 	totalId=id;
-}else{
+}else if(snsid!=null){
 	totalId=snsid;
+}else{
+	totalId="";
 }
 out.println(totalId);
 %>   
@@ -22,7 +24,7 @@ out.println(totalId);
 <script type="text/javascript">
 function bookSearch(){
 	var totalId=document.reviewForm.member_id.value
-    window.open("/WillProject_0.1/BookCheck.rw?id="+totalId,"예약검색","width=500,height=300");
+    window.open("BookCheck.rw?id="+totalId,"예약검색","width=500,height=300");
 }
 </script>
 
