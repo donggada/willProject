@@ -3,7 +3,7 @@ package member.vo;
 
 public class MemberBean {
 	private String Member_id,Member_pass,Member_name,Member_age,Member_gender,Member_tel,Member_adress,Member_email,Member_license,Member_smoke,Member_pet,Member_boby,member_grade;
-	private int idx;
+	private int Member_num;
 	
 	public String getMember_id() {
 		return Member_id;
@@ -78,11 +78,12 @@ public class MemberBean {
 	public void setMember_boby(String member_boby) {
 		Member_boby = member_boby;
 	}
-	public int getIdx() {
-		return idx;
+	
+	public int getMember_num() {
+		return Member_num;
 	}
-	public void setIdx(int idx) {
-		this.idx = idx;
+	public void setMember_num(int member_num) {
+		Member_num = member_num;
 	}
 	public String getMember_grade() {
 		return member_grade;
