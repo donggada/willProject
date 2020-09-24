@@ -4,6 +4,7 @@ import java.io.PrintWriter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import member.svc.MemberSnsLoginProService;
 import member.vo.ActionForward;
@@ -14,15 +15,16 @@ public class MemberSnsLoginProAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		System.out.println("MemberSnsLoginProAction");
 		ActionForward forward=null;
+		HttpSession session = request.getSession();
 		boolean isSnsLoginsuccess=false;
 		String id=request.getParameter("id");
 		
 		MemberSnsLoginProService mslps=new MemberSnsLoginProService();
 		isSnsLoginsuccess=mslps.snsLogin(id);
-		
+		System.out.println(id);
 		
 		if(isSnsLoginsuccess) {
-			request.setAttribute("Member_snsid",id);
+			session.setAttribute("Member_snsid",id);
 			forward=new ActionForward();
 			forward.setPath("index.jsp");
 			forward.setRedirect(false);
