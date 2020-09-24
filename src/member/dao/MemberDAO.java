@@ -134,7 +134,7 @@ public int snsLogin(String id) {
 		if(rs.next()) {
 			SnsLogincount=-1;
 		}else {
-			sql="INSERT INTO member(idx,member_id,member_grade) VALUES(null,?,'Silver')";
+			sql="INSERT INTO member(member_num,member_id,member_grade) VALUES(null,?,'Silver')";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, id);
 			SnsLogincount=pstmt.executeUpdate();
