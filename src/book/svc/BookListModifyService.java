@@ -7,7 +7,6 @@ import static book.db.JdbcUtil.getConnection;
 
 import java.sql.Connection;
 import java.util.ArrayList;
-import java.util.List;
 
 import book.dao.BookDAO;
 import book.vo.BookBean;
@@ -15,7 +14,7 @@ import book.vo.BookBean;
 import book.dao.BookDAO;
 import book.vo.BookBean;
 
-public class BookListService {
+public class BookListModifyService {
 
 	public ArrayList<BookBean> getBookList() {
 
@@ -233,20 +232,6 @@ public class BookListService {
 		bookDAO.setConnection(con);
 
 		ArrayList<BookBean> booklist = bookDAO.selectBookstateList();
-
-		close(con);
-
-		return booklist;
-	}
-
-	public BookBean getbookdetail(int num) {
-		Connection con = getConnection();
-
-		BookDAO bookDAO = BookDAO.getInstance();
-
-		bookDAO.setConnection(con);
-
-		BookBean booklist = bookDAO.selectBookdetail(num);
 
 		close(con);
 

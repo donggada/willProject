@@ -1,8 +1,9 @@
-<%@page import="faq.vo.faqBoardbean"%>
+
+<%@page import="book.vo.BookBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 	
-	<%faqBoardbean article = (faqBoardbean)request.getAttribute("article"); 
+	<%BookBean article = (BookBean)request.getAttribute("article"); 
   String nowPage = (String)request.getAttribute("page");%>
      
 <!DOCTYPE html>
@@ -28,10 +29,10 @@
   <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid">
-                        <h1 class="mt-4">FAQ</h1>
+                        <h1 class="mt-4">Sell state</h1>
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item"><a href="index.html">ADMIN MAIN</a></li>
-                            <li class="breadcrumb-item active">Member</li>
+                            <li class="breadcrumb-item"><a href="adminpage.ad">ADMIN MAIN</a></li>
+                            <li class="breadcrumb-item active">Selling</li>
                         </ol>
                         <div class="card mb-4">
                             <div class="card-body">
@@ -43,7 +44,7 @@
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table mr-1"></i>
-                               FAQ list
+                               BOOKDETAIL
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
@@ -51,48 +52,71 @@
 
 	<section id="listForm">
  
-<form action="faqmodifypro.fbo" method="post" name="boardform">
  
  
+ 
+<form action="sellmodifypro.ad" method="post" name="boardform">
+ 
+         
+   <div class="form-group">
+  <fieldset>
+    <label class="control-label" for="readOnlyInput">book_num</label>
+    <input class="form-control" id="readOnlyInput" name="num" type="text" value="<%=article.getBook_num()%>" readonly="readonly">
+   
+  </fieldset>
+</div>
+                
+                
 
- 
-                <fieldset>
+               <div class="form-group">
+  <fieldset>
+    <label class="control-label" for="readOnlyInput">Member_id</label>
+    <input class="form-control" id="readOnlyInput" type="text" value="<%=article.getMember_id()%>" readonly="readonly">
+   
+  </fieldset>
+</div>
 
-                <div class="form-group">
-                <label class="col-form-label" for="inputDefault">Subject</label>
-                <input type="text" name="faqBoard_subject" class="form-control" value="<%=article.getFaqboard_subject()%>">
-              	<input type="hidden" name="faqBoard_num" id="faqBoard_num" value="<%=article.getFaqboard_num()%>">
-            	<input type="hidden" name="page" id="page" value="<%=nowPage%>">
-              </div>
+
+               <div class="form-group">
+  <fieldset>
+    <label class="control-label" for="readOnlyInput">Book_date</label>
+    <input class="form-control" id="readOnlyInput" type="text" value="<%=article.getBook_date()%> - <%=article.getBook_date2()%>" readonly="readonly">
+
+  </fieldset>
+</div>
+
+         
 
 
                   <div class="form-group">
-                    <label for="exampleSelect1">Tag select</label>
-                    <select class="form-control" name="tag">
-                    <option value="인수/반납">인수/반납</option>
-                    <option value="대여안내">대여안내</option>
-                    <option value="보험 및 사고">보험 및 사고</option>
-                    <option value="결제/취소">결제/취소</option>
-                    <option value="사이트이용">사이트이용</option>
+                    <label for="exampleSelect1">Book_state</label>
+                    <select class="form-control" name="book_state">
+                    <option value=0>미결제</option>
+                     <option value="1">카드</option>
+                    <option value="2">무통장</option>
                     </select>
                   </div>
               
-                  <div class="form-group">
-                    <label for="exampleTextarea">Substance</label>
-                    <textarea name="faqBoard_content" class="form-control" id="qnaBoard_content" rows="3"><%=article.getFaqboard_content() %></textarea>
-                  </div>
+           
                   
                   <button type="submit" class="btn btn-primary">수정</button>
                   <button type="button" class="btn btn-primary" onClick ="javascript:history.go(-1)" >취소</button>
+     </form>
                 </fieldset>
       
             </div>
           </div>
      </div>
      </div>
-     </form>
      </main>
      </div>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="Admin/js/scripts.js"></script>
+<!--         <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script> -->
+        <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
+        <script src="Admin/assets/demo/datatables-demo.js"></script>
+
      
 
            

@@ -56,7 +56,7 @@ public class faqBoardadminListaction implements action {
 		
 		forward= new actionForward();
 		forward.setRedirect(false); // 기본값이므로 생략이 가능 
-		forward.setPath("/FAQ/FAQ_listadmin.jsp");
+		forward.setPath("/Admin/FAQ_listadmin.jsp");
 		
 		return forward;
 	}

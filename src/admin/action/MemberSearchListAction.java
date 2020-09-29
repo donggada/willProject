@@ -1,7 +1,6 @@
 package admin.action;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,7 +13,7 @@ import member.vo.ActionForward;
 import member.vo.MemberBean;
 import qna.vo.pageinfo;
 
-public class MemberListAction extends ActionForward implements Action {
+public class MemberSearchListAction extends ActionForward implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -28,6 +27,10 @@ public class MemberListAction extends ActionForward implements Action {
 			page = Integer.parseInt(request.getParameter("page")); 
 		}
 		
+		String select= request.getParameter("select");
+		String search=request.getParameter("search");
+		
+		
 		
 		MemberListService MemberListService = new MemberListService();
 		BookListService booklist= new BookListService();
@@ -37,14 +40,10 @@ public class MemberListAction extends ActionForward implements Action {
 		
 		int listCount = MemberListService.getListCount(target,table);
 		
-		if(request.getParameter("id")==null) {
-			MemberList = MemberListService.getArticleList(page, limit);
-			 booklist2 = booklist.getmmcount();	
-		}else if(request.getParameter("id")!=null) {
-			MemberList = MemberListService.getArticleList(page, limit, request.getParameter("id"));
-			 booklist2 = booklist.getmmcount();	
-		}
-		
+	
+		MemberList = MemberListService.getArticleSearchList(page, limit, select, search);
+		booklist2 = booklist.getmmcount();	
+	
 		
 		int maxPage = (int)((double)listCount / limit + 0.95);
 		
@@ -62,15 +61,10 @@ public class MemberListAction extends ActionForward implements Action {
 		
 		pageinfo pageInfo = new pageinfo(page, maxPage, startPage, endPage, listCount);
 		
-		HashMap<String, BookBean> book=new HashMap<String, BookBean>();
-		for(BookBean bb : booklist2) {
-			book.put(bb.getMember_id(), bb);
-		}
 		
 		request.setAttribute("pageInfo", pageInfo);
 		request.setAttribute("articlelist", MemberList);
-		request.setAttribute("book", book);
-//		request.setAttribute("booklist2", booklist2);
+		request.setAttribute("booklist2", booklist2);
 		
 		
 		forward = new ActionForward();
