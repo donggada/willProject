@@ -5,7 +5,8 @@
 <!DOCTYPE html>
 <html>
       <%
-//     String id = (String)session.getAttribute("member_id");
+      String snsid = (String)session.getAttribute("snsid");
+      String id = (String)session.getAttribute("id");
 
       String pickup = request.getParameter("pickup_date"); 
       String end = request.getParameter("end_date"); 

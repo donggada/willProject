@@ -47,7 +47,7 @@
                         </ol>
                         <div class="card mb-4">
                             <div class="card-body">
-                                수정할거 -/ 정렬 / 찾기 / 횟수  금액 
+                               -
                                 <a target="_blank" href="#">official DataTables documentation</a>
                                 .
                             </div>
@@ -63,7 +63,7 @@
                                         <thead>
                                                                            
                                             <tr>    
-            <th style="white-space: nowrap;">차량번호<img src="img/2.png" style="width: 12px;"></th>     
+            <th style="white-space: nowrap; width: 150px;">차량번호<img src="img/2.png" style="width: 12px;"></th>     
      		<th style="white-space: nowrap;">제조사 <img src="img/2.png" style="width: 12px;"></th>
      		<th style="white-space: nowrap;">차량이름<img src="img/2.png" style="width: 12px;"></th>
      		<th style="white-space: nowrap;">차량종류<img src="img/2.png" style="width: 12px;"></th>	
@@ -78,7 +78,7 @@
 			<%for(int i = 0; i < articleList.size(); i++) {%>
 			
 				<tr>
-					<th scope="row" onclick="DetailCarInfo(<%=articleList.get(i).getCar_id()%>)">
+					<th scope="row" onclick="DetailCarInfo(<%=articleList.get(i).getCar_id()%>)" style="text-align: center;">
 					<%=articleList.get(i).getCar_num()%>
 					</th>
 					
@@ -100,7 +100,7 @@
 					
 					
 					
-					<td style="white-space: nowrap;">
+					<td style="white-space: nowrap; width: 150px; text-align: center;">
 					<a href="mmmodify.ad?member_id=<%=articleList.get(i).getCar_id()%>&page?=<%=nowPage%>"><span class="badge badge-pill badge-warning">수정</span></a>
 					
 					<a onclick="removeCheck(<%=articleList.get(i).getCar_id()%>)">
@@ -149,7 +149,7 @@
 				 <li class="page-item active">
       <a class="page-link" href="#"><%=i %></a>
 		<%} else {%>
-		 <li class="page-item active">
+		 <li class="page-item">
 				<a href="CarList.ad?page=<%=i %>" class="page-link"><%=i %></a>&nbsp;
 		<%} %>
 	<%} %>
@@ -205,7 +205,7 @@ var popupY= (window.screen.height/2)-(500/2);
 function DetailCarInfo(car_id)
 {
     // window.open("open할 window", "자식창 이름", "팝업창 옵션"); 
-   window.open('Admin/DetailCarInfo.jsp?car_id='+car_id, 'DetailCarInfo', 'status=no, height=500, width=500, left='+ popupX + ', top='+ popupY + ', screenX='+ popupX + ', screenY= '+ popupY);
+   window.open('Admin/DetailCarInfo.jsp?car_id='+car_id, 'DetailCarInfo', 'status=no, height=490, width=500, left='+ popupX + ', top='+ popupY + ', screenX='+ popupX + ', screenY= '+ popupY);
 }
 </script>
      
