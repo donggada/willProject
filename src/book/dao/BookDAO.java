@@ -1,7 +1,7 @@
 package book.dao;
 
-import static book.db.JdbcUtil.close;
-import static book.db.JdbcUtil.close;
+import static book.db.JdbcUtil.*;
+
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -549,5 +549,237 @@ public class BookDAO {
 		}
 
 		return result;
+	}
+
+	public ArrayList<BookBean> selectcountsum() {
+		ArrayList<BookBean> bookList = null;
+
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		try {
+			String sql = "select member_id, count(book_price) as count, sum(book_price) as sum  from book group by member_id;";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+
+			bookList = new ArrayList<BookBean>();
+
+			while (rs.next()) {
+				// 조회된 결과 중 1개 레코드를 MemberBean 객체에 저장 후 ArrayList 에 추가
+				BookBean book = new BookBean();
+
+				book.setMember_id(rs.getString("member_id"));
+				book.setCount(rs.getInt("count"));
+				book.setSum(rs.getInt("sum"));
+				
+				bookList.add(book);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("MemberDAO - selectMemberList() 오류!");
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+
+		return bookList;
+	}
+
+	public ArrayList<BookBean> selectBooksearchList(String select, String search) {
+		ArrayList<BookBean> bookList = null;
+
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		try {
+			String sql = "SELECT * FROM book where "+select+" like ? ";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, "%"+search+"%");
+
+			rs = pstmt.executeQuery();
+
+			bookList = new ArrayList<BookBean>();
+
+			while (rs.next()) {
+				// 조회된 결과 중 1개 레코드를 MemberBean 객체에 저장 후 ArrayList 에 추가
+				BookBean book = new BookBean();
+				book.setBook_num(rs.getInt("book_num"));
+
+				book.setMember_id(rs.getString("member_id"));
+				book.setBook_date(rs.getDate("book_date"));
+				book.setPickup_date(rs.getDate("pickup_date"));
+				book.setEnd_date(rs.getDate("end_date"));
+				book.setCar_id(rs.getString("car_id"));
+				book.setBook_price(rs.getInt("book_price"));
+				book.setBook_state(rs.getInt("book_state"));
+
+				bookList.add(book);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("MemberDAO - selectMemberList() 오류!");
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+
+		return bookList;
+	}
+
+	public ArrayList<BookBean> selectBookstateList(String state) {
+		ArrayList<BookBean> bookList = null;
+
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		try {
+			String sql = "SELECT * FROM book where book_state like ? ";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, "%"+state+"%");
+
+			rs = pstmt.executeQuery();
+
+			bookList = new ArrayList<BookBean>();
+
+			while (rs.next()) {
+				// 조회된 결과 중 1개 레코드를 MemberBean 객체에 저장 후 ArrayList 에 추가
+				BookBean book = new BookBean();
+				book.setBook_num(rs.getInt("book_num"));
+
+				book.setMember_id(rs.getString("member_id"));
+				book.setBook_date(rs.getDate("book_date"));
+				book.setPickup_date(rs.getDate("pickup_date"));
+				book.setEnd_date(rs.getDate("end_date"));
+				book.setCar_id(rs.getString("car_id"));
+				book.setBook_price(rs.getInt("book_price"));
+				book.setBook_state(rs.getInt("book_state"));
+
+				bookList.add(book);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("MemberDAO - selectMemberList() 오류!");
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+
+		return bookList;
+	}
+
+	public ArrayList<BookBean> selectBookstateList() {
+		ArrayList<BookBean> bookList = null;
+
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		try {
+			String sql = "SELECT * FROM book where book_state IS NULL";
+			pstmt = con.prepareStatement(sql);
+
+
+			rs = pstmt.executeQuery();
+
+			bookList = new ArrayList<BookBean>();
+
+			while (rs.next()) {
+				// 조회된 결과 중 1개 레코드를 MemberBean 객체에 저장 후 ArrayList 에 추가
+				BookBean book = new BookBean();
+				book.setBook_num(rs.getInt("book_num"));
+
+				book.setMember_id(rs.getString("member_id"));
+				book.setBook_date(rs.getDate("book_date"));
+				book.setPickup_date(rs.getDate("pickup_date"));
+				book.setEnd_date(rs.getDate("end_date"));
+				book.setCar_id(rs.getString("car_id"));
+				book.setBook_price(rs.getInt("book_price"));
+				book.setBook_state(rs.getInt("book_state"));
+
+				bookList.add(book);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("MemberDAO - selectMemberList() 오류!");
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+
+		return bookList;
+	}
+
+	public BookBean selectBookdetail(int num) {
+		BookBean book = null;
+
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		try {
+			String sql = "SELECT * FROM book where book_num=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, num);
+			rs = pstmt.executeQuery();
+
+			book = new BookBean();
+
+			while (rs.next()) {
+				// 조회된 결과 중 1개 레코드를 MemberBean 객체에 저장 후 ArrayList 에 추가
+				book = new BookBean();
+				book.setBook_num(rs.getInt("book_num"));
+				book.setMember_id(rs.getString("member_id"));
+				book.setBook_date(rs.getDate("book_date"));
+				book.setPickup_date(rs.getDate("pickup_date"));
+				book.setEnd_date(rs.getDate("end_date"));
+				book.setCar_id(rs.getString("car_id"));
+				book.setBook_price(rs.getInt("book_price"));
+				book.setBook_state(rs.getInt("book_state"));
+				book.setBook_state(rs.getInt("insurance"));
+				book.setBook_state(rs.getInt("end_date"));
+				
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("MemberDAO - selectbookList() 오류!");
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+
+		return book;
+	}
+
+	public boolean selectmodify(BookBean bb) {
+		boolean result =false;
+		System.out.println("selectmodify");
+		PreparedStatement pstmt = null;
+		try {
+			String sql="update book set book_state=? where book_num=?";
+			pstmt=con.prepareStatement(sql);
+			System.out.println(bb.getBook_state());
+			System.out.println(bb.getBook_num());
+			
+			pstmt.setInt(1, bb.getBook_state());
+			pstmt.setInt(2, bb.getBook_num());
+			int s=pstmt.executeUpdate();
+			System.out.println("update 갯수 "+s);
+			commit(con);
+			result =true;
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("update에러");
+		}finally {
+			close(pstmt);
+		}
+		
+		
+		
+		return result ;
+		
 	}
 }
