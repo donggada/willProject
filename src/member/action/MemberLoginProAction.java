@@ -4,6 +4,7 @@ import java.io.PrintWriter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import member.svc.MemberLoginProService;
 import member.vo.ActionForward;
@@ -14,6 +15,7 @@ public class MemberLoginProAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		System.out.println("MemberLoginProAction");
 		ActionForward forward=null;
+		HttpSession session = request.getSession();
 		int isLoginsuccess=0;
 		String id=request.getParameter("Member_id");
 		String pass=request.getParameter("Member_pass");
@@ -24,7 +26,7 @@ public class MemberLoginProAction implements Action {
 				
 		
 		if(isLoginsuccess==1) {
-			request.setAttribute("Member_id", id);
+			session.setAttribute("Member_id", id);
 			forward=new ActionForward();
 			forward.setPath("index.jsp");
 			forward.setRedirect(false);

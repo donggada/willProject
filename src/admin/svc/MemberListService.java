@@ -11,7 +11,7 @@ import member.vo.MemberBean;
 
 public class MemberListService {
 
-	public int getListCount(String taget,String table) {
+	public int getListCount(String target,String table) {
 		System.out.println("MemberListService - getListCount()");
 		int listCount = 0;
 		
@@ -25,7 +25,7 @@ public class MemberListService {
 		adao.setConnection(con);
 		
 	
-		listCount = adao.selectListCount(taget,table);
+		listCount = adao.selectListCount(target,table);
 		
 		close(con);
 		

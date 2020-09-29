@@ -26,8 +26,9 @@ public class QnABoardAction implements Action {
 		ArrayList<qnaBoardbean> articlelist=qbls.QnaAdminBoardList(page,limit);
 		
 		qnaBoardListservice boardlist=new qnaBoardListservice(); 
-
+		
 		int listcount = boardlist.getlistcount2();
+		articlelist=boardlist.getarticlelist(page, limit);
 		
 		if(request.getParameter("page")!=null) {
 			page=Integer.parseInt(request.getParameter("page"));
@@ -53,7 +54,7 @@ public class QnABoardAction implements Action {
 
 		
 		forward=new ActionForward();
-		forward.setPath("/Admin/AdminPage.jsp");
+		forward.setPath("/Admin/qna_list.jsp");
 		forward.setRedirect(false);
 		
 		return forward;

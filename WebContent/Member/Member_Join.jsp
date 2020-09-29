@@ -135,7 +135,8 @@
                                 </div>
                               
 						                                <div class="book-button text-center">
-                                    <button class="book-now-btn">가입</button>
+						                <input type="submit" value="회원가입" id="insertbtn">					                               
+                                    <button class="book-now-btn" >가입</button>
                                 </div>
                             </form>
                         </div>
@@ -316,7 +317,7 @@ jQuery(document).ready(function () {
 			
 	})
 	
-	$('#emalicheck').click(function() {
+	$('#emalicheck').click(function() {    //이메일 인증 
 		var email=$('#email').val()+"@"+$('#email1').val();
 	
 		
@@ -327,7 +328,7 @@ jQuery(document).ready(function () {
 					$('#bchecknum').click(function() {
 						var checkNum=$('#tchecknum').val();
 						if(rdata.trim() == checkNum){
-							$('#checkResult1').html('인증됨');
+							$('#checkResult1').html('인증되었습니다.');
 						}else{
 							$('#checkResult1').html('인증번호가 다릅니다');
 						}
@@ -338,6 +339,27 @@ jQuery(document).ready(function () {
 		}
 		
 	});
+	
+
+	
+	$('#insertbtn').click(function(){
+		if($('#checkIdResult').html().trim()=="아이디 사용가능"){
+				if($('#checkPasswdResult'.html().trim()=="적합한 패스워드"){
+					if($('#checkResult1').html().trim()=="인증되었습니다."){
+		
+						}else{
+							alert("이메일인증을해주세요");
+							}
+				}else{
+					alert('비밀번호가 적합하지 않습니다');
+				}
+		}else {
+			alert("아이디 인증해주세요");
+		}
+		
+		
+	});
+	
 	
 	
 	
@@ -384,6 +406,9 @@ jQuery(document).ready(function () {
 	        	loginform.adress.value=data.jibunAddress	            
 	        }
 	    }).open();
+	
+	
+	
 	}
 </script>
 	

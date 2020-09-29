@@ -21,6 +21,5 @@ if(obj==true){
 );
 
 </script>
-
 </body>
 </html>

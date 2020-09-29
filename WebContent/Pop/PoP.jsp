@@ -5,26 +5,21 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script src="js/jquery-3.5.1.js"></script>
-</head>
-<body>
-팝업창 입니다<br>
+<script src="../js/jquery-3.5.1.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
- $.getJSON('popblog.jsp',function(rdata){
+ $.getJSON('jsonpage.jsp',function(rdata){
 	 $.each(rdata,function(index,item){
-		 $('boby').append('<img alt="300" src="'+item.file_name+'" ">')
+		 $('body').append('<img alt="300" src="../EventUploadfile/'+item.image+'" width="400" height="400"><br>');
 	 });
  });
-	
-	
-	
-	
-	
 	
 });
 
 </script>
-<img alt="img" src="../img/pc_img_kakao.jpg" id="imgblog" width="400" height="400">
+
+</head>
+<body>
+팝업창 입니다<br>
 </body>
 </html>

@@ -31,40 +31,34 @@
 				<div class="col-lg-3 text-right">
 					<div class="header-social-icons">
 						<%
-						String id=(String)request.getAttribute("Member_id");
-						String snsid=(String)request.getAttribute("Member_snsid");
-						if(id == null)
-						{
-						session.setAttribute("snsid",snsid);
+						String id=(String)session.getAttribute("Member_id");
+						String snsid=(String)session.getAttribute("Member_snsid");
+						String totalId = null;
+						if(id !=null){
+							totalId=id;
+						}else if(snsid!=null){
+							totalId=snsid;
+						}else{
+							totalId=null;
 						}
-						else
-						{
-						session.setAttribute("id",id);
-						}
-						if (id == null && snsid == null) {
+
+						
+						if (totalId==null) {
 						%>
 						<a href="LoginForm.me">로그인</a> | <a href="JoinForm.me">회원가입</a>
+						|<a href="adminpage.ad">admin page</a>
 						<%
 							}
-						else{
-						if (id != null) {
-						%>
-						<%-- 	<%=id %>님  |	<a href="member/qna_member_logout.jsp">로그아웃</a> | <a href="MemberList.me">회원리스트</a> --%>
-						<%=id%>님 | <a href="MemberLogout.me">logout</a> | <a href="#">admin page</a>
-						<%
-							} else {
-						%>
-						<%=snsid%>님 | <a href="#">logout</a>
-						<%
-							}
-						}
+						else{%> <%=totalId%>님 | <a href="MemberLogout.me">logout</a> | <a href="adminpage.ad">admin page</a>
+						
+						<%	 }
 						%>
 						<%
-						if (ip.equals("0:0:0:0:0:0:0:1")) {
+						//if (ip.equals("0:0:0:0:0:0:0:1")) {
 						%>
 						<br><a href="" onclick="window.open('chat/admin.jsp','admin','width=750, height=750, resizable=no')">|관리자채팅</a>
 						<%
-							}
+							//}
 						%>
 					</div>
 				</div>
@@ -107,8 +101,8 @@
 							<li><a href="index.jsp">Pages</a>
 								<ul>
 									<li><a href="package.html">Pricing</a></li>
-									<li><a href="qnaBoardlist.bo">QNA</a></li>
-									<li><a href="faqlist.fbo">FAQ</a></li>
+									<li><a href="driver.html">Driver</a></li>
+									<li><a href="qnaBoardlist.bo">FAQ</a></li>
 									<li><a href="gallery.html">Gallery</a></li>
 									<li><a href="help-desk.html">Help Desk</a></li>
 									<li><a href="login.html">Log In</a></li>
@@ -117,8 +111,8 @@
 								</ul></li>
 							<li><a href="#">Review</a>
 								<ul>
-									<li><a href="ReviewList.rw">Blog Page</a></li>
-									<li><a href="ReviewList.rw">Blog Details</a></li>
+									<li><a href="ReviewWriteForm.rw">Blog Page</a></li>
+									<li><a href="ReviewWriteForm.rw">Blog Details</a></li>
 								</ul></li>
 							<li><a href="contact.html">Contact</a></li>
 						</ul>

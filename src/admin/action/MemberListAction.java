@@ -18,9 +18,9 @@ public class MemberListAction extends ActionForward implements Action {
 		ActionForward forward=null;
 		int page = 1; 
 		int limit = 10;
-		String taget="member_id";
+		String target="member_id";
 		String table="member";
-		//String taget=request.getParameter("taget");
+		//String table=request.getParameter("table");
 		if(request.getParameter("page") != null) {
 			page = Integer.parseInt(request.getParameter("page")); 
 		}
@@ -29,7 +29,7 @@ public class MemberListAction extends ActionForward implements Action {
 		MemberListService MemberListService = new MemberListService();
 		
 		
-		int listCount = MemberListService.getListCount(taget,table);
+		int listCount = MemberListService.getListCount(target,table);
 		
 		
 		ArrayList<MemberBean> MemberList = MemberListService.getArticleList(page, limit);
@@ -54,11 +54,11 @@ public class MemberListAction extends ActionForward implements Action {
 		
 		
 		request.setAttribute("pageInfo", pageInfo);
-		request.setAttribute("MemberList", MemberList);
+		request.setAttribute("articlelist", MemberList);
 		
 		
 		forward = new ActionForward();
-		forward.setPath("/Admin/AdminPage.jsp");
+		forward.setPath("/Admin/mmlistadmin.jsp");
 		forward.setRedirect(false);
 		
 		

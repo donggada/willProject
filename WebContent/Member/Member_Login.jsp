@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+    <%request.setCharacterEncoding("UTF-8"); %>
 <!DOCTYPE html>
 <html class="no-js" lang="zxx">
 <style type="text/css">
@@ -135,48 +135,41 @@
                 		</div>
                 		<div class="login-other">
                 			<span class="or">or</span>
-                			<a id="kakao-login-btn"></a>
-				
-					<script type="text/javascript">
-				//  카카오 로그인 화면 
- 				// 사용할 앱의 JavaScript 키를 설정해 주세요.
-					 Kakao.init('8fe85f780b2cbfb44bd4d9feac11d749');
- 
- 					// 카카오 로그인 버튼을 생성합니다.
- 						Kakao.Auth.createLoginButton({
-  						container: '#kakao-login-btn',
- 						 success: function(authObj) {
-   
-  						 // 로그인 성공시, API를 호출합니다.
-  							 Kakao.API.request({
-   							 url: '/v2/user/me',
-   							 success: function(res) {
-     							console.log(res);
-     
-     							
-     							 var userID = res.id;      //유저의 카카오톡 고유 id
-    							 var userEmail = res.kaccount_email;   //유저의 이메일
-    							 var userNickName = res.properties.nickname; //유저가 등록한 별명
-    							 
-    							 location.href='snsLogin.me?id='+userID;
-    							 
-    							},
-    								fail: function(error) {
-    								alert(JSON.stringify(error));
-                                }
-  								 });
-								  },
-  								fail: function(err) {
-  								 alert(JSON.stringify(err));
- 									 }
- 									});
-				</script><br>
+                			<a id="login-form-btn" href="javascript:loginFormWithKakao()">
+                			<img src="//k.kakaocdn.net/14/dn/btqCn0WEmI3/nijroPfbpCa4at5EIsjyf0/o.jpg" width="350"/></a>
+							<script type="text/javascript"> // 카카오톡  로그인
+							Kakao.init('8fe85f780b2cbfb44bd4d9feac11d749');
+  							function loginFormWithKakao() {
+    						Kakao.Auth.loginForm({
+      						success: function(authObj) {
+    	 					 Kakao.API.request({
+    		  				url: '/v2/user/me',
+    	        			success: function(res) {
+    	         			// alert(JSON.stringify(res))
+    	          			//console.log(res)
+    	         	 		var userID = res.id;        //유저의 카카오톡 고유 id
+					 		var userEmail = res.kaccount_email;   //유저의 이메일
+					 		var userNickName = res.properties.nickname; //유저가 등록한 별
+    	          			location.href='snsLogin.me?id='+userID;
+    	        			}
+    	 					 })
+    	  		
+       						showResult( JSON.stringify(authObj))
+       
+      						},
+     						 fail: function(err) {
+       						 showResult(JSON.stringify(err))
+     						 },
+   								 })
+ 							 }
+						</script>
+				<br>
 					<div id="naverIdLogin"></div>
 				<script type="text/javascript">//네이버 로그인
   					 var naverLogin = new naver.LoginWithNaverId(
       					{
         					clientId: "4E3Yn1sL3nJ9vkuGv6_4",
-         					callbackUrl: "http://localhost:8081/CarProject/naver2.jsp",
+         					callbackUrl: "http://localhost:8081/WillProject_0.1(09.18)_%EC%84%A0%ED%83%9D%EB%82%A0%EC%A7%9C%EC%88%98%EC%A0%95/Member/NaverCallback.jsp",
          					isPopup: false,
          					loginButton: {color: "green", type: 9, height: 15}
      							 }

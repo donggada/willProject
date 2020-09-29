@@ -12,7 +12,6 @@ import java.sql.Date;
 
 import book.dao.BookDAO;
 import book.vo.BookBean;
-import book.vo.CarBean;
 
 public class BookDAO {
 
@@ -60,16 +59,14 @@ public class BookDAO {
 				num = rs.getInt(1) + 1;
 			}
 
-			sql = "insert into book(book_num, car_id, pickup_date, end_date,book_price,book_state,book_date) values(?,?,?,?,?,?,now()) ";
+			sql = "insert into book(book_num, book_date, pickup_date, end_date,book_date2) values(?,?,?,?,now()) ";
 			pstmt = con.prepareStatement(sql);
 
 			pstmt.setInt(1, num);
-			pstmt.setString(2, article.getCar_id());
+			pstmt.setDate(2, article.getBook_date()); // 예약일
 			pstmt.setDate(3, article.getPickup_date()); // 수령
 			pstmt.setDate(4, article.getEnd_date()); // 반납
-			pstmt.setInt(5, article.getBook_price());
-			pstmt.setInt(6, article.getBook_state());
-		
+
 			insertCount = pstmt.executeUpdate();
 
 		} catch (SQLException e) {
@@ -84,7 +81,7 @@ public class BookDAO {
 		return insertCount;
 	}
 
-	// 
+	// 회원 목록 조회 작업을 위한 selectMemberList() 메서드 정의
 	public ArrayList<BookBean> selectBookList() {
 		ArrayList<BookBean> bookList = null;
 
@@ -165,94 +162,6 @@ public class BookDAO {
 		return bookList;
 	}
 
-	public BookBean selectBookList(int book_num) {
-		BookBean bookList = null;
-
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-
-		try {
-			String sql = "SELECT * FROM book where book_num=?";
-			pstmt = con.prepareStatement(sql);
-			
-			pstmt.setInt(1, book_num);
-			
-			rs = pstmt.executeQuery();
-
-			bookList = new BookBean();
-
-			if (rs.next()) {
-//				Date k = rs.getString(rs.getDate("pickup_date"))
-				// 조회된 결과 중 1개 레코드를 MemberBean 객체에 저장 후 ArrayList 에 추가
-				bookList.setBook_num(rs.getInt("book_num"));
-				bookList.setMember_id(rs.getString("member_id"));
-				bookList.setBook_date(rs.getDate("book_date"));
-				bookList.setPickup_date(rs.getDate("pickup_date"));
-				bookList.setEnd_date(rs.getDate("end_date"));
-				bookList.setCar_id(rs.getString("car_id"));
-				bookList.setBook_price(rs.getInt("book_price"));
-				bookList.setBook_state(rs.getInt("book_state"));
-
-			}
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-			System.out.println("MemberDAO - selectMemberList() 오류!");
-		} finally {
-			close(rs);
-			close(pstmt);
-		}
-
-		return bookList;
-	}
-	
-	//book_num 값 받아오기
-	public BookBean selectBookNum(BookBean bn) {
-		
-		BookBean bookList = null;
-
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-
-		try {
-			String sql = "SELECT * FROM book where pickup_date=? and end_date=? and car_id=?";
-			pstmt = con.prepareStatement(sql);
-			
-			
-			pstmt.setDate(1, bn.getPickup_date());
-			pstmt.setDate(2, bn.getEnd_date());
-			pstmt.setString(3, bn.getCar_id());
-						
-			rs = pstmt.executeQuery();	
-
-			bookList = new BookBean();
-
-			if (rs.next()) {
-//				Date k = rs.getString(rs.getDate("pickup_date"))
-				// 조회된 결과 중 1개 레코드를 MemberBean 객체에 저장 후 ArrayList 에 추가
-				bookList.setBook_num(rs.getInt("book_num"));
-				bookList.setMember_id(rs.getString("member_id"));
-				bookList.setBook_date(rs.getDate("book_date"));
-				bookList.setPickup_date(rs.getDate("pickup_date"));
-				bookList.setEnd_date(rs.getDate("end_date"));
-				bookList.setCar_id(rs.getString("car_id"));
-				bookList.setBook_price(rs.getInt("book_price"));
-				bookList.setBook_state(rs.getInt("book_state"));
-
-			}
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-			System.out.println("MemberDAO - selectMemberList() 오류!");
-		} finally {
-			close(rs);
-			close(pstmt);
-		}
-
-		return bookList;
-	}
-	
-
 	// 삭제
 
 	public int deleteArticle(int book_num) {
@@ -331,31 +240,35 @@ public class BookDAO {
 		return insertCount;
 	}
 
-	public ArrayList<CarBean> selectCarList() {
-		ArrayList<CarBean> carList = null;
+	public ArrayList<BookBean> selectBookListadmin(String str1, String str2) {
+		ArrayList<BookBean> bookList = null;
 
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 
 		try {
-			String sql = "SELECT * FROM car";
+			String sql = "SELECT * FROM book where book_date between ? and ?";
 			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, str1); //시작레코드번호 
+			pstmt.setString(2, str2); //게시글 수
 			rs = pstmt.executeQuery();
 
-			carList = new ArrayList<CarBean>();
+			bookList = new ArrayList<BookBean>();
 
 			while (rs.next()) {
+				// 조회된 결과 중 1개 레코드를 MemberBean 객체에 저장 후 ArrayList 에 추가
+				BookBean book = new BookBean();
+				book.setBook_num(rs.getInt("book_num"));
 
-				CarBean cb = new CarBean();
-				cb.setCar_id(rs.getInt("car_id"));
+				book.setMember_id(rs.getString("member_id"));
+				book.setBook_date(rs.getDate("book_date"));
+				book.setPickup_date(rs.getDate("pickup_date"));
+				book.setEnd_date(rs.getDate("end_date"));
+				book.setCar_id(rs.getString("car_id"));
+				book.setBook_price(rs.getInt("book_price"));
+				book.setBook_state(rs.getInt("book_state"));
 
-				cb.setCar_maker(rs.getString("car_maker"));
-				cb.setCar_type(rs.getInt("car_type"));
-				cb.setCar_oil(rs.getInt("car_oil"));
-				cb.setCar_price_normal(rs.getInt("car_price_normal"));
-				cb.setCar_color(rs.getString("car_collor"));
-
-				carList.add(cb);
+				bookList.add(book);
 			}
 
 		} catch (SQLException e) {
@@ -366,12 +279,275 @@ public class BookDAO {
 			close(pstmt);
 		}
 
-		return carList;
-
+		return bookList;
 	}
 
-	public ArrayList<CarBean> selectCarList(String orderTarget, String orderType) {
-		// TODO Auto-generated method stub
-		return null;
+	public int selectBookListsum(String str1, String str2) {
+		int result=0;
+
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		try {
+			String sql = "SELECT SUM(book_price) FROM book where book_date between ? and ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, str1); //시작레코드번호 
+			pstmt.setString(2, str2); //게시글 수
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				result=rs.getInt("SUM(book_price)");
+			}
+	
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("MemberDAO - selectMemberList() 오류!");
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+
+		return result;
+	}
+	
+	
+	public int selectBookListcount(String str1, String str2) {
+		int result=0;
+
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		try {
+			String sql = "SELECT COUNT(book_price) FROM book where book_date between ? and ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, str1); //시작레코드번호 
+			pstmt.setString(2, str2); //게시글 수
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				result=rs.getInt("COUNT(book_price)");
+			}
+	
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("MemberDAO - selectMemberList() 오류!");
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+
+		return result;
+	}
+	
+	
+	
+	public int selectBookListp1(String str1, String str2) {
+		int result=0;
+
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		try {
+			
+			String sql = "SELECT ((SUM(book_price)-(SELECT SUM(book_price) FROM book where (book_date > ? -INTERVAL 1 MONTH and book_date < ? )))/(SELECT SUM(book_price) FROM book where (book_date > ? -INTERVAL 1 MONTH and book_date < ? )))*100 as score FROM book where booK_date between ? and ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, str1);  
+			pstmt.setString(2, str1);
+			pstmt.setString(3, str1);  
+			pstmt.setString(4, str1);
+			pstmt.setString(5, str1);
+			pstmt.setString(6, str2);
+			rs = pstmt.executeQuery();
+			
+
+			while (rs.next()) {
+				result=rs.getInt("score");
+				
+			}
+			
+			
+		
+
+			
+			
+		
+
+
+	
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("MemberDAO - selectMemberList() 오류!");
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+
+		return result;
+	}
+	
+	
+	public int selectBookListp2(String str1, String str2) {
+		int result=0;
+
+
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		try {
+			
+			String sql = "SELECT ((count(book_price)-(SELECT count(book_price) FROM book where (book_date > ? -INTERVAL 1 MONTH and book_date < ? )))/(SELECT count(book_price) FROM book where (book_date > ? -INTERVAL 1 MONTH and book_date < ? )))*100 as score FROM book where booK_date between ? and ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, str1);  
+			pstmt.setString(2, str1);
+			pstmt.setString(3, str1);  
+			pstmt.setString(4, str1);
+			pstmt.setString(5, str1);
+			pstmt.setString(6, str2);
+			rs = pstmt.executeQuery();
+			
+
+			while (rs.next()) {
+				result=rs.getInt("score");
+			}
+			
+		
+			
+			
+
+			
+			
+		
+
+
+	
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("MemberDAO - selectMemberList() 오류!");
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+
+		return result;
+	}
+	
+	
+	public int selectBookListf(String str1, String str2) {
+		int result=0;
+
+
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		try {
+			
+			String sql = "select count(*) as nullcount from book where book_state is null and booK_date between ? and ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, str1); //시작레코드번호 
+			pstmt.setString(2, str2); //게시글 수
+			rs = pstmt.executeQuery();
+			
+
+			while (rs.next()) {
+				result=rs.getInt("nullcount");
+			}
+			
+		
+
+			
+			
+		
+
+
+	
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("MemberDAO - selectMemberList() 오류!");
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+
+		return result;
+	}
+	
+	
+	
+	public int selectBookListfs(String str1, String str2) {
+		int result=0;
+
+
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		try {
+			
+			String sql = "select sum(book_price) from book where book_state is null and booK_date between ? and ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, str1); //시작레코드번호 
+			pstmt.setString(2, str2); //게시글 수
+			rs = pstmt.executeQuery();
+			
+
+			while (rs.next()) {
+				result=rs.getInt("sum(book_price)");
+			}
+			
+			
+
+			
+			
+		
+
+
+	
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("MemberDAO - selectMemberList() 오류!");
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+
+		return result;
+	}
+	
+	public int selectBookListfs2(String str1, String str2) {
+		int result=0;
+
+
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		try {
+			
+			String sql = "select sum(book_price) from book where book_state is null and booK_date between ? and ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, str1); //시작레코드번호 
+			pstmt.setString(2, str2); //게시글 수
+			rs = pstmt.executeQuery();
+			
+
+			while (rs.next()) {
+				result=rs.getInt("sum(book_price)");
+			}
+			
+			
+
+			
+			
+		
+
+
+	
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("MemberDAO - selectMemberList() 오류!");
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+
+		return result;
 	}
 }
