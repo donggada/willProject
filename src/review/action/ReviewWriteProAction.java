@@ -21,7 +21,7 @@ public class ReviewWriteProAction implements Action {
 		ActionForward forward = null;
 		String realFolder = "";
 		String saveFolder = "/reviewUpload";
-		int fileSize = 5*1024*1024;
+		int fileSize = 1024*1024*1024;
 		ServletContext context = request.getServletContext();
 		realFolder = context.getRealPath(saveFolder);
 		

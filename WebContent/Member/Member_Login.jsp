@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+    <%request.setCharacterEncoding("UTF-8"); %>
 <!DOCTYPE html>
 <html class="no-js" lang="zxx">
 <style type="text/css">
@@ -169,7 +169,7 @@
   					 var naverLogin = new naver.LoginWithNaverId(
       					{
         					clientId: "4E3Yn1sL3nJ9vkuGv6_4",
-         					callbackUrl: "http://localhost:8081/CarProject/naver2.jsp",
+         					callbackUrl: "http://localhost:8081/WillProject_0.1(09.18)_%EC%84%A0%ED%83%9D%EB%82%A0%EC%A7%9C%EC%88%98%EC%A0%95/Member/NaverCallback.jsp",
          					isPopup: false,
          					loginButton: {color: "green", type: 9, height: 15}
      							 }

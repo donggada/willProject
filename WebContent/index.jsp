@@ -100,98 +100,131 @@
 
 	<!--== Header Area End ==-->
 
-	<!--== Slider Area Start ==-->
-	<section id="slider-area">
-		<!--== slide Item One ==-->
-		<div class="single-slide-item overlay">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-5">
-						<div class="book-a-car">
-							<form action="BookForm2.bk" method="post">
-								<!--== Pick Up Location ==-->
-								<div>
-									<h2>예약</h2>
-								</div>
-								<br>
-								<!--                                 <div class="pickup-location book-item"> -->
-								<!--                                     <h4>지점 선택</h4> -->
-								<!--                                     <select class="custom-select"> -->
-								<!--                                       <option selected>선택하세요</option> -->
-								<!--                                       <option value="1">제주공항 지점</option> -->
-								<!--                                       <option value="2">제주항 지점</option> -->
-								<!--                                       <option value="3">서귀포항 지점</option> -->
-								<!--                                     </select> -->
-								<!--                                 </div> -->
-								<!--== Pick Up Location ==-->
-
-								<!--== Pick Up Date ==-->
-								<div class="pick-up-date book-item">
-									<h4>대여일 선택:</h4>
-									<input type="date" id="pickup_date" name="pickup_date">
-									<!--                                     <input id="startDate" placeholder="Pick Up Date" /> -->
-
-									<div class="return-car">
-										<h4>반납일 선택:</h4>
-										<input type="date" id="end_date" name="end_date">
-										<!--                                         <input id="endDate" placeholder="Return Date" /> -->
-									</div>
-								</div>
-								<!--== Pick Up Location ==-->
-
-								<!--== Car Choose ==-->
-								<div class="choose-car-type book-item">
-									<h4>차량유형 선택:</h4>
-									<table id="Car_list" board="1">
-										<tr>
-											<td>경차<input type="radio" name="SelCar" value="경차"></td>
-											<td>소형<input type="radio" name="SelCar" value="소형"></td>
-											<td>중형<input type="radio" name="SelCar" value="중형"></td>
-										</tr>
-										<tr>
-											<td>준대형<input type="radio" name="SelCar" value="준대형"></td>
-											<td>대형<input type="radio" name="SelCar" value="대형"></td>
-											<td>승합<input type="radio" name="SelCar" value="승합"></td>
-										</tr>
-										<tr>
-											<td>SUVㅣRV<input type="radio" name="SelCar"
-												value="SUVㅣRV"></td>
-											<td>전기차<input type="radio" name="SelCar" value="전기차"></td>
-											<td>수입차<input type="radio" name="SelCar" value="수입차"></td>
-										</tr>
-									</table>
-								</div>
-								<!--== Car Choose ==-->
-
-								<div class="book-button text-center">
-									<input type="submit" value="검색">
-								</div>
-							</form>
-						</div>
-					</div>
-
-					<div class="col-lg-7 text-right">
-						<div class="display-table">
-							<div class="display-table-cell">
-								<div class="slider-right-text">
-									<h1>빛나는 한국, 빛나는 휴가</h1>
-									<p>
-										최고의 서비스 그리고 최고의 차량<br>당신의 휴가를 더 특별하게
-									</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!--== slide Item One ==-->
-	</section>
+<!--== Slider Area Start ==-->
+    <section id="home-area">
+        <div class="home-slider-item slider-bg-1 overlay">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="slideshowcontent">
+                            <h1>BOOK A CAR TODAY!</h1>
+                            <p>FOR AS LOW AS $10 A DAY PLUS 15% DISCOUNT <br> FOR OUR RETURNING CUSTOMERS</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
-	
-	
-	<%@ include file="/map/maptest.jsp" %>
+
+    </section>
+    <!--== Slider Area End ==-->
+
+    <!--== Book A Car Area Start ==-->
+    <div id="book-a-car">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="booka-car-content">
+                            <div class="pick-location bookinput-item">
+                                <select class="custom-select">
+                                  <option selected>Pick Location</option>
+                                  <option value="1">Dhaka</option>
+                                  <option value="2">Comilla</option>
+                                  <option value="3">Barishal</option>
+                                  <option value="3">Rangpur</option>
+                                </select>
+                            </div>
+
+                       <form action="BookForm2.bk" method="post">
+                            <div class="pick-date bookinput-item">
+                               <input type="date" id="pickup_date" name="pickup_date">
+                            </div>
+
+                            <div class="retern-date bookinput-item">
+                               <input type="date" id="end_date" name="end_date">
+                            </div>
+
+                            <div class="car-choose bookinput-item">
+                                <select class="custom-select" name="SelCar">
+                                  <option selected>Choose Car</option>
+                                  <option name="SelCar"  value="경차">경차</option>
+                                  <option name="SelCar"  value="소형">소형</option>
+                                  <option name="SelCar"  value="중형">중형</option>
+                               
+                                   <option name="SelCar"  value="준대형">준대형</option>
+                                   <option name="SelCar"  value="중형">중형</option>
+                                   <option name="SelCar"  value="대형">대형</option>
+                                   <option name="SelCar"  value="SUVㅣRV">SUV | RV</option>
+                                   <option name="SelCar"  value="전기차">전기차</option>
+                                   <option name="SelCar"  value="수입차">수입차</option>
+                                                    
+                                </select>
+                            </div>
+
+                            <div class="bookcar-btn bookinput-item">
+                                <button type="submit">Book Car</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--== Book A Car Area End ==-->
+
+	<!--== About Us Area Start ==-->
+	<!--     <section id="about-area" class="section-padding"> -->
+	<!--         <div class="container"> -->
+	<!--             <div class="row"> -->
+	<!--                 Section Title Start -->
+	<!--                 <div class="col-lg-12"> -->
+	<!--                     <div class="section-title  text-center"> -->
+	<!--                         <h2>About us</h2> -->
+	<!--                         <span class="title-line"><i class="fa fa-car"></i></span> -->
+	<!--                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p> -->
+	<!--                     </div> -->
+	<!--                 </div> -->
+	<!--                 Section Title End -->
+	<!--             </div> -->
+
+	<!--             <div class="row"> -->
+	<!--                 About Content Start -->
+	<!--                 <div class="col-lg-6"> -->
+	<!--                     <div class="display-table"> -->
+	<!--                         <div class="display-table-cell"> -->
+	<!--                             <div class="about-content"> -->
+	<!--                                 <p>Lorem simply dummy is a texted of the printing costed and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type.</p> -->
+
+	<!--                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi aliquid debitis optio praesentium, voluptate repellat accusantium deserunt eius.</p> -->
+	<!--                                 <div class="about-btn"> -->
+	<!--                                     <a href="#">Book a Car</a> -->
+	<!--                                     <a href="#">Contact Us</a> -->
+	<!--                                 </div> -->
+	<!--                             </div> -->
+	<!--                         </div> -->
+	<!--                     </div> -->
+	<!--                 </div> -->
+	<!--                 About Content End -->
+
+	<!--                 About Video Start -->
+	<!--                 <div class="col-lg-6"> -->
+	<!--                     <div class="about-video"> -->
+	<!--                         <iframe src="https://player.vimeo.com/video/121982328?title=0&byline=0&portrait=0"></iframe> -->
+	<!--                     </div> -->
+	<!--                 </div> -->
+	<!--                 About Video End -->
+	<!--             </div> -->
+	<!--         </div> -->
+	<!--     </section> -->
+	<!--     == About Us Area End == -->
+
+	<!--                     </div> -->
+	<!--                 </div> -->
+	<!--             </div> -->
+	<!--         </div> -->
+	<!--     </div> -->
+	<!--     == Partner Area End == -->
 
 	<!--== Services Area Start ==-->
 	<section id="service-area" class="section-padding">
@@ -825,278 +858,10 @@
 	</section>
 	<!--== Pricing Area End ==-->
 
-	<!-- 개편된 기간,지점 선택 (시작) -->
-	<article>
-		<div class="header-group">
-			<h3>
-				기간/지점 선택
-				<p>
-					<span class="cl-point1">기간·지점·차량</span>은 순서와 관계없이 <span
-						class="cl-point1">선택 예약이 가능</span>합니다.
-				</p>
-			</h3>
-			<!-- 20180402 -->
-		</div>
-		<div class="article-content">
-			<div class="rent-store-select">
-				<div class="col fl">
-					<div class="date-time-area clearfix">
-						<span id="sDateSpan" class="input fl"> <input type="text"
-							id="sDate" class="brr0 rentDate" readonly="readonly"
-							placeholder="대여일 선택" name="sDate" value="" disabled="disabled" />
-						</span> <span class="select-box fl"> <select name="sHour"
-							id="sHour" class="option01 hour">
-						</select>
-						</span> <span class="select-box fl"> <select name="sMinute"
-							id="sMinute" class="option01 timeChange" disabled="disabled">
-								<option value="00">00분</option>
-								<option value="30">30분</option>
-						</select>
-						</span>
-					</div>
-					<div class="store-area clearfix">
-						<span class="multiple-select-box fl is-disabled"> <strong
-							class="js-multiple-select-text">제주/제주지점</strong>
-						</span>
-						<div class="layer-multiple-select-box">
-							<div class="col">
-								<dl class="location">
-									<dt>지역선택</dt>
-								</dl>
-							</div>
-							<div class="col">
-								<dl class="store">
-									<dt>지점선택</dt>
-								</dl>
-							</div>
-						</div>
-						<a href="javascript:void(0);"
-							class="btn btn-default btn-fix1 btn-modal fr"
-							onclick="viewBranch('000012');">지도보기</a>
-					</div>
-				</div>
-				<div class="col fl">
-					<div class="date-time-area clearfix">
-						<span id="lDateSpan" class="input fl"> <input type="text"
-							class="readonly brr0 rentDate" id="lDate" placeholder="반납일 선택"
-							readonly="readonly" name="lDate" value="" disabled="disabled" />
-						</span> <span class="select-box fl"> <select name="lHour"
-							id="lHour" class="option01 hour" disabled="disabled">
-						</select>
-						</span> <span class="select-box fl"> <select name="lMinute"
-							id="lMinute" class="option01 timeChange" disabled="disabled">
-								<option value="00">00분</option>
-								<option value="30">30분</option>
-						</select>
-						</span>
-					</div>
-					<div class="store-area clearfix">
-						<span class="multiple-select-box fl is-disabled"> <strong
-							class="js-multiple-select-text">제주/제주지점</strong>
-						</span>
-						<div class="layer-multiple-select-box">
-							<div class="col">
-								<dl class="location">
-									<dt>지역선택</dt>
-								</dl>
-							</div>
-							<div class="col">
-								<dl class="store">
-									<dt>지점선택</dt>
-								</dl>
-							</div>
-						</div>
-						<a href="javascript:void(0);"
-							class="btn btn-default btn-fix1 btn-modal fr"
-							onclick="viewBranch('000012');">지도보기</a>
-					</div>
-				</div>
-				<div class="col fr">
-					<div class="date-total-time-area">
-						<div class="helper">
-							<strong>총 대여시간</strong>
-							<p>0일 0시간 0분</p>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="bg-line1 under-tab">
-				<ul class="list-info v1">
-					<li>예약가능시간 : 제주지점(대여/반납 06:00 ~ 22:00)<!--  / 내륙 전 지점(9:00~19:00) --></li>
-					<li id="txtClosedBranch" class="cl-point1" style="display: none">해당
-						지점에 선택하신 날짜에는 예약 및 반납이 불가합니다</li>
-					<li>반려동물 동반 탑승은 불가합니다. (케이지 포함)<br>(* 다음 이용 고객에 알레르기 등
-						불편을 줄 수 있어, 동반 탑승 시 클리닝 비용(10만원 이상)이 추가 발생할 수 있습니다.)
-					</li>
-				</ul>
-			</div>
-
-		</div>
-	</article>
 	
-
-	<!-- 개편된 기간,지점 선택 (끝) -->
-	<!--== Testimonials Area Start ==-->
-	<section id="testimonial-area" class="section-padding">
-		<div class="container">
-			<div class="row">
-				<!-- Section Title Start -->
-				<div class="col-lg-12">
-					<div class="section-title  text-center">
-						<h2>Testimonials</h2>
-						<span class="title-line"><i class="fa fa-car"></i></span>
-						<p>Lorem ipsum dolor sit amet elit.</p>
-					</div>
-				</div>
-				<!-- Section Title End -->
-			</div>
-
-			<div class="row">
-				<div class="col-lg-8 col-md-12 m-auto">
-					<div class="testimonial-content">
-						<!--== Single Testimoial Start ==-->
-						<div class="single-testimonial">
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-								Quis totam obcaecati impedit, at autem repellat vel magni
-								architecto veritatis sed.</p>
-							<h3>Vongchong Smith</h3>
-							<div class="client-logo">
-								<img src="assets/img/client/client-pic-1.jpg" alt="JSOFT">
-							</div>
-						</div>
-						<!--== Single Testimoial End ==-->
-
-						<!--== Single Testimoial Start ==-->
-						<div class="single-testimonial">
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-								Quis totam obcaecati impedit, at autem repellat vel magni
-								architecto veritatis sed.</p>
-							<h3>Amader Tuni</h3>
-							<div class="client-logo">
-								<img src="assets/img/client/client-pic-3.jpg" alt="JSOFT">
-							</div>
-						</div>
-						<!--== Single Testimoial End ==-->
-
-						<!--== Single Testimoial Start ==-->
-						<div class="single-testimonial">
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-								Quis totam obcaecati impedit, at autem repellat vel magni
-								architecto veritatis sed.</p>
-							<h3>Atex Tuntuni Smith</h3>
-							<div class="client-logo">
-								<img src="assets/img/client/client-pic-2.jpg" alt="JSOFT">
-							</div>
-						</div>
-						<!--== Single Testimoial End ==-->
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
 	<!--== Testimonials Area End ==-->
 	<!--== Footer Area Start ==-->
-	<section id="footer-area">
-		<!-- Footer Widget Start -->
-		<div class="footer-widget-area">
-			<div class="container">
-				<div class="row">
-					<!-- Single Footer Widget Start -->
-					<div class="col-lg-4 col-md-6">
-						<div class="single-footer-widget">
-							<h2>About Us</h2>
-							<div class="widget-body">
-								<img src="assets/img/logo.png" alt="JSOFT">
-								<p>Lorem ipsum dolored is a sit ameted consectetur
-									adipisicing elit. Nobis magni assumenda distinctio debitis, eum
-									fuga fugiat error reiciendis.</p>
-
-								<div class="newsletter-area">
-									<form action="index.jsp">
-										<input type="email" placeholder="Subscribe Our Newsletter">
-										<button type="submit" class="newsletter-btn">
-											<i class="fa fa-send"></i>
-										</button>
-									</form>
-								</div>
-
-							</div>
-						</div>
-					</div>
-					<!-- Single Footer Widget End -->
-
-					<!-- Single Footer Widget Start -->
-					<div class="col-lg-4 col-md-6">
-						<div class="single-footer-widget">
-							<h2>Recent Posts</h2>
-							<div class="widget-body">
-								<ul class="recent-post">
-									<li><a href="#"> Hello Bangladesh! <i
-											class="fa fa-long-arrow-right"></i>
-									</a></li>
-									<li><a href="#"> Lorem ipsum dolor sit amet <i
-											class="fa fa-long-arrow-right"></i>
-									</a></li>
-									<li><a href="#"> Hello Bangladesh! <i
-											class="fa fa-long-arrow-right"></i>
-									</a></li>
-									<li><a href="#"> consectetur adipisicing elit? <i
-											class="fa fa-long-arrow-right"></i>
-									</a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					<!-- Single Footer Widget End -->
-
-					<!-- Single Footer Widget Start -->
-					<div class="col-lg-4 col-md-6">
-						<div class="single-footer-widget">
-							<h2>get touch</h2>
-							<div class="widget-body">
-								<p>Lorem ipsum doloer sited amet, consectetur adipisicing
-									elit. nibh auguea, scelerisque sed</p>
-
-								<ul class="get-touch">
-									<li><i class="fa fa-map-marker"></i> 800/8, Kazipara,
-										Dhaka</li>
-									<li><i class="fa fa-mobile"></i> +880 01 86 25 72 43</li>
-									<li><i class="fa fa-envelope"></i> kazukamdu83@gmail.com</li>
-								</ul>
-								<a href="https://goo.gl/maps/b5mt45MCaPB2" class="map-show"
-									target="_blank">Show Location</a>
-							</div>
-						</div>
-					</div>
-					<!-- Single Footer Widget End -->
-				</div>
-			</div>
-		</div>
-		<!-- Footer Widget End -->
-
-		<!-- Footer Bottom Start -->
-		<div class="footer-bottom-area">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-12 text-center">
-						<p>
-							<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-							Copyright &copy;
-							<script>
-								document.write(new Date().getFullYear());
-							</script>
-							All rights reserved | This template is made with <i
-								class="fa fa-heart-o" aria-hidden="true"></i> by <a
-								href="https://colorlib.com" target="_blank">Colorlib</a>
-							<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-						</p>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- Footer Bottom End -->
-	</section>
+		<jsp:include page="inc/Footer.jsp" />
 	<!--== Footer Area End ==-->
 
 	<!--== Scroll Top Area Start ==-->
