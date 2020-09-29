@@ -56,7 +56,7 @@
 <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 
 
-<title>Cardoor -asdsdassssda</title>
+<title>Cardoor -test</title>
 
 
 <!--=== Bootstrap CSS ===-->
