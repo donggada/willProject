@@ -50,7 +50,7 @@
                         </ol>
                         <div class="card mb-4">
                             <div class="card-body">
-                                수정할거 - 정렬 / 찾기 / 횟수  금액 
+                                -
                                 <a target="_blank" href="#">official DataTables documentation</a>
                                 .
                             </div>

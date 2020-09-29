@@ -5,7 +5,6 @@ import static member.db.JdbcUtill.*;
 
 import java.sql.Connection;
 
-import org.eclipse.jdt.internal.compiler.env.IModule.IService;
 
 import admin.dao.AdminDAO;
 

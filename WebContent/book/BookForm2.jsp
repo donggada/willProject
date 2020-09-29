@@ -6,7 +6,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
       <%
-  	  String id = (String)session.getAttribute("member_id");
+      String snsid = (String)session.getAttribute("snsid");
+      String id = (String)session.getAttribute("id");
 
       String pickup = request.getParameter("pickup_date"); 
       String end = request.getParameter("end_date"); 
@@ -163,10 +164,28 @@ function search(id){
 				<td width="150">분류<%=carList.get(i).getCar_type() %></td>
 				<td width="100">가격<%=carList.get(i).getCar_price_normal() %></td>
 				<td width="100">색상<%=carList.get(i).getCar_color() %></td>
-				<td><input type="button" class="selbtn" id="selbtn" onclick= "location.href='BookPro.bk?car_id=<%=carList.get(i).getCar_id()%>&pickup=<%=pickup %>&end=<%=end %>&rentprice=<%=carList.get(i).getCar_price_normal() %>'" value="예약하기"></td>
+			<%-- 				<td><input type="button" class="selbtn" id="selbtn" onclick= "location.href='BookPro.bk?car_id=<%=carList.get(i).getCar_id()%>&pickup=<%=pickup %>&end=<%=end %>&rentprice=<%=carList.get(i).getCar_price_normal() %>&member_id=<%if(id == null){%><%=snsid%><%}else{%><%=id%><%};%>'" value="예약하기"></td> --%>
+			
+				<%if(id == null){%>
 					
+					<td>
+					<input type="button" class="selbtn" id="selbtn" value="카드결제" onclick="noId()">
+					<input type="button" class="selbtn" id="selbtn" value="무통장입금" onclick="noId()">
+					</td>
+						<%
+						}else{
+						%>
+					
+						<td>
+						<input type="button" class="selbtn" id="selbtn" value="카드결제" onclick="card('<%=carList.get(i).getCar_id()%>','<%=pickup%>','<%=end%>','<%=carList.get(i).getCar_price_normal()%>','<%if(id == null){%><%=snsid%><%}else{%><%=id%><%};%>')">
+						<input type="button" class="selbtn" id="selbtn" value="무통장입금" onclick="vbank('<%=carList.get(i).getCar_id()%>','<%=pickup%>','<%=end%>','<%=carList.get(i).getCar_price_normal()%>','<%if(id == null){%><%=snsid%><%}else{%><%=id%><%};%>')">
+						</td>
+					<%
+					}
+					%>
+				
 			<%
-				}
+			}
 			}
 			%>
 			</table>

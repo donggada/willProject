@@ -15,7 +15,7 @@ import member.vo.ActionForward;
 import member.vo.MemberBean;
 import qna.vo.pageinfo;
 
-public class sellingListAction implements Action {
+public class sellingListateAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -24,6 +24,7 @@ public class sellingListAction implements Action {
 		String year=request.getParameter("YEAR");
 		String month=request.getParameter("MONTH");
 	
+		String state= request.getParameter("book_state");
 
 	
 		
@@ -37,7 +38,13 @@ public class sellingListAction implements Action {
 		int f=0;
 		int fs=0;
 		int fs2=0;
-		if(year==null||month==null) {
+		
+		if(state==null) {
+			bookList = bookListService.getBookstateList();
+		}else if(state!=null) {
+			bookList = bookListService.getBookstateList(state);
+			
+		}else if(year==null||month==null) {
 			bookList = bookListService.getBookList();
 			
 		}else if(year!=null&&month!=null){
@@ -68,6 +75,7 @@ public class sellingListAction implements Action {
 
 			
 		}
+		
 		
 //		System.out.println("건수증감"+c2);
 //		System.out.println("금액증감"+c);

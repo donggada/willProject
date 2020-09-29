@@ -55,6 +55,48 @@ public class MemberListService {
 		return memberList;
 		
 	}
+
+	public ArrayList<MemberBean> getArticleList(int page, int limit, String parameter) {
+		System.out.println("MemberListService - getArticleList()");
+		ArrayList<MemberBean> memberList = null;
+		
+		
+		Connection con = getConnection();
+		
+		AdminDAO adao = AdminDAO.adao;
+		
+		
+		adao.setConnection(con);
+		
+		
+		memberList = adao.selectMemberList(page, limit, parameter);
+		
+		
+		close(con);
+		
+		return memberList;
+	}
+
+	
+	public ArrayList<MemberBean> getArticleSearchList(int page, int limit, String select, String search) {
+		ArrayList<MemberBean> memberList = null;
+		
+		
+		Connection con = getConnection();
+		
+		AdminDAO adao = AdminDAO.adao;
+		
+		
+		adao.setConnection(con);
+		
+		
+		memberList = adao.selectMemberSearchList(page, limit, select, search);
+		
+		
+		close(con);
+		
+		return memberList;
+	}
 	
 	
 

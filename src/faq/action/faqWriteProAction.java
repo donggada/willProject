@@ -53,8 +53,8 @@ public class faqWriteProAction implements action {
 			
 		}else {
 			forward=new actionForward();
-			forward.setRedirect(false);
-			forward.setPath("/FAQ/faq_result.jsp");
+			forward.setRedirect(true);
+			forward.setPath("faqadminlist.fbo");
 		
 		}
 		
