@@ -80,7 +80,7 @@
                <div class="form-group">
   <fieldset>
     <label class="control-label" for="readOnlyInput">Book_date</label>
-    <input class="form-control" id="readOnlyInput" type="text" value="<%=article.getBook_date()%> - <%=article.getBook_date2()%>" readonly="readonly">
+    <input class="form-control" id="readOnlyInput" type="text" value="예약일 : <%=article.getBook_date()%> 이용기간 <%=article.getPickup_date()%> - <%=article.getEnd_date()%>" readonly="readonly">
 
   </fieldset>
 </div>

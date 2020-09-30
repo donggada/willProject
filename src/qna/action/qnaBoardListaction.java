@@ -30,7 +30,7 @@ public class qnaBoardListaction implements action {
 		}
 		
 		HttpSession session=request.getSession();
-		String id = (String)session.getAttribute("id"); 
+		String id = (String)session.getAttribute("Member_id"); 
 		System.out.println(id);
 		
 		qnaBoardListservice boardlist=new qnaBoardListservice(); 
