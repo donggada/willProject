@@ -21,7 +21,7 @@ public class faqBoardListaction implements action {
 		
 		
 		int page=1;
-		int limit=8;
+		int limit=6;
 
 		
 		if(request.getParameter("page")!=null) {
