@@ -9,5 +9,8 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="C:/Users/hehe1/OneDrive/문서/이클립스/JAVA FILE/JSP_Model2/Book_MVC(2020.09.10)/WebContent/WEB-INF/lib/json-simple-1.1.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/hehe1/OneDrive/문서/이클립스/JAVA FILE/JSP_Model2/Book_MVC(2020.09.10)/WebContent/WEB-INF/lib/cos.jar"/>
+	<classpathentry kind="lib" path="C:/Users/hehe1/OneDrive/문서/이클립스/JAVA FILE/JSP_Model2/Funweb0831/WebContent/WEB-INF/lib/mail.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

@@ -6,8 +6,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
       <%
-      String snsid = (String)session.getAttribute("snsid");
-      String id = (String)session.getAttribute("id");
+      String snsid = (String)session.getAttribute("Member_snsid");
+      String id = (String)session.getAttribute("Member_id");
 
       String pickup = request.getParameter("pickup_date"); 
       String end = request.getParameter("end_date"); 
@@ -15,6 +15,10 @@
       
       ArrayList<CarBean> carList = (ArrayList<CarBean>)request.getAttribute("carList");
 //       ArrayList<BookBean> bookList =(ArrayList<BookBean>)request.getAttribute("bookList");
+
+	System.out.println(snsid);
+		System.out.println(id);
+		
     %>
     
     
@@ -50,6 +54,35 @@
 						});
 			});
 
+	
+	function card(a,b,c,d,e){
+		var car_id = a
+		var pickup = b
+		var end = c
+		var price = d
+		var member_id = e
+		window.open("BookPro2.bk?car_id="+car_id+"&pickup="+pickup+"&end="+end+"&rentprice="+price+"&member_id="+member_id,"카드결제","width=900,height=600");
+	}
+		
+	/*무통장입금 결제 팝업창  */	
+	function vbank(a,b,c,d,e){
+		var car_id = a
+		var pickup = b
+		var end = c
+		var price = d
+		var member_id = e
+		window.open("BookPro3.bk?car_id="+car_id+"&pickup="+pickup+"&end="+end+"&rentprice="+price+"&member_id="+member_id,"카드결제","width=900,height=600");
+	}
+	
+	function noId(){
+		
+		
+		alert("로그인을 해주세요.");
+		location.href="LoginForm.me";
+		
+	}
+		
+		
 	//     $('table tr td').click(function() {
 	//         var txt = $(this).text();
 	//         document.getElementById('car').value = txt;
