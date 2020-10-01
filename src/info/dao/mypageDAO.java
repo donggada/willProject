@@ -75,12 +75,14 @@ private static mypageDAO instance;
 		{
 			e.printStackTrace();
 		}
-		close(pstmt);
+		
 		close(rs);
+		close(pstmt);
+		
 		return lb;
 	}
 
-	public ArrayList<ListBean> checkBook(String id) {
+	public ArrayList<ListBean> checkBook(String id, int page, int limit) {
 		
 		ArrayList<ListBean> list = new ArrayList<ListBean>();
 		PreparedStatement pstmt = null;
@@ -88,10 +90,15 @@ private static mypageDAO instance;
 		
 		try 
 		{
-			String sql = "select * from book where member_id=?";
+			int startrow=(page-1)*10;
+			
+			String sql = "select * from book where member_id=? order by book_num desc limit ?, ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, id);
-			rs = pstmt.executeQuery();
+			pstmt.setInt(2, startrow);
+			pstmt.setInt(3, limit); 
+			rs=pstmt.executeQuery();
+
 			while(rs.next())
 			{
 				ListBean lb = new ListBean();
@@ -107,9 +114,38 @@ private static mypageDAO instance;
 		{
 			e.printStackTrace();
 		}
-		close(pstmt);
+		
 		close(rs);
+		close(pstmt);
+		
 		return list;
+	}
+
+	public int getListCount(String id) {
+		
+		int count = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try 
+		{
+			String sql = "select count(*) from book where member_id=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			if(rs.next())
+			{
+				count = rs.getInt(1);
+			}
+		} 
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
+		
+		close(rs);
+		close(pstmt);
+		
+		return count;
 	}
 	
 }

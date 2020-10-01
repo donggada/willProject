@@ -1,3 +1,4 @@
+<%@page import="info.vo.pageinfo"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="info.vo.ListBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -5,12 +6,28 @@
     <%
     	ListBean lb = (ListBean)request.getAttribute("bean");
     	ArrayList<ListBean> list = (ArrayList<ListBean>)request.getAttribute("list");
+    	pageinfo pagecheck = (pageinfo)request.getAttribute("pageinfo");
+    	
+    	int listCount = pagecheck.getListcount();
+    	int nowPage = pagecheck.getPage(); 
+    	int startPage = pagecheck.getStartpage();
+    	int endPage = pagecheck.getEndpage();
+    	int maxPage = pagecheck.getMaxpage();
+    	int checkNum = Integer.parseInt(request.getParameter("page"));
+    	if(checkNum != 1)
+    	{
+    		checkNum = startPage * 10;
+    	}
+    	else
+    	{
+    		checkNum = 0;
+    	}
     %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>마이페이지</title>
+<title>마이페이지<%=checkNum %></title>
 </head>
 <body>
 <p>개인 정보</p>
@@ -40,19 +57,57 @@
 <!-- ------------------------------------------------------------------------------------------------------- -->
 <p>예약 현황</p>
 <table border="1">
-<%
-for(int i =0; i < list.size(); i++)
-{%>
 <tr>
-<th>순번</th><td><%=i+1 %></td>
-<th>예약일시</th><td><%=list.get(i).getBook_date() %></td>
-<th>대여일</th><td><%=list.get(i).getPickup_date() %></td>
-<th>반납일</th><td><%=list.get(i).getEnd_date() %></td>
-<th>차량 아이디</th><td><%=list.get(i).getCar_id() %></td>
-<th>가격</th><td><%=list.get(i).getPrice() %></td>
+<th>순번</th><th>예약일시</th><th>대여일</th><th>반납일</th><th>차량 아이디</th><th>가격</th>
 </tr>
-<%}
+<%
+if(list != null & pagecheck.getListcount() > 0)
+{
+for(int i =0; i < list.size(); i++)
+{
+%>
+<tr>
+<td><%=checkNum + (i+1) %></td>
+<td><%=list.get(i).getBook_date() %></td>
+<td><%=list.get(i).getPickup_date() %></td>
+<td><%=list.get(i).getEnd_date() %></td>
+<td><%=list.get(i).getCar_id() %></td>
+<td><%=list.get(i).getPrice() %>원</td>
+</tr>
+<%
+}
 %>
 </table>
+    <%if(nowPage<=1){ %>
+    [이전]
+    <%}else{ %>
+        <a href="MemberInfo.if?page=<%=nowPage-1 %>">[이전]</a>
+    <%} %>
+    <%for(int a=startPage; a<=endPage; a++){ 
+        if(a==nowPage){%>
+            [<%=a %>]
+    <%} else { %>
+        <a href="MemberInfo.if?page=<%=a %>">[<%=a %>]</a>
+        <%} %>    
+    <%} %>
+    <%if(nowPage>=maxPage){ %>
+        [다음]
+    <%}else{ %>    
+        <a href="MemberInfo.if?page=<%=nowPage+1 %>">[다음]</a>
+    <%} %>
+	<%}else{
+	%>등록된 글이 없습니다.
+	<%} %>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
