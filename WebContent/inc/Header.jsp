@@ -161,7 +161,7 @@
 								</ul></li>
 							<li><a href="#">Review</a>
 								<ul>
-									<li><a href="ReviewWriteForm.rw">Blog Page</a></li>
+									<li><a href="ReviewList.rw">Blog Page</a></li>
 									<li><a href="ReviewWriteForm.rw">Blog Details</a></li>
 								</ul></li>
 							<li><a href="contact.html">Contact</a></li>
