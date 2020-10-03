@@ -51,7 +51,8 @@ private static qnaBoardDAO instance; {
 				num=rs.getInt(1) + 1;
 			}
 			
-			sql="insert into qnaBoard values(?,?,?,?,?,?,?,?,?,?,?,?,now(),null);";
+			sql="insert into qnaBoard(qnaBoard_num,qnaBoard_id,qnaBoard_pass,qnaBoard_subject,qnaBoard_content,qnaBoard_file,qnaBoard_re_ref,qnaBoard_re_lev,qnaBoard_re_seq,qnaBoard_readcount,qnaBoard_tag,qnaBoard_reply,qnaBoard_date )"
+					+ " values(?,?,?,?,?,?,?,?,?,?,?,?,now());";
 			pstmt = con.prepareStatement(sql);
 			
 			pstmt.setInt(1, num);

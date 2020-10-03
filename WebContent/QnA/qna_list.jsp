@@ -16,7 +16,7 @@
 	<% }%>
     
 	
-    <%
+    <% 
 	ArrayList<qnaBoardbean> articleList = (ArrayList<qnaBoardbean>)request.getAttribute("articlelist");
 	pageinfo pageInfo = (pageinfo)request.getAttribute("pageinfo");
 

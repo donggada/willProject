@@ -7,29 +7,31 @@ import javax.servlet.http.HttpServletResponse;
 
 import faq.svc.faqBoardListservice;
 import faq.svc.faqBoardSearchService;
+import faq.svc.faqBoardTagSearchService;
 import faq.vo.actionForward;
 import faq.vo.faqBoardbean;
 import faq.vo.pageinfo;
 
-public class faqBoardSearchAction implements action {
+public class faqBoardTagSearchAction2 implements action {
 
 	@Override
 	public actionForward exectute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		actionForward forward=null;
 		
 		int page=1;
-		int limit=10;
-		String search=request.getParameter("search");
+		int limit=5;
+		String tag=request.getParameter("tag");
+		System.out.println(tag);
 		
 		if(request.getParameter("page")!=null) {
 			page=Integer.parseInt(request.getParameter("page"));
 		}
 		
-		faqBoardSearchService boardlist=new faqBoardSearchService(); 
+		faqBoardTagSearchService boardlist=new faqBoardTagSearchService();
 		
-		int listcount = boardlist.getlistcount(search);
+		int listcount = boardlist.getlistcount(tag);
 
-		ArrayList<faqBoardbean> articlelist=boardlist.getarticlelist(page, limit, search);
+		ArrayList<faqBoardbean> articlelist=boardlist.getarticlelist(page, limit, tag);
 
 		
 		int maxpage = (int)((double)listcount/limit +0.95);
@@ -52,7 +54,7 @@ public class faqBoardSearchAction implements action {
 		
 		forward= new actionForward();
 		forward.setRedirect(false); // 기본값이므로 생략이 가능 
-		forward.setPath("/Admin/FAQ_listadmin.jsp");
+		forward.setPath("/FAQ/FAQ_list.jsp");
 		
 		
 		

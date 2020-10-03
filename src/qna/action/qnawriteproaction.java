@@ -22,7 +22,7 @@ public class qnawriteproaction implements action {
 		request.setCharacterEncoding("UTF-8");
 		String uploadpath=request.getRealPath("/upload");
 		String ip=request.getRemoteAddr();
-		System.out.println(ip);
+//		System.out.println(ip);
 
 		int maxsize = 10*1024*1024;
 

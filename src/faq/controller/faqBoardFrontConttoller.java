@@ -15,7 +15,9 @@ import faq.action.faqBoardListaction;
 import faq.action.faqBoardModifyAction;
 import faq.action.faqBoardModifyProAction;
 import faq.action.faqBoardSearchAction;
+import faq.action.faqBoardSearchAction2;
 import faq.action.faqBoardTagSearchAction;
+import faq.action.faqBoardTagSearchAction2;
 import faq.action.faqBoardadminListaction;
 import faq.action.faqWriteProAction;
 import faq.vo.actionForward;
@@ -73,10 +75,37 @@ public class faqBoardFrontConttoller extends HttpServlet {
 		}
 		
 		
+		else if(commend.equals("/faqSearchPro.fbo")) {
+			action = new faqBoardSearchAction2();
+
+			try {
+				 forward=action.exectute(request, response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
+		
+		
 		
 		
 		else if(commend.equals("/faqtag.fbo")) {
 			action = new faqBoardTagSearchAction();
+
+			try {
+				 forward=action.exectute(request, response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			
+		}
+		
+		
+		else if(commend.equals("/faqtag1.fbo")) {
+			action = new faqBoardTagSearchAction2();
 
 			try {
 				 forward=action.exectute(request, response);

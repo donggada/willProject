@@ -24,7 +24,7 @@ public class qnaBoardDetailAction implements action {
 		String page=request.getParameter("page");
 		String qnaboard_pass=request.getParameter("qnaBoard_pass");
 		HttpSession session=request.getSession();
-		String id = (String)session.getAttribute("id"); 
+		String id = (String)session.getAttribute("Member_id"); 
 		
 		System.out.println("action"+id);
 		System.out.println(qnaboardnum);
