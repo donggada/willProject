@@ -92,23 +92,16 @@
 						}
 
 						
-						if (totalId==null) {
-						%>
+						if (totalId==null) {%>
 						<a href="LoginForm.me">로그인</a> | <a href="JoinForm.me">회원가입</a>
-						|<a href="adminpage.ad">admin page</a>
-						<%
-							}
-						else{%> <%=totalId%>님 | <a href="MemberLogout.me">logout</a> | <a href="adminpage.ad">admin page</a>
-						
-						<%	 }
-						%>
-						<%
-						//if (ip.equals("0:0:0:0:0:0:0:1")) {
-						%>
+					<a href="" onclick="window.open('chat/admin.jsp','admin','width=750, height=750, resizable=no')">|관리자채팅</a>
+						<%}else if(totalId!=null&& totalId.equals("admin")){%>
+						<%=totalId%>님 | <a href="MemberLogout.me">logout</a> | 
+                        <a href="" onclick="window.open('chat/admin.jsp','admin','width=750, height=750, resizable=no')">|관리자채팅</a>
+						<a href="adminpage.ad">| admin page</a>
+						<%}else if(totalId!=null){%> <%=totalId%>님 | <a href="MemberLogout.me">logout</a> | 
 						<a href="" onclick="window.open('chat/admin.jsp','admin','width=750, height=750, resizable=no')">|관리자채팅</a>
-						<%
-							//}
-						%>
+						<%} %>
 					</div>
 				</div>
 				<!--== Social Icons End ==-->
@@ -152,7 +145,7 @@
 									<li><a href="package.html">Pricing</a></li>
 									<li><a href="driver.html">Driver</a></li>
 									<li><a href="faqlist.fbo">FAQ</a></li>
-									<li><a href="qnawrite.bo">QnA</a></li>
+									<li><a href="qnawrite.bo">Q&A</a></li>
 									<li><a href="gallery.html">Gallery</a></li>
 									<li><a href="help-desk.html">Help Desk</a></li>
 									<li><a href="login.html">Log In</a></li>

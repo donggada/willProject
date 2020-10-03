@@ -53,13 +53,13 @@ public class qnaBoardAdminListaction implements action {
 		
 
 		
-		request.setAttribute("pageinfo", pageinfo);
+		request.setAttribute("pageInfo", pageinfo);
 		request.setAttribute("articlelist", articlelist);
 
 		
 		forward= new actionForward();
 		forward.setRedirect(false);
-		forward.setPath("/QnA/qna_list.jsp");
+		forward.setPath("/Admin/qna_list.jsp");
 		
 		return forward;
 	}

@@ -51,7 +51,7 @@
                     <div class="section-title  text-center">
                         <h2>1:1 Inquiry List</h2>
                         <span class="title-line"><i class="fa fa-car"></i></span>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                        <p>Don't hesitate to ask me any questions!</p>
                     </div>
                 </div>
                 <!-- Page Title End -->

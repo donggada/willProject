@@ -50,7 +50,7 @@ public class qnawriteproaction implements action {
 		qnaBoardWriteProService qnaboardwriteproservice= new qnaBoardWriteProService();
 		
 		boolean iswritesucce= qnaboardwriteproservice.regisartiset(qnaboardbean);
-		System.out.println(iswritesucce+"글쓰기결과");
+//		System.out.println(iswritesucce+"글쓰기결과");
 		
 		
 

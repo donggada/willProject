@@ -71,7 +71,7 @@
                     <div class="section-title  text-center">
                         <h2>FAQ</h2>
                         <span class="title-line"><i class="fa fa-car"></i></span>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                        <p>Frequently Asked Questions</p>
                     </div>
                 </div>
                 <!-- Page Title End -->
@@ -96,6 +96,8 @@
                             <div class="col-lg-5 d-xl-none" style="padding-bottom: 30px;">
                                 <div class="article-thumb">
                                     <img src="assets/img/article/arti-thumb-4.jpg" alt="JSOFT">
+      
+                               
                                 </div>
                             </div>
                             <!-- Articles Thumbnail End -->
