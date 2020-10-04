@@ -23,7 +23,24 @@ public class sellingListAction implements Action {
 		BookListService bookListService = new BookListService();
 		String year=request.getParameter("YEAR");
 		String month=request.getParameter("MONTH");
-	
+		
+		//정렬기준 추가
+		int lineup=0;
+		String line=null;
+		if(request.getParameter("lineup")!=null) {
+			lineup = Integer.parseInt(request.getParameter("lineup"));	
+		}
+		
+		if(lineup==0) {
+			line="desc";
+		}else {
+			line="asc";
+		}
+		//정렬항목 추가
+		String targetup=null;
+		if(request.getParameter("target")!=null) {
+			targetup=request.getParameter("target");	
+		}
 
 	
 		
@@ -37,7 +54,13 @@ public class sellingListAction implements Action {
 		int f=0;
 		int fs=0;
 		int fs2=0;
-		if(year==null||month==null) {
+		
+		if(year==null||month==null&&targetup!=null) {
+			System.out.println(targetup);
+			System.out.println("이게되면 안되는데");
+			bookList = bookListService.getBookListlineup(line, targetup);
+		}else if(year==null||month==null&&targetup==null) {
+			System.out.println("정렬");
 			bookList = bookListService.getBookList();
 			
 		}else if(year!=null&&month!=null){
@@ -83,6 +106,7 @@ public class sellingListAction implements Action {
 		request.setAttribute("c2", c2);
 		request.setAttribute("f", f);
 		request.setAttribute("fs", fs);
+		request.setAttribute("lineup", lineup);//정렬상태 전달
 		
 		forward = new ActionForward();
 		forward.setPath("/Admin/sellinglist.jsp");

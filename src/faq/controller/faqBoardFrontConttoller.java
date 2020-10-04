@@ -38,7 +38,7 @@ public class faqBoardFrontConttoller extends HttpServlet {
 	protected void doprocess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
 		request.setCharacterEncoding("UTF-8");
 		String commend=request.getServletPath();
-		System.out.println(commend);
+//		System.out.println(commend);
 		
 		
 		

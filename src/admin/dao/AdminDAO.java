@@ -867,5 +867,103 @@ public JSONArray DetailBookList(int book_num) {
 		return DetailBookList;
 }
 
+public ArrayList<MemberBean> selectMemberSearchListlineup(int page, int limit, String line, String targetup) {
+	ArrayList<MemberBean> MemberList = null;
+	
+	PreparedStatement pstmt = null;
+	ResultSet rs = null;
+
+	
+	
+	try {
+		
+		int startRow = (page - 1) * 10;
+		
+		String sql = "SELECT * FROM member order by "+targetup+" "+line+" LIMIT ?,?";
+		pstmt = con.prepareStatement(sql);
+		pstmt.setInt(1, startRow); // 시작 레코드 번호 전달
+		pstmt.setInt(2, limit); // 게시물 수 전달
+		rs = pstmt.executeQuery();
+		
+		MemberList = new ArrayList<MemberBean>();
+		
+		while(rs.next()) {
+			MemberBean bb = new MemberBean();
+			bb.setMember_num(rs.getInt("member_num"));
+			bb.setMember_name(rs.getString("member_name"));
+			bb.setMember_id(rs.getString("member_id"));
+			bb.setMember_pass(rs.getString("member_pass"));
+			bb.setMember_email(rs.getString("member_email"));
+			bb.setMember_age(rs.getString("member_age"));
+			bb.setMember_gender(rs.getString("member_gender"));
+			bb.setMember_tel(rs.getString("member_tel"));
+			bb.setMember_adress(rs.getString("member_adress"));
+			bb.setMember_license(rs.getString("member_license"));
+			bb.setMember_smoke(rs.getString("member_smoke"));
+			bb.setMember_pet(rs.getString("member_pet"));
+			bb.setMember_boby(rs.getString("member_baby"));
+			bb.setMember_grade(rs.getString("member_grade"));
+			
+			
+			MemberList.add(bb);
+		}
+		
+	} catch (SQLException e) {
+		e.printStackTrace();
+		System.out.println("AdminDAO - selectMemberList() 에러!"+e);
+	} finally {
+		
+		close(rs); 
+		close(pstmt);
+	}
+	
+	return MemberList;
+
+}
+
+public ArrayList<CarBean> selectCarListlinep(int page, int limit, String line, String targetup) {
+ArrayList<CarBean> CarList = null;
+	
+	PreparedStatement pstmt = null;
+	ResultSet rs = null;
+	
+	try {
+		
+		int startRow = (page - 1) * 10;
+		
+		String sql = "SELECT * FROM car order by "+targetup+" "+line+" LIMIT ?,?";
+		pstmt = con.prepareStatement(sql);
+		pstmt.setInt(1, startRow); // 시작 레코드 번호 전달
+		pstmt.setInt(2, limit); // 게시물 수 전달
+		rs = pstmt.executeQuery();
+		
+		CarList = new ArrayList<CarBean>();
+		
+		while(rs.next()) {
+			CarBean cb =new CarBean();
+			cb.setCar_num(rs.getString("car_num"));
+			cb.setCar_id(rs.getInt("car_id"));
+			cb.setCar_maker(rs.getString("car_maker"));
+			cb.setCar_name(rs.getString("car_name"));
+			cb.setCar_type(rs.getString("car_type"));
+	
+			
+			CarList.add(cb);
+		}
+		
+	} catch (SQLException e) {
+		e.printStackTrace();
+		System.out.println("AdminDAO - selectCarList() 에러!"+e);
+	} finally {
+		
+		close(rs); 
+		close(pstmt);
+	}
+	
+	return CarList;
+}
+
+
+
 
 }

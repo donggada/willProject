@@ -38,7 +38,7 @@ public class faqWriteProAction implements action {
 		faqBoardWriteProService qnaboardwriteproservice= new faqBoardWriteProService();
 		
 		boolean iswritesucce= qnaboardwriteproservice.regisartiset(qnaboardbean);
-		System.out.println(iswritesucce+"글쓰기결과");
+//		System.out.println(iswritesucce+"글쓰기결과");
 		
 		
 

@@ -28,6 +28,10 @@
 				int sum = ((Integer)request.getAttribute("sum")).intValue();
 				//이번달 총액
 				%>
+				
+<%
+ int lineup = ((Integer)request.getAttribute("lineup")).intValue();
+%>
 <!DOCTYPE html>
 <html>
  <head>
@@ -322,15 +326,90 @@ function DetailBookInfo(book_num)
                                             <tr>
                                             
                                             
-             <th>NO. </th>
+             <th>NO. 
+             
+              <%if(lineup==1){ %>
+            <a href="sellinglist.ad?target=book_num&lineup=0">
+            <img src="img/2.png" style="width: 12px;">
+            </a>
+            <%}else{ %>
+            <a href="sellinglist.ad?target=book_num&lineup=1">
+            <img src="img/2.png" style="width: 12px;">
+            </a>
+            <%} %>
+             
+             
+             </th>
 <!--              booknum -->
-    	 		<th>ID</th>
+    	 		<th>ID
     	 		
-     		<th>BookDate<img src="img/2.png" style="width: 12px;"> </th>
-     		<th style="white-space: nowrap;">대여일 <img src="img/2.png" style="width: 12px;"></th>
-     		<th style="white-space: nowrap;">반납일<img src="img/2.png" style="width: 12px;"></th>
-     		<th>차량번호</th>
-     		<th>결제금액</th>
+    	 		              <%if(lineup==1){ %>
+            <a href="sellinglist.ad?target=member_id&lineup=0">
+            <img src="img/2.png" style="width: 12px;">
+            </a>
+            <%}else{ %>
+            <a href="sellinglist.ad?target=member_id&lineup=1">
+            <img src="img/2.png" style="width: 12px;">
+            </a>
+            <%} %>
+    	 		
+    	 		
+    	 		</th>
+    	 		
+     		<th>BookDate
+     		
+     		 <%if(lineup==1){ %>
+            <a href="sellinglist.ad?target=book_date&lineup=0">
+            <img src="img/2.png" style="width: 12px;">
+            </a>
+            <%}else{ %>
+            <a href="sellinglist.ad?target=book_date&lineup=1">
+            <img src="img/2.png" style="width: 12px;">
+            </a>
+            <%} %>
+                
+     		
+     		</th>
+     		<th style="white-space: nowrap;">대여일 
+     		
+             <%if(lineup==1){ %>
+            <a href="sellinglist.ad?target=pickup_date&lineup=0">
+            <img src="img/2.png" style="width: 12px;">
+            </a>
+            <%}else{ %>
+            <a href="sellinglist.ad?target=pickup_date&lineup=1">
+            <img src="img/2.png" style="width: 12px;">
+            </a>
+            <%} %>
+     		</th>
+     		<th style="white-space: nowrap;">반납일
+            <%if(lineup==1){ %>
+            <a href="sellinglist.ad?target=end_date&lineup=0">
+            <img src="img/2.png" style="width: 12px;">
+            </a>
+            <%}else{ %>
+            <a href="sellinglist.ad?target=end_date&lineup=1">
+            <img src="img/2.png" style="width: 12px;">
+            </a>
+            <%} %>
+     		</th>
+     		<th>차량번호
+     		
+     		
+     		</th>
+     		<th>결제금액
+     		            <%if(lineup==1){ %>
+            <a href="sellinglist.ad?target=book_price&lineup=0">
+            <img src="img/2.png" style="width: 12px;">
+            </a>
+            <%}else{ %>
+            <a href="sellinglist.ad?target=book_price&lineup=1">
+            <img src="img/2.png" style="width: 12px;">
+            </a>
+            <%} %>
+     		
+     		
+     		</th>
    
    
      		<th style="white-space: nowrap; width: 100px;">

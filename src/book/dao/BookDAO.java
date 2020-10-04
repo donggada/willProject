@@ -782,4 +782,46 @@ public class BookDAO {
 		return result ;
 		
 	}
+
+	public ArrayList<BookBean> selectBookstateListllineup(String line, String targetup) {
+		ArrayList<BookBean> bookList = null;
+
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		System.out.println(targetup);
+		System.out.println(line);
+		
+		try {
+			String sql = "SELECT * FROM book order by "+targetup+" "+line;
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+
+			bookList = new ArrayList<BookBean>();
+
+			while (rs.next()) {
+				// 조회된 결과 중 1개 레코드를 MemberBean 객체에 저장 후 ArrayList 에 추가
+				BookBean book = new BookBean();
+				book.setBook_num(rs.getInt("book_num"));
+
+				book.setMember_id(rs.getString("member_id"));
+				book.setBook_date(rs.getDate("book_date"));
+				book.setPickup_date(rs.getDate("pickup_date"));
+				book.setEnd_date(rs.getDate("end_date"));
+				book.setCar_id(rs.getString("car_id"));
+				book.setBook_price(rs.getInt("book_price"));
+				book.setBook_state(rs.getInt("book_state"));
+
+				bookList.add(book);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("MemberDAO - selectMemberList() 오류!");
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+
+		return bookList;
+	}
 }

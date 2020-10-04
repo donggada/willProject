@@ -28,6 +28,25 @@ public class MemberListAction extends ActionForward implements Action {
 			page = Integer.parseInt(request.getParameter("page")); 
 		}
 		
+		//정렬기준 추가
+		int lineup=0;
+		String line=null;
+		if(request.getParameter("lineup")!=null) {
+			lineup = Integer.parseInt(request.getParameter("lineup"));	
+		}
+		
+		if(lineup==0) {
+			line="desc";
+		}else {
+			line="asc";
+		}
+		//정렬항목 추가
+		String targetup=null;
+		if(request.getParameter("target")!=null) {
+			targetup=request.getParameter("target");	
+		}
+	
+		
 		
 		MemberListService MemberListService = new MemberListService();
 		BookListService booklist= new BookListService();
@@ -37,13 +56,18 @@ public class MemberListAction extends ActionForward implements Action {
 		
 		int listCount = MemberListService.getListCount(target,table);
 		
-		if(request.getParameter("id")==null) {
+		if(request.getParameter("id")==null&targetup==null) {
 			MemberList = MemberListService.getArticleList(page, limit);
 			 booklist2 = booklist.getmmcount();	
+		}else if(request.getParameter("id")==null&&targetup!=null) {
+			MemberList = MemberListService.getArticleListlineup(page, limit, line, targetup);
+			booklist2 = booklist.getmmcount();	
 		}else if(request.getParameter("id")!=null) {
 			MemberList = MemberListService.getArticleList(page, limit, request.getParameter("id"));
 			 booklist2 = booklist.getmmcount();	
 		}
+		
+		
 		
 		
 		int maxPage = (int)((double)listCount / limit + 0.95);
@@ -71,6 +95,7 @@ public class MemberListAction extends ActionForward implements Action {
 		request.setAttribute("articlelist", MemberList);
 		request.setAttribute("book", book);
 //		request.setAttribute("booklist2", booklist2);
+		request.setAttribute("lineup", lineup);//정렬상태 전달
 		
 		
 		forward = new ActionForward();
