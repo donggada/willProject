@@ -2,7 +2,6 @@ package book.dao;
 
 import static book.db.JdbcUtil.*;
 
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -47,22 +46,29 @@ public class BookDAO {
 
 		try {
 
-			String sql = "SELECT MAX(book_num) FROM book";
+			String sql = "select MAX(book_num) FROM book WHERE book_num LIKE ?";
 			pstmt = con.prepareStatement(sql);
 
+			String originalNum = article.getBook_num() + "";
+			String frontNum = originalNum.substring(0, 6);
+			int finalNum = 0;
+
+			pstmt.setString(1, frontNum + "%");
 			rs = pstmt.executeQuery();
-
-			int num = 1;
-
 			if (rs.next()) {
-
-				num = rs.getInt(1) + 1;
+				if (rs.getInt(1) == 0) {
+					finalNum = Integer.parseInt(originalNum);
+					System.out.println("들어갈 넘버값 : " + finalNum);
+				} else {
+					finalNum = rs.getInt(1) + 1;
+					System.out.println("들어갈 넘버값 : " + finalNum);
+				}
 			}
 
 			sql = "insert into book(book_num, car_id, pickup_date, end_date, book_price, book_state, member_id, book_date) values(?,?,?,?,?,?,?,now()) ";
 			pstmt = con.prepareStatement(sql);
 
-			pstmt.setInt(1, num);
+			pstmt.setInt(1, finalNum);
 			pstmt.setString(2, article.getCar_id());
 			pstmt.setDate(3, article.getPickup_date()); // 수령
 			pstmt.setDate(4, article.getEnd_date()); // 반납
@@ -252,8 +258,8 @@ public class BookDAO {
 		try {
 			String sql = "SELECT * FROM book where book_date between ? and ?";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, str1); //시작레코드번호 
-			pstmt.setString(2, str2); //게시글 수
+			pstmt.setString(1, str1); // 시작레코드번호
+			pstmt.setString(2, str2); // 게시글 수
 			rs = pstmt.executeQuery();
 
 			bookList = new ArrayList<BookBean>();
@@ -286,7 +292,7 @@ public class BookDAO {
 	}
 
 	public int selectBookListsum(String str1, String str2) {
-		int result=0;
+		int result = 0;
 
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -294,14 +300,14 @@ public class BookDAO {
 		try {
 			String sql = "SELECT SUM(book_price) FROM book where book_date between ? and ?";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, str1); //시작레코드번호 
-			pstmt.setString(2, str2); //게시글 수
+			pstmt.setString(1, str1); // 시작레코드번호
+			pstmt.setString(2, str2); // 게시글 수
 			rs = pstmt.executeQuery();
-			
+
 			while (rs.next()) {
-				result=rs.getInt("SUM(book_price)");
+				result = rs.getInt("SUM(book_price)");
 			}
-	
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 			System.out.println("MemberDAO - selectMemberList() 오류!");
@@ -312,10 +318,9 @@ public class BookDAO {
 
 		return result;
 	}
-	
-	
+
 	public int selectBookListcount(String str1, String str2) {
-		int result=0;
+		int result = 0;
 
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -323,14 +328,14 @@ public class BookDAO {
 		try {
 			String sql = "SELECT COUNT(book_price) FROM book where book_date between ? and ?";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, str1); //시작레코드번호 
-			pstmt.setString(2, str2); //게시글 수
+			pstmt.setString(1, str1); // 시작레코드번호
+			pstmt.setString(2, str2); // 게시글 수
 			rs = pstmt.executeQuery();
-			
+
 			while (rs.next()) {
-				result=rs.getInt("COUNT(book_price)");
+				result = rs.getInt("COUNT(book_price)");
 			}
-	
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 			System.out.println("MemberDAO - selectMemberList() 오류!");
@@ -341,42 +346,30 @@ public class BookDAO {
 
 		return result;
 	}
-	
-	
-	
+
 	public int selectBookListp1(String str1, String str2) {
-		int result=0;
+		int result = 0;
 
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 
 		try {
-			
+
 			String sql = "SELECT ((SUM(book_price)-(SELECT SUM(book_price) FROM book where (book_date > ? -INTERVAL 1 MONTH and book_date < ? )))/(SELECT SUM(book_price) FROM book where (book_date > ? -INTERVAL 1 MONTH and book_date < ? )))*100 as score FROM book where booK_date between ? and ?";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, str1);  
+			pstmt.setString(1, str1);
 			pstmt.setString(2, str1);
-			pstmt.setString(3, str1);  
+			pstmt.setString(3, str1);
 			pstmt.setString(4, str1);
 			pstmt.setString(5, str1);
 			pstmt.setString(6, str2);
 			rs = pstmt.executeQuery();
-			
 
 			while (rs.next()) {
-				result=rs.getInt("score");
-				
+				result = rs.getInt("score");
+
 			}
-			
-			
-		
 
-			
-			
-		
-
-
-	
 		} catch (SQLException e) {
 			e.printStackTrace();
 			System.out.println("MemberDAO - selectMemberList() 오류!");
@@ -387,42 +380,29 @@ public class BookDAO {
 
 		return result;
 	}
-	
-	
-	public int selectBookListp2(String str1, String str2) {
-		int result=0;
 
+	public int selectBookListp2(String str1, String str2) {
+		int result = 0;
 
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 
 		try {
-			
+
 			String sql = "SELECT ((count(book_price)-(SELECT count(book_price) FROM book where (book_date > ? -INTERVAL 1 MONTH and book_date < ? )))/(SELECT count(book_price) FROM book where (book_date > ? -INTERVAL 1 MONTH and book_date < ? )))*100 as score FROM book where booK_date between ? and ?";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, str1);  
+			pstmt.setString(1, str1);
 			pstmt.setString(2, str1);
-			pstmt.setString(3, str1);  
+			pstmt.setString(3, str1);
 			pstmt.setString(4, str1);
 			pstmt.setString(5, str1);
 			pstmt.setString(6, str2);
 			rs = pstmt.executeQuery();
-			
 
 			while (rs.next()) {
-				result=rs.getInt("score");
+				result = rs.getInt("score");
 			}
-			
-		
-			
-			
 
-			
-			
-		
-
-
-	
 		} catch (SQLException e) {
 			e.printStackTrace();
 			System.out.println("MemberDAO - selectMemberList() 오류!");
@@ -433,36 +413,25 @@ public class BookDAO {
 
 		return result;
 	}
-	
-	
-	public int selectBookListf(String str1, String str2) {
-		int result=0;
 
+	public int selectBookListf(String str1, String str2) {
+		int result = 0;
 
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 
 		try {
-			
+
 			String sql = "select count(*) as nullcount from book where book_state is null and booK_date between ? and ?";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, str1); //시작레코드번호 
-			pstmt.setString(2, str2); //게시글 수
+			pstmt.setString(1, str1); // 시작레코드번호
+			pstmt.setString(2, str2); // 게시글 수
 			rs = pstmt.executeQuery();
-			
 
 			while (rs.next()) {
-				result=rs.getInt("nullcount");
+				result = rs.getInt("nullcount");
 			}
-			
-		
 
-			
-			
-		
-
-
-	
 		} catch (SQLException e) {
 			e.printStackTrace();
 			System.out.println("MemberDAO - selectMemberList() 오류!");
@@ -473,37 +442,25 @@ public class BookDAO {
 
 		return result;
 	}
-	
-	
-	
+
 	public int selectBookListfs(String str1, String str2) {
-		int result=0;
-
+		int result = 0;
 
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 
 		try {
-			
+
 			String sql = "select sum(book_price) from book where book_state is null and booK_date between ? and ?";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, str1); //시작레코드번호 
-			pstmt.setString(2, str2); //게시글 수
+			pstmt.setString(1, str1); // 시작레코드번호
+			pstmt.setString(2, str2); // 게시글 수
 			rs = pstmt.executeQuery();
-			
 
 			while (rs.next()) {
-				result=rs.getInt("sum(book_price)");
+				result = rs.getInt("sum(book_price)");
 			}
-			
-			
 
-			
-			
-		
-
-
-	
 		} catch (SQLException e) {
 			e.printStackTrace();
 			System.out.println("MemberDAO - selectMemberList() 오류!");
@@ -514,35 +471,25 @@ public class BookDAO {
 
 		return result;
 	}
-	
-	public int selectBookListfs2(String str1, String str2) {
-		int result=0;
 
+	public int selectBookListfs2(String str1, String str2) {
+		int result = 0;
 
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 
 		try {
-			
+
 			String sql = "select sum(book_price) from book where book_state is null and booK_date between ? and ?";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, str1); //시작레코드번호 
-			pstmt.setString(2, str2); //게시글 수
+			pstmt.setString(1, str1); // 시작레코드번호
+			pstmt.setString(2, str2); // 게시글 수
 			rs = pstmt.executeQuery();
-			
 
 			while (rs.next()) {
-				result=rs.getInt("sum(book_price)");
+				result = rs.getInt("sum(book_price)");
 			}
-			
-			
 
-			
-			
-		
-
-
-	
 		} catch (SQLException e) {
 			e.printStackTrace();
 			System.out.println("MemberDAO - selectMemberList() 오류!");
@@ -574,7 +521,7 @@ public class BookDAO {
 				book.setMember_id(rs.getString("member_id"));
 				book.setCount(rs.getInt("count"));
 				book.setSum(rs.getInt("sum"));
-				
+
 				bookList.add(book);
 			}
 
@@ -596,9 +543,9 @@ public class BookDAO {
 		ResultSet rs = null;
 
 		try {
-			String sql = "SELECT * FROM book where "+select+" like ? ";
+			String sql = "SELECT * FROM book where " + select + " like ? ";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, "%"+search+"%");
+			pstmt.setString(1, "%" + search + "%");
 
 			rs = pstmt.executeQuery();
 
@@ -640,7 +587,7 @@ public class BookDAO {
 		try {
 			String sql = "SELECT * FROM book where book_state like ? ";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, "%"+state+"%");
+			pstmt.setString(1, "%" + state + "%");
 
 			rs = pstmt.executeQuery();
 
@@ -682,7 +629,6 @@ public class BookDAO {
 		try {
 			String sql = "SELECT * FROM book where book_state IS NULL";
 			pstmt = con.prepareStatement(sql);
-
 
 			rs = pstmt.executeQuery();
 
@@ -742,7 +688,7 @@ public class BookDAO {
 				book.setBook_state(rs.getInt("book_state"));
 				book.setBook_state(rs.getInt("insurance"));
 				book.setBook_state(rs.getInt("end_date"));
-				
+
 			}
 
 		} catch (SQLException e) {
@@ -757,37 +703,35 @@ public class BookDAO {
 	}
 
 	public boolean selectmodify(BookBean bb) {
-		boolean result =false;
+		boolean result = false;
 		System.out.println("selectmodify");
 		PreparedStatement pstmt = null;
 		try {
-			String sql="update book set book_state=? where book_num=?";
-			pstmt=con.prepareStatement(sql);
+			String sql = "update book set book_state=? where book_num=?";
+			pstmt = con.prepareStatement(sql);
 			System.out.println(bb.getBook_state());
 			System.out.println(bb.getBook_num());
-			
+
 			pstmt.setInt(1, bb.getBook_state());
 			pstmt.setInt(2, bb.getBook_num());
-			int s=pstmt.executeUpdate();
-			System.out.println("update 갯수 "+s);
+			int s = pstmt.executeUpdate();
+			System.out.println("update 갯수 " + s);
 			commit(con);
-			result =true;
-			
+			result = true;
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 			System.out.println("update에러");
-		}finally {
+		} finally {
 			close(pstmt);
 		}
-		
-		
-		
-		return result ;
-		
+
+		return result;
+
 	}
-	
-public BookBean selectBookNum(BookBean bn) {
-		
+
+	public BookBean selectBookNum(BookBean bn) {
+
 		BookBean bookList = null;
 
 		PreparedStatement pstmt = null;
@@ -796,13 +740,12 @@ public BookBean selectBookNum(BookBean bn) {
 		try {
 			String sql = "SELECT * FROM book where pickup_date=? and end_date=? and car_id=?";
 			pstmt = con.prepareStatement(sql);
-			
-			
+
 			pstmt.setDate(1, bn.getPickup_date());
 			pstmt.setDate(2, bn.getEnd_date());
 			pstmt.setString(3, bn.getCar_id());
-						
-			rs = pstmt.executeQuery();	
+
+			rs = pstmt.executeQuery();
 
 			bookList = new BookBean();
 
@@ -840,9 +783,9 @@ public BookBean selectBookNum(BookBean bn) {
 		try {
 			String sql = "SELECT * FROM book where book_num=?";
 			pstmt = con.prepareStatement(sql);
-			
+
 			pstmt.setInt(1, book_num);
-			
+
 			rs = pstmt.executeQuery();
 
 			bookList = new BookBean();
@@ -871,7 +814,5 @@ public BookBean selectBookNum(BookBean bn) {
 
 		return bookList;
 	}
-	
-	
-	
+
 }
