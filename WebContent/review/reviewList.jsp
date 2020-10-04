@@ -15,59 +15,6 @@ int endPage = pageInfo.getEndPage();
     
 <!DOCTYPE html>
 <html class="no-js" lang="zxx">
-<head>
-<meta charset="UTF-8">
-<title>WillRent - Review</title>
-</head>
-<body>
-<table>
-<%
-if(articleList != null && listCount>0){
-%>
- <tr>
- <td>번호</td>
- <td>제목</td>
- <td>작성자</td>
- <td>날짜</td>
- <td>조회수</td>
- <td>추천수</td>
- </tr>
- <%for(int i=0; i<articleList.size(); i++) {%>
- <tr>
- <td><%=articleList.get(i).getReview_num() %></td>
- <td><a href="ReviewDetail.rw?review_num=<%=articleList.get(i).getReview_num() %>&page=<%=nowPage %>"><%=articleList.get(i).getReview_subject() %></a></td>
- <td><%=articleList.get(i).getMember_id() %></td>
- <td><%=articleList.get(i).getReview_date() %></td>
- <td><%=articleList.get(i).getReview_readcount() %></td>
- <td><%=articleList.get(i).getReview_recocount() %></td>
- </tr>
- <%
-    }
- %>
-</table>
-
-<input type="button" value="글쓰기" onclick="location.href='ReviewWriteForm.rw'">
-    <%if(nowPage<=1){ %>
-    [이전]
-    <%}else{ %>
-        <a href="ReviewList.rw?page=<%=nowPage-1 %>">[이전]</a>
-    <%} %>
-    <%for(int a=startPage; a<=endPage; a++){ 
-        if(a==nowPage){%>
-            [<%=a %>]
-    <%} else { %>
-        <a href="ReviewList.rw?page=<%=a %>">[<%=a %>]</a>
-        <%} %>    
-    <%} %>
-    <%if(nowPage>=maxPage){ %>
-        [다음]
-    <%}else{ %>    
-        <a href="ReviewList.rw?page=<%=nowPage+1 %>">[다음]</a>
-    <%} %>
-<%}else{
-	%>등록된 글이 없습니다.
-	<%} %>
-	
 <!--  -->	
 <head>
     <meta charset="utf-8">
@@ -115,109 +62,7 @@ if(articleList != null && listCount>0){
         </div>
     </div>
     <!--== Preloader Area End ==-->
-
-    <!--== Header Area Start ==-->
-    <header id="header-area" class="fixed-top">
-        <!--== Header Top Start ==-->
-        <div id="header-top" class="d-none d-xl-block">
-            <div class="container">
-                <div class="row">
-                    <!--== Single HeaderTop Start ==-->
-                    <div class="col-lg-3 text-left">
-                        <i class="fa fa-map-marker"></i> 802/2, Mirpur, Dhaka
-                    </div>
-                    <!--== Single HeaderTop End ==-->
-
-                    <!--== Single HeaderTop Start ==-->
-                    <div class="col-lg-3 text-center">
-                        <i class="fa fa-mobile"></i> +1 800 345 678
-                    </div>
-                    <!--== Single HeaderTop End ==-->
-
-                    <!--== Single HeaderTop Start ==-->
-                    <div class="col-lg-3 text-center">
-                        <i class="fa fa-clock-o"></i> Mon-Fri 09.00 - 17.00
-                    </div>
-                    <!--== Single HeaderTop End ==-->
-
-                    <!--== Social Icons Start ==-->
-                    <div class="col-lg-3 text-right">
-                        <div class="header-social-icons">
-                            <a href="#"><i class="fa fa-behance"></i></a>
-                            <a href="#"><i class="fa fa-pinterest"></i></a>
-                            <a href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="#"><i class="fa fa-linkedin"></i></a>
-                        </div>
-                    </div>
-                    <!--== Social Icons End ==-->
-                </div>
-            </div>
-        </div>
-        <!--== Header Top End ==-->
-
-        <!--== Header Bottom Start ==-->
-        <div id="header-bottom">
-            <div class="container">
-                <div class="row">
-                    <!--== Logo Start ==-->
-                    <div class="col-lg-4">
-                        <a href="index.html" class="logo">
-                            <img src="assets/img/logo.png" alt="JSOFT">
-                        </a>
-                    </div>
-                    <!--== Logo End ==-->
-
-                    <!--== Main Menu Start ==-->
-                    <div class="col-lg-8 d-none d-xl-block">
-                        <nav class="mainmenu alignright">
-                            <ul>
-                                <li><a href="#">Home</a>
-                                    <ul>
-                                        <li><a href="index.html">Home 1</a></li>
-                                        <li><a href="index2.html">Home 2</a></li>
-                                        <li><a href="index3.html">Home 3</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="about.html">About</a></li>
-                                <li><a href="services.html">services</a></li>
-                                <li><a href="#">Cars</a>
-                                    <ul>
-                                        <li><a href="car-left-sidebar.html">Car Left Sidebar</a></li>
-                                        <li><a href="car-right-sidebar.html">Car Right Sidebar</a></li>
-                                        <li><a href="car-without-sidebar.html">Car Without Sidebar</a></li>
-                                        <li><a href="car-details.html">Car Details</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="index.html">Pages</a>
-                                    <ul>
-                                        <li><a href="package.html">Pricing</a></li>
-                                        <li><a href="driver.html">Driver</a></li>
-                                        <li><a href="faq.html">FAQ</a></li>
-                                        <li><a href="gallery.html">Gallery</a></li>
-                                        <li><a href="help-desk.html">Help Desk</a></li>
-                                        <li><a href="login.html">Log In</a></li>
-                                        <li><a href="register.html">Register</a></li>
-                                        <li><a href="404.html">404</a></li>
-                                    </ul>
-                                </li>
-                                <li class="active"><a href="#">Blog</a>
-                                    <ul>
-                                        <li><a href="article.html">Blog Page</a></li>
-                                        <li><a href="article-details.html">Blog Details</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="contact.html">Contact</a></li>
-                            </ul>
-                        </nav>
-                    </div>
-                    <!--== Main Menu End ==-->
-                </div>
-            </div>
-        </div>
-        <!--== Header Bottom End ==-->
-    </header>
-    <!--== Header Area End ==-->
-
+<jsp:include page="../inc/Header.jsp" />
     <!--== Page Title Area Start ==-->
     <section id="page-title-area" class="section-padding overlay">
         <div class="container">
@@ -238,16 +83,18 @@ if(articleList != null && listCount>0){
 
     <!--== Car List Area Start ==-->
                 <!-- Single Articles Start -->
+                <%
+							if(articleList != null && listCount>0){%>
     <div id="blog-page-content" class="section-padding">
         <div class="container">
             <div class="row">
                 <div class="col-lg-15">
-                                        <%
-							if(articleList != null && listCount>0){
-								for(int i=0; i<articleList.size(); i++) {
-										%>
+                                        
                     <article class="single-article">
                         <div class="row">
+                        <%
+								for(int i=0; i<articleList.size(); i++) {
+										%>
                             <!-- Articles Thumbnail Start -->
                             <div class="col-lg-4">
                                 <div class="article-thumb">
@@ -261,10 +108,11 @@ if(articleList != null && listCount>0){
                                 <div class="display-table">
                                     <div class="display-table-cell">
                                         <div class="article-body">
-                                            <h3><a href="article-details.html"><%=articleList.get(i).getReview_subject() %></a></h3>
+                                            <h3><a href="ReviewDetail.rw?review_num=<%=articleList.get(i).getReview_num() %>&page=<%=nowPage %>"><%=articleList.get(i).getReview_subject() %></a></h3>
                                             <div class="article-meta">
                                                 <a class="author">작성자<span><%=articleList.get(i).getMember_id() %></span></a>
                                                 <a class="commnet">추천 <span><%=articleList.get(i).getReview_recocount() %></span></a>
+                                                <a class="commnet">조회수 <span><%=articleList.get(i).getReview_readcount() %></span></a>
                                             </div>
                                             <div class="article-date"><span class="month"><%=articleList.get(i).getReview_date() %></span></div>
 										    <a href="ReviewDetail.rw?review_num=<%=articleList.get(i).getReview_num() %>&page=<%=nowPage %>" class="readmore-btn"><%=articleList.get(i).getReview_subject() %><i class="fa fa-long-arrow-right"></i></a>
@@ -272,30 +120,33 @@ if(articleList != null && listCount>0){
                                     </div>
                                 </div>
                             </div>
-                                            <%}
-								}%>
-								</div></article></div></div>
+                                             <%}%>
+								</div>
+								</article>
+								</div>
+								</div>
+								<%}%>
                            
             <div class="row">
                 <!-- Page Pagination Start -->
                 <div class="col-lg-12">
+                 <a href="ReviewWriteForm.rw" class="readmore-btn">글쓰기</a>
                     <div class="page-pagi">
                         <nav aria-label="Page navigation example">
                             <ul class="pagination">
-                                <li class="page-item">
-                                 <%if(nowPage<=1){ %>
-    <%}else{ %><a class="page-link" href="ReviewList.rw?page=<%=nowPage-1 %>">Previous</a> <%} %></li>
-     <%for(int a=startPage; a<=endPage; a++){ 
-        if(a==nowPage){%>
-            
-    <%} else { %>
-                                <li class="page-item active"><a class="page-link" href="ReviewList.rw?page=<%=a %>"><%=a %></a></li>
-                                        <%} %>    
-    <%} %>
-                                <li class="page-item">
-                                 <%if(nowPage>=maxPage){ %>
-       
-    <%}else{ %>  <a class="page-link" href="ReviewList.rw?page=<%=nowPage+1 %>">Next</a></li><%} %>
+                                <%if(nowPage<=1) {%>
+                                <li class="page-item"><a class="page-link">Previous</a></li>
+                                <%}else{ %>
+                                <li class="page-item"><a class="page-link" href="ReviewList.rw?page=<%=nowPage-1 %>">Previous</a></li><%} %>
+                                <%for(int a=startPage; a<=endPage; a++){
+                                	if(a==nowPage){%>
+                                	<li class="page-item active"><a class="page-link"><%=a %></a></li>
+                                	<%}else{ %>
+                                <li class="page-item active"><a class="page-link" href="ReviewList.rw?page=<%=a %>"><%=a %></a><%} %></li><%} %>
+                               <%if(nowPage>=maxPage){ %>
+                               <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                               <%}else{ %>
+                                <li class="page-item"><a class="page-link" href="ReviewList.rw?page=<%=nowPage+1 %>">Next</a></li><%} %>
                             </ul>
                         </nav>
                     </div>
