@@ -11,15 +11,16 @@ import faq.vo.actionForward;
 import faq.vo.faqBoardbean;
 import faq.vo.pageinfo;
 
-public class faqBoardSearchAction implements action {
+public class faqBoardSearchAction2 implements action {
 
 	@Override
 	public actionForward exectute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		actionForward forward=null;
 		
 		int page=1;
-		int limit=10;
+		int limit=5;
 		String search=request.getParameter("search");
+
 		
 		if(request.getParameter("page")!=null) {
 			page=Integer.parseInt(request.getParameter("page"));
@@ -52,7 +53,7 @@ public class faqBoardSearchAction implements action {
 		
 		forward= new actionForward();
 		forward.setRedirect(false); // 기본값이므로 생략이 가능 
-		forward.setPath("/Admin/FAQ_listadmin.jsp");
+		forward.setPath("/FAQ/FAQ_list.jsp");
 		
 		
 		

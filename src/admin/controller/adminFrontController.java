@@ -289,6 +289,8 @@ public class adminFrontController extends HttpServlet {
 		
 		}
 		
+	
+		
 		
 		
 //		else if(command.equals("/faqadminlist.ad")) { //faq리스트

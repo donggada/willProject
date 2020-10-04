@@ -22,10 +22,11 @@ jQuery(document).ready(function () {
 	
 	  $.getJSON('DetailBooktInfo.ad?book_num='+book_num,function(rdata){
 		 $.each(rdata,function(index,item){
-			 $('#car_id').append(item.book_num+" / "+item.book_id+" / "+item.book_date);
-			 $('#car_num').append(item.book_price);
-			 $('#car_type').append(item.book_insurance+" / "+item.book_id);
-			 $('#car_option').append(item.book_pickup_date+" / "+item.end_date);
+			 $('#car_id').append(item.book_state);
+		     $('#car_type').append(item.book_num);
+			 $('#car_type2').append(item.book_id);
+			 $('#car_type3').append(item.car_id);
+			 $('#car_type4').append("<h7>"+item.book_date+"</h7><br>"+" / "+item.pickup_date+" ~ "+item.end_date);
 
 		 });
 	 });	
@@ -40,20 +41,14 @@ jQuery(document).ready(function () {
 <body>
 
 <div class="card mb-3">
-  <h3 class="card-header" id="car_id"> </h3>
+  <h4 class="card-header" id="car_id">결제일 : </h4>
 
   <div class="card-body">
-    <h5 class="card-title" id="car_type"></h5>
-    <h6 class="card-subtitle text-muted" id="car_price"></h6>
-  </div>
-  <div id="car_im">
-  </div>
-  <div class="card-body">
-    <p class="card-text" id="car_num"> </p>
-  
-   <p class="card-text" id="car_option"> </p>
+    <h6 class="card-title" id="car_type">[예약번호] : </h6>
+    <h6 class="card-title" id="car_type2">[예약아이디] : </h6>
+    <h6 class="card-title" id="car_type3">[예약차량번호] : </h6>
+    <h6 class="card-title" id="car_type4">[예약일/이용일] : </h6>
 
-    
  </div>
 
   <div class="card-footer text-muted" style="text-align: right;">

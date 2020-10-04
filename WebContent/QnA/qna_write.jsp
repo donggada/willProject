@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html class="no-js" lang="zxx">
@@ -49,7 +49,7 @@
                     <div class="section-title  text-center">
                         <h2>1:1 Inquiry</h2>
                         <span class="title-line"><i class="fa fa-car"></i></span>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                        <p>Don't hesitate to ask me any questions!</p>
                     </div>
                 </div>
                 <!-- Page Title End -->
@@ -99,7 +99,7 @@
         </div>
         <div class="row">
           <div class="col-lg-6">
-            <div class="bs-component">
+            <div class="bs-component" style="width: 580px;" >
  
                 <fieldset>
                 
@@ -176,7 +176,10 @@
                             <!-- Articles Content End -->
                         </div>
                     </article>
+                    <br>
+                  <p class="thme-blockquote" style="text-align: center;">If you have any questions, please contact our customer service. Your question will be processed as quickly as possible. </p>
                 </div>
+                
                 <!-- Single Articles End -->
 
                 

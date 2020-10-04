@@ -218,7 +218,7 @@
 				 <li class="page-item active">
       <a class="page-link" href="#"><%=i %></a>
 		<%} else {%>
-		 <li class="page-item active">
+		 <li class="page-item">
 				<a href="faqadminlist.fbo?page=<%=i %>" class="page-link"><%=i %></a>&nbsp;
 		<%} %>
 	<%} %>

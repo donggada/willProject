@@ -71,7 +71,7 @@
                     <div class="section-title  text-center">
                         <h2>FAQ</h2>
                         <span class="title-line"><i class="fa fa-car"></i></span>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                        <p>Frequently Asked Questions</p>
                     </div>
                 </div>
                 <!-- Page Title End -->
@@ -93,15 +93,18 @@
                         <div class="row">
 
                             <!-- Articles Thumbnail Start -->
-                            <div class="col-lg-5 d-xl-none">
+                            <div class="col-lg-5 d-xl-none" style="padding-bottom: 30px;">
                                 <div class="article-thumb">
                                     <img src="assets/img/article/arti-thumb-4.jpg" alt="JSOFT">
+      
+                               
                                 </div>
                             </div>
                             <!-- Articles Thumbnail End -->
 
+                     
                             <!-- Articles Content Start -->
-                            <div class="col-lg-7">
+                            <div class="col-lg-7" >
                                 <div class="display-table">
                                     <div class="display-table-cell">
                                         <div class="article-body">
@@ -111,9 +114,9 @@
                                                     <a href="qnaBoardlist.bo" class="commnet">나의 문의내역 보기</a>
         
          <div style="float: right;">
-       <form action="qnaSearchPro.fbo" class="form-inline my-2 my-lg-0">
-      <input name="search" id="search" class="form-control mr-sm-2" type="text" placeholder="Search" >
-      <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+       <form action="faqSearchPro.fbo" class="form-inline my-2 my-lg-0">
+      <input name="search" id="search" class="form-control mr-sm-2" type="text" placeholder="Search" style="height: 25px; font-size: 9px;" >
+      <button class="btn btn-secondary my-2 my-sm-0" type="submit" style="height: 25px; font-size: 9px;" >Search</button>
     </form>
     </div>
                                             </div>
@@ -125,32 +128,18 @@
     <table class="table table-hover">
               <thead>
             <tr id="tr_top">
-            <th scope="col"> </th>
-            <th scope="col">
+            <th scope="col" colspan="3"> 
             
-    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" style="margin: -10px; width: 20px;">구분</a>
-    <div class="dropdown-menu">
-   <a class="dropdown-item" href="faqlist.fbo">전체</a>
-    <a class="dropdown-item" href="faqtag.fbo?tag=대여안내">대여안내</a>
-      <a class="dropdown-item" href="faqtag.fbo?tag=보험 및 사고">보험/사고</a>
-      <a class="dropdown-item" href="faqtag.fbo?tag=인수/반납">인수/반납</a>
-      <a class="dropdown-item" href="faqtag.fbo?tag=사이트이용">사이트이용</a>
-    </div>
-     
+          <button type="button" class="btn btn-outline-secondary" onclick="location.href='faqlist.fbo'" style="height: 28px; font-size: 12px;">전체</button>    
+            <button type="button" class="btn btn-outline-secondary" onclick="location.href='faqtag1.fbo?tag=대여안내'" style="height: 28px; font-size: 12px;">대여안내</button>
+      <button type="button" class="btn btn-outline-secondary" onclick="location.href='faqtag1.fbo?tag=보험 및 사고'" style="height: 28px; font-size: 12px;">보험/사고</button>
+       <button type="button" class="btn btn-outline-secondary" onclick="location.href='faqtag1.fbo?tag=인수/반납'" style="height: 28px; font-size: 12px;">인수/반납</button>
+        <button type="button" class="btn btn-outline-secondary" onclick="location.href='faqtag1.fbo?tag=사이트이용'" style="height: 28px; font-size: 12px;">사이트이용</button>
+  
+   
+   
+            
 
-            </th>
-            <th scope="col" style="white-space: nowrap;">
-            
-            
-            
-            
-       
-            
-            
-            
-            
-            
-            
             </th>
             </tr>
             </thead>

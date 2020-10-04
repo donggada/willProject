@@ -16,7 +16,7 @@
 	<% }%>
     
 	
-    <%
+    <% 
 	ArrayList<qnaBoardbean> articleList = (ArrayList<qnaBoardbean>)request.getAttribute("articlelist");
 	pageinfo pageInfo = (pageinfo)request.getAttribute("pageinfo");
 
@@ -72,7 +72,7 @@
                     <div class="section-title  text-center">
                         <h2>1:1 Inquiry List</h2>
                         <span class="title-line"><i class="fa fa-car"></i></span>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                        <p>Don't hesitate to ask me any questions!</p>
                     </div>
                 </div>
                 <!-- Page Title End -->
@@ -125,7 +125,7 @@
             <th scope="col" style="height: 5px;">
             <%if(id.equals("admin")){%>
 
-    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" style="margin: -10px;">구분</a>
+    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" style="margin: -10px;">답변상태</a>
     <div class="dropdown-menu" style="">
       <a class="dropdown-item" href="qnaBoardlist.bo">전체</a>
       <a class="dropdown-item" href="qnaadminlist2.bo">답변완료</a>
@@ -182,13 +182,59 @@
             <%}} %>
             </tbody>
         </table>        
-  
+        
+    <section id="pageList">
+    <ul class="pagination pagination-sm">
+    
+    <%if(nowPage <= 1) { %>
+             <li class="page-item disabled">
+      <a class="page-link" href="#">&laquo;</a>
+    </li>
+    <%} else {%>
+       <li class="page-item disabled">
+            <a href="qnaBoardlist.bo?page=<%=nowPage - 1%>" class="page-link">&laquo;</a>&nbsp;
+            </li>
+    <%} %>
+    
+    <%for(int i = startPage; i <= endPage; i++) {
+            if(i == nowPage) {%>
+                 <li class="page-item active">
+      <a class="page-link" href="#"><%=i %></a>
+        <%} else {%>
+         <li>
+                <a href="qnaBoardlist.bo?page=<%=i %>" class="page-link"><%=i %></a>&nbsp;
+        <%} %>
+    <%} %>
+    
+    <%if(nowPage >= maxPage) {%>
+              <li class="page-item">
+      <a class="page-link" href="#">&raquo;</a>
+    <%} else { %>
+    <li class="page-item">
+            <a href="qnaBoardlist.bo?page=<%=nowPage + 1%>" class="page-link">&raquo;</a>
+    <%} %>
+    
+      </li>
+  </ul>
+    </section>
     
     
       </p>
+<br>
 
 
+    <div class="single-sidebar">
+                            <h3>For More Informations</h3>
 
+                            <div class="sidebar-body">
+                           <a href="" onclick="window.open('chat/admin.jsp','admin','width=750, height=750, resizable=no')" style="float: right;">
+                          <span class="badge badge-pill badge-secondary"> 
+                           실시간 채팅문의</span></a>
+                                <p><i class="fa fa-mobile"></i> T : 051-1599-8888 </p>
+                                <p><i class="fa fa-clock-o"></i> Mon - Sat 8.00 - 18.00</p>
+                            </div>
+
+                        </div>
 
 
 
@@ -199,6 +245,8 @@
                                 </div>
                             </div>
                             <!-- Articles Content End -->
+                       
+                       
                         </div>
                     </article>
                 </div>
