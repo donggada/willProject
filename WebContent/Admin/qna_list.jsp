@@ -81,7 +81,7 @@
 
     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" style="margin: -10px;">구분</a>
     <div class="dropdown-menu" style="">
-      <a class="dropdown-item" href="qnaBoardlist.bo">전체</a>
+      <a class="dropdown-item" href="QnABoard.ad">전체</a>
       <a class="dropdown-item" href="qnaadminlist2.bo">답변완료</a>
       <a class="dropdown-item" href="qnaadminlist.bo">미답변</a>
     </div>      	

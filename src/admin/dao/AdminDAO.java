@@ -850,7 +850,7 @@ public JSONArray DetailBookList(int book_num) {
 			jo.put("book_state", rs.getInt("book_state"));
 			jo.put("pickup_date", rs.getString("pickup_date"));
 			jo.put("end_date", rs.getString("end_date"));
-
+			jo.put("book_state", rs.getString("book_state"));
 			
 			
 			DetailBookList.add(jo);

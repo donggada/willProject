@@ -461,6 +461,49 @@ public faqBoardbean getcontent(int faqboardnum) {
 	return article;
 }
 
+public ArrayList<faqBoardbean> selectarticlelist2(int page, int limit) {
+	ArrayList<faqBoardbean> list=null;
+	PreparedStatement pstmt = null;
+	ResultSet rs = null;
+	
+	
+	try {
+		int startrow=(page-1)*5;
+		
+		
+		String sql="select *from faqBoard order by faqBoard_num desc limit ?, ?";
+		pstmt = con.prepareStatement(sql);
+		pstmt.setInt(1, startrow); //시작레코드번호 
+		pstmt.setInt(2, limit); //게시글 수
+		rs=pstmt.executeQuery();
+		
+		
+		list = new ArrayList<faqBoardbean>();
+		while(rs.next()) {
+			faqBoardbean article = new faqBoardbean();
+			article.setFaqboard_num(rs.getInt("faqBoard_num"));
+			article.setFaqboard_subject(rs.getString("faqBoard_subject"));
+			article.setFaqboard_content(rs.getString("faqBoard_content"));
+			article.setFaqBoard_tag(rs.getString("faqBoard_tag"));
+
+			list.add(article);
+		}
+		
+		
+		
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+		System.out.println("countselect오류");
+	}finally {
+		close(rs); //jdbcutil.close()
+		close(pstmt);
+	}
+	
+	
+	return list;
+}
+
 
 
 	
