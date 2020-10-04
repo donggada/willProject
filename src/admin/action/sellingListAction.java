@@ -57,10 +57,8 @@ public class sellingListAction implements Action {
 		
 		if(year==null||month==null&&targetup!=null) {
 			System.out.println(targetup);
-			System.out.println("이게되면 안되는데");
 			bookList = bookListService.getBookListlineup(line, targetup);
 		}else if(year==null||month==null&&targetup==null) {
-			System.out.println("정렬");
 			bookList = bookListService.getBookList();
 			
 		}else if(year!=null&&month!=null){
