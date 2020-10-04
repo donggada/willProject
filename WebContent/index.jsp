@@ -5,7 +5,7 @@
 <script src="js/jquery-3.5.1.js"></script>
 <script type="text/javascript">
 	$(document).ready(
-			function() {//ss
+			function() {
 				var today = new Date();
 				var dd = today.getDate();
 				var mm = today.getMonth() + 1;

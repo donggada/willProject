@@ -59,16 +59,13 @@ public class BookDAO {
 				num = rs.getInt(1) + 1;
 			}
 
-			sql = "insert into book(book_num, car_id, pickup_date, end_date, book_price, book_state, member_id, book_date) values(?,?,?,?,?,?,?,now()) ";
+			sql = "insert into book(book_num, book_date, pickup_date, end_date,book_date2) values(?,?,?,?,now()) ";
 			pstmt = con.prepareStatement(sql);
 
 			pstmt.setInt(1, num);
-			pstmt.setString(2, article.getCar_id());
+			pstmt.setDate(2, article.getBook_date()); // 예약일
 			pstmt.setDate(3, article.getPickup_date()); // 수령
 			pstmt.setDate(4, article.getEnd_date()); // 반납
-			pstmt.setInt(5, article.getBook_price());
-			pstmt.setInt(6, article.getBook_state());
-			pstmt.setString(7, article.getMember_id());
 
 			insertCount = pstmt.executeUpdate();
 
@@ -785,80 +782,36 @@ public class BookDAO {
 		return result ;
 		
 	}
-	
-public BookBean selectBookNum(BookBean bn) {
+
+	public ArrayList<BookBean> selectBookstateListllineup(String line, String targetup) {
+		ArrayList<BookBean> bookList = null;
+
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		System.out.println(targetup);
+		System.out.println(line);
 		
-		BookBean bookList = null;
-
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-
 		try {
-			String sql = "SELECT * FROM book where pickup_date=? and end_date=? and car_id=?";
+			String sql = "SELECT * FROM book order by "+targetup+" "+line;
 			pstmt = con.prepareStatement(sql);
-			
-			
-			pstmt.setDate(1, bn.getPickup_date());
-			pstmt.setDate(2, bn.getEnd_date());
-			pstmt.setString(3, bn.getCar_id());
-						
-			rs = pstmt.executeQuery();	
-
-			bookList = new BookBean();
-
-			if (rs.next()) {
-//				Date k = rs.getString(rs.getDate("pickup_date"))
-				// 조회된 결과 중 1개 레코드를 MemberBean 객체에 저장 후 ArrayList 에 추가
-				bookList.setBook_num(rs.getInt("book_num"));
-				bookList.setMember_id(rs.getString("member_id"));
-				bookList.setBook_date(rs.getDate("book_date"));
-				bookList.setPickup_date(rs.getDate("pickup_date"));
-				bookList.setEnd_date(rs.getDate("end_date"));
-				bookList.setCar_id(rs.getString("car_id"));
-				bookList.setBook_price(rs.getInt("book_price"));
-				bookList.setBook_state(rs.getInt("book_state"));
-
-			}
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-			System.out.println("MemberDAO - selectMemberList() 오류!");
-		} finally {
-			close(rs);
-			close(pstmt);
-		}
-
-		return bookList;
-	}
-
-	public BookBean selectBookList(int book_num) {
-		BookBean bookList = null;
-
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-
-		try {
-			String sql = "SELECT * FROM book where book_num=?";
-			pstmt = con.prepareStatement(sql);
-			
-			pstmt.setInt(1, book_num);
-			
 			rs = pstmt.executeQuery();
 
-			bookList = new BookBean();
+			bookList = new ArrayList<BookBean>();
 
-			if (rs.next()) {
-//				Date k = rs.getString(rs.getDate("pickup_date"))
+			while (rs.next()) {
 				// 조회된 결과 중 1개 레코드를 MemberBean 객체에 저장 후 ArrayList 에 추가
-				bookList.setBook_num(rs.getInt("book_num"));
-				bookList.setMember_id(rs.getString("member_id"));
-				bookList.setBook_date(rs.getDate("book_date"));
-				bookList.setPickup_date(rs.getDate("pickup_date"));
-				bookList.setEnd_date(rs.getDate("end_date"));
-				bookList.setCar_id(rs.getString("car_id"));
-				bookList.setBook_price(rs.getInt("book_price"));
-				bookList.setBook_state(rs.getInt("book_state"));
+				BookBean book = new BookBean();
+				book.setBook_num(rs.getInt("book_num"));
 
+				book.setMember_id(rs.getString("member_id"));
+				book.setBook_date(rs.getDate("book_date"));
+				book.setPickup_date(rs.getDate("pickup_date"));
+				book.setEnd_date(rs.getDate("end_date"));
+				book.setCar_id(rs.getString("car_id"));
+				book.setBook_price(rs.getInt("book_price"));
+				book.setBook_state(rs.getInt("book_state"));
+
+				bookList.add(book);
 			}
 
 		} catch (SQLException e) {
@@ -871,7 +824,4 @@ public BookBean selectBookNum(BookBean bn) {
 
 		return bookList;
 	}
-	
-	
-	
 }
