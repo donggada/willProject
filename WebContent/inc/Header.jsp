@@ -152,11 +152,8 @@
 									<li><a href="register.html">Register</a></li>
 									<li><a href="404.html">404</a></li>
 								</ul></li>
-							<li><a href="#">Review</a>
-								<ul>
-									<li><a href="ReviewList.rw">Blog Page</a></li>
-									<li><a href="ReviewWriteForm.rw">Blog Details</a></li>
-								</ul></li>
+							<li><a href="ReviewList.rw">Review</a>
+								</li>
 							<li><a href="contact.html">Contact</a></li>
 						</ul>
 					</nav>
