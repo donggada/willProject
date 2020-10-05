@@ -42,6 +42,10 @@ public class sellingListAction implements Action {
 			targetup=request.getParameter("target");	
 		}
 
+		String state=null;
+		if(request.getParameter("state")!=null) {
+			state=request.getParameter("state");
+		}
 	
 		
 		ArrayList<BookBean> bookList = null;
@@ -55,12 +59,20 @@ public class sellingListAction implements Action {
 		int fs=0;
 		int fs2=0;
 		
-		if(year==null||month==null&&targetup!=null) {
-			System.out.println(targetup);
+		if(year==null&&month==null&&targetup!=null&&state==null) {
+//			System.out.println(targetup);
+//			System.out.println("결제상태"+state);
+//			System.out.println("1");
 			bookList = bookListService.getBookListlineup(line, targetup);
-		}else if(year==null||month==null&&targetup==null) {
+		}else if(state!=null&&targetup==null) {
+			bookList = bookListService.getBookstateList(state);
+			System.out.println("2");
+		}else if(year==null&&month==null&&targetup==null&&state==null) {
+			System.out.println("3");
 			bookList = bookListService.getBookList();
-			
+		}else if(year==null&&month==null&&targetup==null&&state!=null) {
+			System.out.println("4");
+			bookList = bookListService.getBookstateListlineup2(state, targetup, line);
 		}else if(year!=null&&month!=null){
 			if(month.equals("10")||month.equals("11")||month.equals("12")) {
 				String str1=year+"-"+month+"-01";
@@ -105,6 +117,8 @@ public class sellingListAction implements Action {
 		request.setAttribute("f", f);
 		request.setAttribute("fs", fs);
 		request.setAttribute("lineup", lineup);//정렬상태 전달
+		request.setAttribute("state", state);
+		
 		
 		forward = new ActionForward();
 		forward.setPath("/Admin/sellinglist.jsp");
