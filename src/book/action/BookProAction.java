@@ -30,14 +30,21 @@ public class BookProAction implements Action {
 
 		String id = request.getParameter("member_id");
 //		String snsid = request.getParameter("snsid");
-		
+
+//		String SelCarType = request.getParameter("SelCar"); 
+//		
+
+//		BookBean bb = (BookBean)request.getAttribute("bookList");
+
+//		System.out.println(SelCarType);
+		bb.setBook_num(Integer.parseInt(request.getParameter("book_num")));
 		bb.setMember_id(id);
 		bb.setPickup_date(date1);
 		bb.setEnd_date(date2);
 		bb.setCar_id(request.getParameter("car_id"));
 		bb.setBook_state(1);
 		bb.setBook_price((int) rentday * Integer.parseInt(request.getParameter("rentprice")));
-		
+
 		BookProService bps = new BookProService();
 		boolean isWriteSuccess = bps.registBook(bb);
 

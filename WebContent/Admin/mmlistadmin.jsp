@@ -23,6 +23,10 @@
 	int maxPage = pageiInfo.getMaxpage();
 	
 %>  
+
+<%
+ int lineup = ((Integer)request.getAttribute("lineup")).intValue();
+%>
 <!DOCTYPE html>
 <html>
  <head>
@@ -75,19 +79,88 @@
                                             <tr>
                                             
                                             
-             <th>IDX </th>
-    	 		<th>ID</th>
-     		<th>PASS</th>
-     		<th style="white-space: nowrap;">NAME <img src="img/2.png" style="width: 12px;"></th>
-     		<th style="white-space: nowrap;">AGE<img src="img/2.png" style="width: 12px;"></th>
-     		<th>F/M</th>
+             <th style="white-space: nowrap;">
+             IDX
+           
+           <%if(lineup==1){ %>
+            <a href="MemberList.ad?target=member_num&lineup=0">
+            <img src="img/2.png" style="width: 12px;">
+            </a>
+            <%}else{ %>
+            <a href="MemberList.ad?target=member_num&lineup=1">
+            <img src="img/2.png" style="width: 12px;">
+            </a>
+            <%} %>
+             
+             
+              </th>
+    	 		 <th style="white-space: nowrap;">
+    	 		ID
+    	 	<%if(lineup==1){ %>
+            <a href="MemberList.ad?target=member_id&lineup=0">
+            <img src="img/2.png" style="width: 12px;">
+            </a>
+            <%}else{ %>
+            <a href="MemberList.ad?target=member_id&lineup=1">
+            <img src="img/2.png" style="width: 12px;">
+            </a>
+            <%} %>
+    	 		
+    	 		
+    	 		</th>
+     		 <th style="white-space: nowrap;">
+     		 PASS</th>
+     		<th style="white-space: nowrap;">NAME 
+     		
+     		<%if(lineup==1){ %>
+     		<a href="MemberList.ad?target=member_name&lineup=0">
+     		<img src="img/2.png" style="width: 12px;">
+     		</a>
+     		<%}else{ %>
+     		<a href="MemberList.ad?target=member_name&lineup=1">
+            <img src="img/2.png" style="width: 12px;">
+            </a>
+     		<%} %>
+     		
+     		
+     		</th>
+     		<th style="white-space: nowrap;">AGE
+     		
+            <%if(lineup==1){ %>
+            <a href="MemberList.ad?target=member_age&lineup=0">
+            <img src="img/2.png" style="width: 12px;">
+            </a>
+            <%}else{ %>
+            <a href="MemberList.ad?target=member_age&lineup=1">
+            <img src="img/2.png" style="width: 12px;">
+            </a>
+            <%} %>
+     		
+     		 <th style="white-space: nowrap;">
+     		 F/M
+     		
+     		 <%if(lineup==1){ %>
+            <a href="MemberList.ad?target=member_gender&lineup=0">
+            <img src="img/2.png" style="width: 12px;">
+            </a>
+            <%}else{ %>
+            <a href="MemberList.ad?target=member_gender&lineup=1">
+            <img src="img/2.png" style="width: 12px;">
+            </a>
+            <%} %>
+     		
+     		
+     		
+     		</th>
      		<th>TEL</th>
      		<th>ADRESS</th>
      		<th>E-MAIL</th>		
      		<th>LICENSE</th>
      		<th>OPTION</th>
-     		<th style="white-space: nowrap;">횟수 <img src="img/2.png" style="width: 12px;"></th>	
-     		<th style="white-space: nowrap;">금액 <img src="img/2.png" style="width: 12px;"></th>	
+     		<th style="white-space: nowrap;">횟수 
+     		<img src="img/2.png" style="width: 12px;"></th>	
+     		<th style="white-space: nowrap;">금액 
+     		<img src="img/2.png" style="width: 12px;"></th>	
      		<th style="white-space: nowrap;">
      		
   

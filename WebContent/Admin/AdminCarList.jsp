@@ -32,6 +32,10 @@
 	int maxPage = pageiInfo.getMaxpage();
 	
 %>      
+
+<%
+ int lineup = ((Integer)request.getAttribute("lineup")).intValue();
+%>
     
     
    <!-- 좌측 메뉴 --> <jsp:include page="/inc/topleft.jsp"></jsp:include>
@@ -62,11 +66,58 @@
                                         <thead>
                                                                            
                                             <tr>    
-            <th style="white-space: nowrap; width: 150px;">차량번호<img src="img/2.png" style="width: 12px;"></th>     
-     		<th style="white-space: nowrap;">제조사 <img src="img/2.png" style="width: 12px;"></th>
-     		<th style="white-space: nowrap;">차량이름<img src="img/2.png" style="width: 12px;"></th>
-     		<th style="white-space: nowrap;">차량종류<img src="img/2.png" style="width: 12px;"></th>	
-     		<th style="white-space: nowrap;">비용<img src="img/2.png" style="width: 12px;"></th>    
+            <th style="white-space: nowrap; width: 150px;">차량번호
+            <%if(lineup==1){ %>
+            <a href="CarList.ad?target=car_id&lineup=0">
+            <img src="img/2.png" style="width: 12px;">
+            </a>
+            <%}else{ %>
+            <a href="CarList.ad?target=car_id&lineup=1">
+            <img src="img/2.png" style="width: 12px;">
+            </a>
+            <%} %>
+            </th>     
+     		<th style="white-space: nowrap;">제조사 
+     		
+     		    <%if(lineup==1){ %>
+            <a href="CarList.ad?target=car_maker&lineup=0">
+            <img src="img/2.png" style="width: 12px;">
+            </a>
+            <%}else{ %>
+            <a href="CarList.ad?target=car_maker&lineup=1">
+            <img src="img/2.png" style="width: 12px;">
+            </a>
+            <%} %>
+     		
+     		</th>
+     		<th style="white-space: nowrap;">차량이름
+     		     <%if(lineup==1){ %>
+            <a href="CarList.ad?target=car_name&lineup=0">
+            <img src="img/2.png" style="width: 12px;">
+            </a>
+            <%}else{ %>
+            <a href="CarList.ad?target=car_name&lineup=1">
+            <img src="img/2.png" style="width: 12px;">
+            </a>
+            <%} %>
+            
+     		</th>
+     		<th style="white-space: nowrap;">차량종류
+     	               <%if(lineup==1){ %>
+            <a href="CarList.ad?target=car_type&lineup=0">
+            <img src="img/2.png" style="width: 12px;">
+            </a>
+            <%}else{ %>
+            <a href="CarList.ad?target=car_type&lineup=1">
+            <img src="img/2.png" style="width: 12px;">
+            </a>
+            <%} %>
+     		</th>	
+     		<th style="white-space: nowrap;">비용
+     		
+     		<img src="img/2.png" style="width: 12px;">
+     		
+     		</th>    
      		<th style="white-space: nowrap;">수정 및 삭제<img src="img/2.png" style="width: 12px;"></th>                                  
                                             </tr>
                                             

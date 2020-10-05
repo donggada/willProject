@@ -75,5 +75,3 @@ target/
 # End of https://www.toptal.com/developers/gitignore/api/eclipse,java-web
 .classpath
 .project
-/classes/
-/test-classes/

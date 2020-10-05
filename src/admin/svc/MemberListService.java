@@ -97,6 +97,26 @@ public class MemberListService {
 		
 		return memberList;
 	}
+
+	public ArrayList<MemberBean> getArticleListlineup(int page, int limit, String line, String targetup) {
+	ArrayList<MemberBean> memberList = null;
+		
+		
+		Connection con = getConnection();
+		
+		AdminDAO adao = AdminDAO.adao;
+		
+		
+		adao.setConnection(con);
+		
+		
+		memberList = adao.selectMemberSearchListlineup(page, limit, line, targetup);
+		
+		
+		close(con);
+		
+		return memberList;
+	}
 	
 	
 

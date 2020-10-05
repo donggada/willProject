@@ -21,7 +21,7 @@ public class faqBoardTagSearchAction implements action {
 		int page=1;
 		int limit=10;
 		String tag=request.getParameter("tag");
-		System.out.println(tag);
+//		System.out.println(tag);
 		
 		if(request.getParameter("page")!=null) {
 			page=Integer.parseInt(request.getParameter("page"));

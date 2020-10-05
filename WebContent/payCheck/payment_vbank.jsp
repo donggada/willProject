@@ -3,6 +3,7 @@
     pageEncoding="UTF-8"%>
 <%
 BookBean bb = (BookBean)request.getAttribute("bookList");
+String SelCarType = request.getParameter("SelCarType"); 
 %> 
 <!DOCTYPE html>
 <html>
@@ -36,7 +37,7 @@ IMP.request_pay({
         msg += '결제 금액 : ' + rsp.paid_amount;
         msg += '카드 승인번호 : ' + rsp.apply_num;
         window.close();
-        opener.parent.location='BookPro.bk?car_id=<%=bb.getCar_id()%>&pickup=<%=bb.getPickup_date() %>&end=<%=bb.getEnd_date() %>&rentprice=<%=bb.getBook_price()%>&member_id=<%=bb.getMember_id()%>';
+        opener.parent.location='BookPro.bk?car_id=<%=bb.getCar_id()%>&pickup=<%=bb.getPickup_date() %>&end=<%=bb.getEnd_date() %>&rentprice=<%=bb.getBook_price()%>&member_id=<%=bb.getMember_id()%>&SelCarType=<%=SelCarType%>&book_num=<%=bb.getBook_num()%>';
     } else {
         var msg = '결제에 실패하였습니다.';
         msg += '에러내용 : ' + rsp.error_msg;

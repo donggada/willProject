@@ -31,7 +31,6 @@
 				
 <%
  int lineup = ((Integer)request.getAttribute("lineup")).intValue();
-// String state=(String)request.getAttribute("state");
 %>
 <!DOCTYPE html>
 <html>
@@ -330,26 +329,27 @@ function DetailBookInfo(book_num)
              <th style="white-space: nowrap;">
              NO. 
              
-            
-             <%if(lineup==1){ %>
-            <a href="sellinglist.ad?target=book_num&lineup=0">
+              <%if(lineup==1){ %>
+            <a href="sellinglist2.ad?target=book_num&lineup=0">
             <img src="img/2.png" style="width: 12px;">
             </a>
-            <%}else if(lineup==0){ %>
-            <a href="sellinglist.ad?target=book_num&lineup=1">
+            <%}else{ %>
+            <a href="sellinglist2.ad?target=book_num&lineup=1">
             <img src="img/2.png" style="width: 12px;">
             </a>
             <%} %>
+             
+             
              </th>
 <!--              booknum -->
     	 		<th style="white-space: nowrap;">ID
     	 		
     	 		              <%if(lineup==1){ %>
-            <a href="sellinglist.ad?target=member_id&lineup=0">
+            <a href="sellinglist2.ad?target=member_id&lineup=0">
             <img src="img/2.png" style="width: 12px;">
             </a>
             <%}else{ %>
-            <a href="sellinglist.ad?target=member_id&lineup=1">
+            <a href="sellinglist2.ad?target=member_id&lineup=1">
             <img src="img/2.png" style="width: 12px;">
             </a>
             <%} %>
@@ -360,11 +360,11 @@ function DetailBookInfo(book_num)
      		<th style="white-space: nowrap;">BookDate
      		
      		 <%if(lineup==1){ %>
-            <a href="sellinglist.ad?target=book_date&lineup=0">
+            <a href="sellinglist2.ad?target=book_date&lineup=0">
             <img src="img/2.png" style="width: 12px;">
             </a>
             <%}else{ %>
-            <a href="sellinglist.ad?target=book_date&lineup=1">
+            <a href="sellinglist2.ad?target=book_date&lineup=1">
             <img src="img/2.png" style="width: 12px;">
             </a>
             <%} %>
@@ -374,22 +374,22 @@ function DetailBookInfo(book_num)
      		<th style="white-space: nowrap;">대여일 
      		
              <%if(lineup==1){ %>
-            <a href="sellinglist.ad?target=pickup_date&lineup=0">
+            <a href="sellinglist2.ad?target=pickup_date&lineup=0">
             <img src="img/2.png" style="width: 12px;">
             </a>
             <%}else{ %>
-            <a href="sellinglist.ad?target=pickup_date&lineup=1">
+            <a href="sellinglist2.ad?target=pickup_date&lineup=1">
             <img src="img/2.png" style="width: 12px;">
             </a>
             <%} %>
      		</th>
      		<th style="white-space: nowrap;">반납일
             <%if(lineup==1){ %>
-            <a href="sellinglist.ad?target=end_date&lineup=0">
+            <a href="sellinglist2.ad?target=end_date&lineup=0">
             <img src="img/2.png" style="width: 12px;">
             </a>
             <%}else{ %>
-            <a href="sellinglist.ad?target=end_date&lineup=1">
+            <a href="sellinglist2.ad?target=end_date&lineup=1">
             <img src="img/2.png" style="width: 12px;">
             </a>
             <%} %>
@@ -401,11 +401,11 @@ function DetailBookInfo(book_num)
      		<th style="white-space: nowrap;">
      		결제금액
      		            <%if(lineup==1){ %>
-            <a href="sellinglist.ad?target=book_price&lineup=0">
+            <a href="sellinglist2.ad?target=book_price&lineup=0">
             <img src="img/2.png" style="width: 12px;">
             </a>
             <%}else{ %>
-            <a href="sellinglist.ad?target=book_price&lineup=1">
+            <a href="sellinglist2.ad?target=book_price&lineup=1">
             <img src="img/2.png" style="width: 12px;">
             </a>
             <%} %>
@@ -418,9 +418,9 @@ function DetailBookInfo(book_num)
 
         <a data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" style="color: black;">현재상태 <img src="img/3.png" style="width: 12px;"></a>
         <div class="dropdown-menu">
-          <a class="dropdown-item" href="sellinglist.ad">미결제</a>
-           <a class="dropdown-item" href="sellinglist.ad?state=2">무통장</a>
-          <a class="dropdown-item" href="sellinglist.ad?state=1">카드</a>
+          <a class="dropdown-item" href="sellinglist2.ad">미결제</a>
+           <a class="dropdown-item" href="sellinglist2.ad?book_state=2">무통장</a>
+          <a class="dropdown-item" href="sellinglist2.ad?book_state=1">카드</a>
 
         </div>
 
