@@ -76,7 +76,7 @@ for(int i = 0; i < cb.size(); i++){
                         </ol>
                         <div class="card mb-4">
                             <div class="card-body">
-                                수정할거 - db값 적용 
+                               -
                                 <a target="_blank" href="#">official DataTables documentation</a>
                                 .
                             </div>
