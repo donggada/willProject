@@ -27,7 +27,7 @@ public class ReviewDeleteProAction implements Action {
 			boolean isDeleteSuccess = reviewDeleteProService.removeArticle(review_num);
 				forward = new ActionForward();
 				forward.setRedirect(true);
-				forward.setPath("ReviewList.ad?&page="+page);
+				forward.setPath("ReviewList.rw?page="+page);
 		}
 		
 		return forward;

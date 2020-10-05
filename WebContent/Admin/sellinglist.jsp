@@ -344,7 +344,7 @@ function DetailBookInfo(book_num)
 <!--              booknum -->
     	 		<th style="white-space: nowrap;">ID
     	 		
-    	 		              <%if(lineup==1){ %>
+    	 	 <%if(lineup==1){ %>
             <a href="sellinglist.ad?target=member_id&lineup=0">
             <img src="img/2.png" style="width: 12px;">
             </a>
@@ -400,7 +400,7 @@ function DetailBookInfo(book_num)
      		</th>
      		<th style="white-space: nowrap;">
      		결제금액
-     		            <%if(lineup==1){ %>
+     		 <%if(lineup==1){ %>
             <a href="sellinglist.ad?target=book_price&lineup=0">
             <img src="img/2.png" style="width: 12px;">
             </a>
