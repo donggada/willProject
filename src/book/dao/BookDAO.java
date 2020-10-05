@@ -65,7 +65,7 @@ public class BookDAO {
 				}
 			}
 
-			sql = "insert into book(book_num, book_date, pickup_date, end_date,book_date2) values(?,?,?,?,now()) ";
+			sql = "insert into book(book_num, car_id, pickup_date, end_date, book_date) values(?,?,?,?,now()) ";
 			pstmt = con.prepareStatement(sql);
 
 			pstmt.setInt(1, finalNum);
