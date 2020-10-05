@@ -80,6 +80,8 @@ int endPage = pageInfo.getEndPage();
  <th scope="col" style="width: 200px;">조회수</td>
  <th scope="col" style="width: 200px;">추천수</td>
  <th scope="col" style="width: 100px;">
+ 
+ 
  <form action="reviewdelete.ad">
  <button type="submit" class="btn btn-primary" style="margin: -20px">삭제</button>
  </th>
@@ -98,6 +100,9 @@ if(articleList != null && listCount>0){
  <td><%=articleList.get(i).getReview_readcount() %></td>
  <td><%=articleList.get(i).getReview_recocount() %></td>
  	<td>
+		<input type="hidden" name="num" value="<%=articleList.get(i).getReview_num()%>">
+
+					
 					<input type="checkbox" name="check" value="<%=articleList.get(i).getReview_num()%>">
 					<input type="hidden" name="page" value="<%=nowPage%>">
 					</td>
@@ -161,10 +166,7 @@ if(articleList != null && listCount>0){
 	
     
 	</div>
-	</div>
-	</div>
-	</main>
-	</div>
+
 	
 	
 	

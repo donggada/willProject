@@ -300,4 +300,37 @@ public class ReviewDAO {
 		}
 		return deleteCount;
 	}
+	
+	public int deleteArticle(ReviewBean reviewbean) {
+		int deleteCount = 0;
+		PreparedStatement pstmt = null;
+		try {
+			String sql = "DELETE FROM review WHERE review_num=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, reviewbean.getReview_num());
+			deleteCount = pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return deleteCount;
+	}
+	
+	
+	public int delete(int review_num) {
+		int deleteCount = 0;
+		PreparedStatement pstmt = null;
+		try {
+			String sql = "DELETE FROM review WHERE review_num=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, review_num);
+			deleteCount = pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return deleteCount;
+	}
 }

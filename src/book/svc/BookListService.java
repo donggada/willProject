@@ -268,5 +268,24 @@ public class BookListService {
 	}
 
 
+
+	public ArrayList<BookBean> getBookstateListlineup2(String state, String targetup, String line) {
+		Connection con = getConnection();
+
+		BookDAO bookDAO = BookDAO.getInstance();
+
+		bookDAO.setConnection(con);
+
+		ArrayList<BookBean> booklist = bookDAO.selectBookstateListlineup(state,targetup,line);
+
+		close(con);
+
+		return booklist;
+	}
+
+	
+
+
+
 	
 }
