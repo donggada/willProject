@@ -31,7 +31,7 @@
 				
 <%
  int lineup = ((Integer)request.getAttribute("lineup")).intValue();
-String state=(String)request.getAttribute("state");
+// String state=(String)request.getAttribute("state");
 %>
 <!DOCTYPE html>
 <html>
@@ -330,15 +330,8 @@ function DetailBookInfo(book_num)
              <th style="white-space: nowrap;">
              NO. 
              
-            <%if(state!=null&&lineup==0){%>
-             <a href="sellinglist.ad?target=book_num&lineup=0&state="+state>
-            <img src="img/2.png" style="width: 12px;">
-            </a>
-			 <%} else if(state!=null&&lineup==1){%>
-             <a href="sellinglist.ad?target=book_num&lineup=1&state="+state>
-            <img src="img/2.png" style="width: 12px;">
-            </a>
-             <%else if(sta lineup==1){ %>
+            
+             <%if(lineup==1){ %>
             <a href="sellinglist.ad?target=book_num&lineup=0">
             <img src="img/2.png" style="width: 12px;">
             </a>
