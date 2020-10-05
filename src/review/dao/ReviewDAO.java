@@ -99,7 +99,7 @@ public class ReviewDAO {
 		ResultSet rs = null;
 		
 		try {
-			int startRow = (page-1) *10;
+			int startRow = (page-1) *3;
 			String sql = "SELECT * FROM review ORDER BY review_num DESC LIMIT ?,?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, startRow);

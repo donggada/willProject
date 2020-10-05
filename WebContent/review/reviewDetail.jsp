@@ -80,7 +80,7 @@ $(document).ready(function(){
                     <div class="section-title  text-center">
                         <h2>Review</h2>
                         <span class="title-line"><i class="fa fa-car"></i></span>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                        <p></p>
                     </div>
                 </div>
                 <!-- Page Title End -->
@@ -97,7 +97,7 @@ $(document).ready(function(){
                         <h2><%=article.getReview_subject() %><span class="price">작성자: <b><%=article.getMember_id() %></b></span></h2>
                         <%if(article.getReview_file()!=null){ %>
                         <div>
-                           <img src="../WillProject_0.1(09.18)_선택날짜수정/reviewUpload/<%=article.getReview_file()%>"><br>
+                           <img src="../WillProject-1/reviewUpload/<%=article.getReview_file()%>"><br>
                         </div><%} %>
                         <div class="car-details-info">
                             <p><%=article.getReview_content() %></p>
@@ -129,7 +129,7 @@ $(document).ready(function(){
 <div id="recodiv" class="input-submit">
 <input type="hidden" name="review_num" id="review_num" value="<%=article.getReview_num() %>">
 <input type="hidden" name="page" id="page" value="<%=nowPage %>">
-<input type="button" value="추천하기" id="recobtn">
+<Button type="submit" value="추천하기" id="recobtn">추천</Button>
 </div>
 </div>
 <%String id=(String)session.getAttribute("Member_id");
@@ -144,10 +144,10 @@ $(document).ready(function(){
    if(totalId != null){
 	   if(totalId.equals(article.getMember_id())){
    %>
-<a href="ReviewModifyForm.rw?review_num=<%=article.getReview_num() %>&page=<%=nowPage %>">[수정]</a>
-<a href="ReviewDeleteForm.rw?review_num=<%=article.getReview_num() %>&page=<%=nowPage %>">[삭제]</a>
+<a href="ReviewModifyForm.rw?review_num=<%=article.getReview_num() %>&page=<%=nowPage %>" class="readmore-btn">수정</a>
+<a href="ReviewDeleteForm.rw?review_num=<%=article.getReview_num() %>&page=<%=nowPage %>" class="readmore-btn">삭제</a>
 <%} }%>
-<a href="ReviewList.rw?page=<%=nowPage %>">[목록]</a>
+<a href="ReviewList.rw?page=<%=nowPage %>" class="readmore-btn">목록</a>
         </div>
     </section>
     <!--== Car List Area End ==-->        
