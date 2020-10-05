@@ -155,8 +155,15 @@
             %><b><%=articleList.get(i).getQnaBaord_tag() %></b><%}{}%>
             </td>
                     <td>
-                    <a href="qnaboardcheck.bo?qnaBoard_num=<%=articleList.get(i).getQnaBoard_num()%>&page=<%=nowPage%>">
+                     <%if(id.equals("admin")){%>
+                    <a href="qnaBoardDetail.bo?qnaBoard_num=<%=articleList.get(i).getQnaBoard_num()%>&page=<%=nowPage%>">
                             <%=articleList.get(i).getQnaBoard_subject() %>
+                     <%}else{%>
+                       <a href="qnaboardcheck.bo?qnaBoard_num=<%=articleList.get(i).getQnaBoard_num()%>&page=<%=nowPage%>">
+                            <%=articleList.get(i).getQnaBoard_subject() %>
+                
+                     <% }%>
+                     
                         </a>
                     </td>
                             
