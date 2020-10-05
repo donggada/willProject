@@ -12,7 +12,6 @@ import javax.xml.ws.ResponseWrapper;
 
 import book.action.Action;
 import book.action.BookListAction;
-import book.action.BookPro2Action;
 import book.action.BookPro3Action;
 import book.action.BookProAction;
 import book.action.CarListAction;
@@ -63,14 +62,6 @@ public class BookFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 			
-		} else if (command.equals("/BookPro2.bk")) {
-			action = new BookPro2Action();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
 		} else if (command.equals("/BookPro3.bk")) {
 			action = new BookPro3Action();
 			try {

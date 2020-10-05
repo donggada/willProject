@@ -55,23 +55,27 @@
 			});
 
 	
-	function card(a,b,c,d,e){
-		var car_id = a
-		var pickup = b
-		var end = c
-		var price = d
-		var member_id = e
-		window.open("BookPro2.bk?car_id="+car_id+"&pickup="+pickup+"&end="+end+"&rentprice="+price+"&member_id="+member_id,"카드결제","width=900,height=600");
-	}
+// 	function card(a,b,c,d,e,f){
+// 		var car_id = a
+// 		var pickup = b
+// 		var end = c
+// 		var price = d
+// 		var member_id = e
+// 		var SelCarType = f
+// 		window.open("BookPro2.bk?car_id="+car_id+"&pickup="+pickup+"&end="+end+"&rentprice="+price+"&member_id="+member_id+"&SelCarType="+SelCarType"&payType="+card,"카드결제","width=900,height=600");
+// 	}
 		
 	/*무통장입금 결제 팝업창  */	
-	function vbank(a,b,c,d,e){
+	function vbank(a,b,c,d,e,f,g){
 		var car_id = a
 		var pickup = b
 		var end = c
 		var price = d
 		var member_id = e
-		window.open("BookPro3.bk?car_id="+car_id+"&pickup="+pickup+"&end="+end+"&rentprice="+price+"&member_id="+member_id,"카드결제","width=900,height=600");
+		var SelCarType = f
+		var type = g
+		alert(g);
+		window.open("BookPro3.bk?car_id="+car_id+"&pickup="+pickup+"&end="+end+"&rentprice="+price+"&member_id="+member_id+"&SelCarType="+SelCarType+"&payType="+type,"카드결제","width=900,height=600");
 	}
 	
 	function noId(){
@@ -210,8 +214,8 @@ function search(id){
 						%>
 					
 						<td>
-						<input type="button" class="selbtn" id="selbtn" value="카드결제" onclick="card('<%=carList.get(i).getCar_id()%>','<%=pickup%>','<%=end%>','<%=carList.get(i).getCar_price_normal()%>','<%if(id == null){%><%=snsid%><%}else{%><%=id%><%};%>')">
-						<input type="button" class="selbtn" id="selbtn" value="무통장입금" onclick="vbank('<%=carList.get(i).getCar_id()%>','<%=pickup%>','<%=end%>','<%=carList.get(i).getCar_price_normal()%>','<%if(id == null){%><%=snsid%><%}else{%><%=id%><%};%>')">
+						<input type="button" class="selbtn" id="selbtn" value="카드결제" onclick="vbank('<%=carList.get(i).getCar_id()%>','<%=pickup%>','<%=end%>','<%=carList.get(i).getCar_price_normal()%>','<%if(id == null){%><%=snsid%><%}else{%><%=id%><%};%>','<%=SelCarType%>','card')">
+						<input type="button" class="selbtn" id="selbtn" value="무통장입금" onclick="vbank('<%=carList.get(i).getCar_id()%>','<%=pickup%>','<%=end%>','<%=carList.get(i).getCar_price_normal()%>','<%if(id == null){%><%=snsid%><%}else{%><%=id%><%};%>','<%=SelCarType%>','cash')">
 						</td>
 					<%
 					}

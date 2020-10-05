@@ -37,7 +37,7 @@
 
 
 
-
+<button type="button" onclick="location.href='index.jsp'">메인으로</button>
 
 
 
