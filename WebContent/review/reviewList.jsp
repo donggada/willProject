@@ -72,7 +72,7 @@ int endPage = pageInfo.getEndPage();
                     <div class="section-title  text-center">
                         <h2>Review</h2>
                         <span class="title-line"><i class="fa fa-car"></i></span>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                        <p></p>
                     </div>
                 </div>
                 <!-- Page Title End -->
@@ -97,7 +97,7 @@ int endPage = pageInfo.getEndPage();
                             <!-- Articles Thumbnail Start -->
                             <div class="col-lg-4">
                                 <div class="article-thumb">
-                                    <img src="assets/img/article/arti-thumb-1.jpg" alt="JSOFT">
+                                    <img src="../WillProject-1/reviewUpload/<%=articleList.get(i).getReview_file() %>" alt="JSOFT" width="500" height="300">
                             <!-- Articles Thumbnail End -->
                                 </div>
                             </div>
@@ -109,12 +109,12 @@ int endPage = pageInfo.getEndPage();
                                         <div class="article-body">
                                             <h3><a href="ReviewDetail.rw?review_num=<%=articleList.get(i).getReview_num() %>&page=<%=nowPage %>"><%=articleList.get(i).getReview_subject() %></a></h3>
                                             <div class="article-meta">
-                                                <a class="author">작성자<span><%=articleList.get(i).getMember_id() %></span></a>
+                                                <a class="author">작성자 <span><%=articleList.get(i).getMember_id() %></span></a>
                                                 <a class="commnet">추천 <span><%=articleList.get(i).getReview_recocount() %></span></a>
                                                 <a class="commnet">조회수 <span><%=articleList.get(i).getReview_readcount() %></span></a>
                                             </div>
                                             <div class="article-date"><span class="month"><%=articleList.get(i).getReview_date() %></span></div>
-										    <a href="ReviewDetail.rw?review_num=<%=articleList.get(i).getReview_num() %>&page=<%=nowPage %>" class="readmore-btn"><%=articleList.get(i).getReview_subject() %><i class="fa fa-long-arrow-right"></i></a>
+										    <a href="ReviewDetail.rw?review_num=<%=articleList.get(i).getReview_num() %>&page=<%=nowPage %>" class="readmore-btn">보기<i class="fa fa-long-arrow-right"></i></a>
                                         </div>
                                     </div>
                                 </div>
@@ -154,7 +154,7 @@ int endPage = pageInfo.getEndPage();
                                 	if(a==nowPage){%>
                                 	<li class="page-item active"><a class="page-link"><%=a %></a><%}else{ %>
                                 	
-                                <li class="page-item active"><a class="page-link" href="ReviewList.rw?page=<%=a %>"><%=a %></a>
+                                <li class="page-item"><a class="page-link" href="ReviewList.rw?page=<%=a %>"><%=a %></a>
                                 <%} %>
                                 <%} %>
                                 
