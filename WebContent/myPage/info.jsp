@@ -34,17 +34,7 @@
 <script type="text/javascript">
 
  function updatepage() {
-	 var button_name = document.getElementById('info_name'); 
-	 var button_age = document.getElementById('info_age'); 
-	 var button_tel = document.getElementById('info_tel'); 
-	 
-	 var updateData = [];
-	 updateData.put(button_name.val());
-	 updateData.put(button_age.val());
-	 updateData.put(button_age.val());
-	 
-<%-- 	 <%request.setAttribute("data",%>updateData<%);%> --%>
-	 location.href='UpdateInfo.if';
+	 document.getElementById('info_form').submit();
 }
 
  function onClickUpdate() {
@@ -85,15 +75,16 @@
 </head>
 <body>
 <p>개인 정보</p>
+<form action="UpdateInfo.if" id="info_form" method="post">
 <table border="1">
 <tr>
 <th>아이디</th><td><%=lb.getId() %></td>
-<th>이름</th><td><input type="text" id="info_name" value="<%=lb.getName() %>" disabled></td>
-<th>나이</th><td><input type="text" id="info_age" value="<%=lb.getAge() %>" disabled></td>
+<th>이름</th><td><input type="text" name="name" id="info_name" value="<%=lb.getName() %>" disabled></td>
+<th>나이</th><td><input type="text" name="age" id="info_age" value="<%=lb.getAge() %>" disabled></td>
 </tr>
 <tr>
 <th>성별</th><td><%=lb.getGender() %></td>
-<th>전화번호</th><td><input type="text" id="info_tel" value="<%=lb.getTel() %>" disabled></td>
+<th>전화번호</th><td><input type="text" name="tel" id="info_tel" value="<%=lb.getTel() %>" disabled></td>
 <th>주소</th><td><%=lb.getAddress() %></td>
 <th>이메일</th><td><%=lb.getEmail() %></td>
 </tr>
@@ -104,6 +95,7 @@
 <th>아기</th><td><%=lb.getBaby() %></td>
 </tr>
 </table>
+</form>
 <div id='button'>
 <input type="button" id="update" value="수정하기" onclick="onClickUpdate()">
 </div>
