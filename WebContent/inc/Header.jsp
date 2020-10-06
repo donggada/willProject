@@ -132,14 +132,7 @@
 								<!--                                     </ul> --></li>
 							<li><a href="#">About</a></li>
 							<li><a href="#">services</a></li>
-							<li><a href="#">차량 소개</a>
-								<ul>
-									<li><a href="car-left-sidebar.html">Car Left Sidebar</a></li>
-									<li><a href="car-right-sidebar.html">Car Right Sidebar</a></li>
-									<li><a href="car-without-sidebar.html">Car Without
-											Sidebar</a></li>
-									<li><a href="car-details.html">Car Details</a></li>
-								</ul></li>
+							<li><a href="carIntro.rw">차량 소개</a></li>
 							<li><a href="index.jsp">Pages</a>
 								<ul>
 									<li><a href="package.html">Pricing</a></li>
