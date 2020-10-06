@@ -7,39 +7,93 @@
     	ListBean lb = (ListBean)request.getAttribute("bean");
     	ArrayList<ListBean> list = (ArrayList<ListBean>)request.getAttribute("list");
     	pageinfo pagecheck = (pageinfo)request.getAttribute("pageinfo");
-    	
+    	int checkNum = 0;
     	int listCount = pagecheck.getListcount();
     	int nowPage = pagecheck.getPage(); 
     	int startPage = pagecheck.getStartpage();
     	int endPage = pagecheck.getEndpage();
     	int maxPage = pagecheck.getMaxpage();
-    	int checkNum = Integer.parseInt(request.getParameter("page"));
-    	if(checkNum != 1)
+    	if((request.getParameter("page") != null))
     	{
-    		checkNum = startPage * 10;
+    			checkNum = Integer.parseInt(request.getParameter("page"));
+    			
+        	if(checkNum != 1)
+        	{
+        		checkNum = startPage * 10;
+        	}
+        	else if(checkNum == 1)
+        	{
+        		checkNum = 0;
+        	}
     	}
-    	else
-    	{
-    		checkNum = 0;
-    	}
+
     %>
 <!DOCTYPE html>
 <html>
+<script src="js/jquery-3.5.1.js"></script>
+<script type="text/javascript">
+
+ function updatepage() {
+	 var button_name = document.getElementById('info_name'); 
+	 var button_age = document.getElementById('info_age'); 
+	 var button_tel = document.getElementById('info_tel'); 
+	 
+	 var updateData = [];
+	 updateData.put(button_name.val());
+	 updateData.put(button_age.val());
+	 updateData.put(button_age.val());
+	 
+<%-- 	 <%request.setAttribute("data",%>updateData<%);%> --%>
+	 location.href='UpdateInfo.if';
+}
+
+ function onClickUpdate() {
+	 var button_name = document.getElementById('info_name'); 
+	 var button_age = document.getElementById('info_age'); 
+	 var button_tel = document.getElementById('info_tel'); 
+	 var btn = document.createElement("BUTTON");
+	 
+	 	button_name.disabled = false; 
+	 	button_age.disabled = false; 
+	 	button_tel.disabled = false;
+	 	
+	 document.getElementById('update').value = "취소";
+	 document.getElementById('update').onclick = cancel;
+	 btn.innerHTML = "수정완료";
+	 btn.id = 'updatebtn';
+	 document.getElementById('button').appendChild(btn);
+	 btn.onclick = updatepage;
+}
+ function cancel() {
+	 var button_name = document.getElementById('info_name'); 
+	 var button_age = document.getElementById('info_age'); 
+	 var button_tel = document.getElementById('info_tel'); 
+	 var checkupdate = document.getElementById('updatebtn'); 
+	 
+	 	button_name.disabled = true; 
+	 	button_age.disabled = true; 
+	 	button_tel.disabled = true;
+	 	
+		 document.getElementById('update').value = "수정하기";
+		 checkupdate.remove();
+		 document.getElementById('update').onclick = onClickUpdate; 
+}
+</script>
 <head>
 <meta charset="UTF-8">
-<title>마이페이지<%=checkNum %></title>
+<title>마이페이지</title>
 </head>
 <body>
 <p>개인 정보</p>
 <table border="1">
 <tr>
 <th>아이디</th><td><%=lb.getId() %></td>
-<th>이름</th><td><%=lb.getName() %></td>
-<th>나이</th><td><%=lb.getAge() %></td>
+<th>이름</th><td><input type="text" id="info_name" value="<%=lb.getName() %>" disabled></td>
+<th>나이</th><td><input type="text" id="info_age" value="<%=lb.getAge() %>" disabled></td>
 </tr>
 <tr>
 <th>성별</th><td><%=lb.getGender() %></td>
-<th>전화번호</th><td><%=lb.getTel() %></td>
+<th>전화번호</th><td><input type="text" id="info_tel" value="<%=lb.getTel() %>" disabled></td>
 <th>주소</th><td><%=lb.getAddress() %></td>
 <th>이메일</th><td><%=lb.getEmail() %></td>
 </tr>
@@ -50,6 +104,9 @@
 <th>아기</th><td><%=lb.getBaby() %></td>
 </tr>
 </table>
+<div id='button'>
+<input type="button" id="update" value="수정하기" onclick="onClickUpdate()">
+</div>
 <!-- ------------------------------------------------------------------------------------------------------- -->
 <table>
 <tr><th>멤버쉽 등급</th><td><%=lb.getGrade() %></td></tr>
