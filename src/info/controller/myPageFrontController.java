@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import info.action.Action;
 import info.vo.ActionForward;
 import info.action.infoListAction;
+import info.action.infoUpdateAction;
 
 
 @WebServlet("*.if")
@@ -29,6 +30,18 @@ public class myPageFrontController extends HttpServlet {
 
 		if (command.equals("/MemberInfo.if")) {
 			action = new infoListAction();
+			try 
+			{
+				forward = action.exectute(request, response);
+			} 
+			catch (Exception e) 
+			{
+				e.printStackTrace();
+			}
+		}
+		else if(command.equals("/UpdateInfo.if"))
+		{
+			action = new infoUpdateAction();
 			try 
 			{
 				forward = action.exectute(request, response);

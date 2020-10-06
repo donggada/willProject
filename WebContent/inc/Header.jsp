@@ -97,9 +97,11 @@
 					<a href="" onclick="window.open('chat/admin.jsp','admin','width=750, height=750, resizable=no')">|관리자채팅</a>
 						<%}else if(totalId!=null&& totalId.equals("admin")){%>
 						<%=totalId%>님 | <a href="MemberLogout.me">logout</a> | 
+						<a href="MemberInfo.if">마이페이지</a>
                         <a href="" onclick="window.open('chat/admin.jsp','admin','width=750, height=750, resizable=no')">|관리자채팅</a>
 						<a href="adminpage.ad">| admin page</a>
 						<%}else if(totalId!=null){%> <%=totalId%>님 | <a href="MemberLogout.me">logout</a> | 
+						<a href="MemberInfo.if">마이페이지</a>
 						<a href="" onclick="window.open('chat/admin.jsp','admin','width=750, height=750, resizable=no')">|관리자채팅</a>
 						<%} %>
 					</div>
