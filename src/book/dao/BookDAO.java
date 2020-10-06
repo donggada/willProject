@@ -44,6 +44,12 @@ public class BookDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 
+	
+			if(selectBookNum(article) !=null) {
+				return 0;
+			}
+			
+			
 		try {
 
 			String sql = "select MAX(book_num) FROM book WHERE book_num LIKE ?";
@@ -727,7 +733,7 @@ public class BookDAO {
 
 	}
 	public BookBean selectBookNum(BookBean bn) {
-
+		
 		BookBean bookList = null;
 
 		PreparedStatement pstmt = null;
@@ -742,10 +748,10 @@ public class BookDAO {
 			pstmt.setString(3, bn.getCar_id());
 
 			rs = pstmt.executeQuery();
-
-			bookList = new BookBean();
+	
 
 			if (rs.next()) {
+				bookList = new BookBean();
 //				Date k = rs.getString(rs.getDate("pickup_date"))
 				// 조회된 결과 중 1개 레코드를 MemberBean 객체에 저장 후 ArrayList 에 추가
 				bookList.setBook_num(rs.getInt("book_num"));

@@ -20,13 +20,15 @@ public class BookProAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
 
+		String selCarType = request.getParameter("SelCarType");
+		
 		ActionForward forward = null;
 
 		BookBean bb = new BookBean();
 		Date date1 = new Date(new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("pickup")).getTime());
 		Date date2 = new Date(new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("end")).getTime());
 
-		long rentday = ((date2.getTime() - date1.getTime()) / (24 * 60 * 60 * 1000));
+		int rentday = (int) ((date2.getTime() - date1.getTime()) / (24 * 60 * 60 * 1000));
 
 		String id = request.getParameter("member_id");
 //		String snsid = request.getParameter("snsid");
@@ -43,7 +45,7 @@ public class BookProAction implements Action {
 		bb.setEnd_date(date2);
 		bb.setCar_id(request.getParameter("car_id"));
 		bb.setBook_state(1);
-		bb.setBook_price((int) rentday * Integer.parseInt(request.getParameter("rentprice")));
+		bb.setBook_price(Integer.parseInt((request.getParameter("rentprice"))));
 
 		BookProService bps = new BookProService();
 		boolean isWriteSuccess = bps.registBook(bb);
@@ -59,10 +61,14 @@ public class BookProAction implements Action {
 		} else {
 			response.setContentType("text/html;charset=UTF-8");
 			PrintWriter out = response.getWriter();
+			
+			request.setAttribute("carList", bb);
+			
 			out.println("<script>");
-			out.println("alert('글 등록 실패!')");
-			out.println("history.back()");
+			out.println("alert('결재 실패!');");
+			out.println("location.href='BookForm2.bk?car_id="+bb.getCar_id()+"&pickup_date="+bb.getPickup_date()+"&end_date="+bb.getEnd_date()+"&rentprice="+bb.getBook_price()+"&SelCar="+selCarType+"&rentday="+rentday+"&member_id="+bb.getMember_id()+"&book_num="+bb.getBook_num()+"'");
 			out.println("</script>");
+			out.println("<%request.setAttribute(\"carList\", bb);\r\n" + "%>");
 		}
 
 		return forward;

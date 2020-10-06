@@ -1,3 +1,4 @@
+<%@page import="java.util.LinkedList"%>
 <%@page import="book.vo.BookBean"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.sql.Date"%>
@@ -13,9 +14,11 @@
       String end = request.getParameter("end_date"); 
       String SelCarType = request.getParameter("SelCar"); 
       
-      ArrayList<CarBean> carList = (ArrayList<CarBean>)request.getAttribute("carList");
+      LinkedList<CarBean> carList = (LinkedList<CarBean>)request.getAttribute("carList");
 //       ArrayList<BookBean> bookList =(ArrayList<BookBean>)request.getAttribute("bookList");
 
+	 	int rentday = (int)request.getAttribute("rentday");
+	 	System.out.println(rentday);
 	System.out.println(snsid);
 		System.out.println(id);
 		
@@ -199,7 +202,7 @@ function search(id){
 				<td width="100">차량명<%=carList.get(i).getCar_id() %></td>
 				<td width="400">제조사<%=carList.get(i).getCar_maker() %></td>
 				<td width="150">분류<%=carList.get(i).getCar_type() %></td>
-				<td width="100">가격<%=carList.get(i).getCar_price_normal() %></td>
+				<td width="100">가격<%=carList.get(i).getCar_price_normal()*rentday %></td>
 				<td width="100">색상<%=carList.get(i).getCar_color() %></td>
 			<%-- 				<td><input type="button" class="selbtn" id="selbtn" onclick= "location.href='BookPro.bk?car_id=<%=carList.get(i).getCar_id()%>&pickup=<%=pickup %>&end=<%=end %>&rentprice=<%=carList.get(i).getCar_price_normal() %>&member_id=<%if(id == null){%><%=snsid%><%}else{%><%=id%><%};%>'" value="예약하기"></td> --%>
 			
@@ -214,8 +217,8 @@ function search(id){
 						%>
 					
 						<td>
-						<input type="button" class="selbtn" id="selbtn" value="카드결제" onclick="vbank('<%=carList.get(i).getCar_id()%>','<%=pickup%>','<%=end%>','<%=carList.get(i).getCar_price_normal()%>','<%if(id == null){%><%=snsid%><%}else{%><%=id%><%};%>','<%=SelCarType%>','card')">
-						<input type="button" class="selbtn" id="selbtn" value="무통장입금" onclick="vbank('<%=carList.get(i).getCar_id()%>','<%=pickup%>','<%=end%>','<%=carList.get(i).getCar_price_normal()%>','<%if(id == null){%><%=snsid%><%}else{%><%=id%><%};%>','<%=SelCarType%>','cash')">
+						<input type="button" class="selbtn" id="selbtn" value="카드결제" onclick="vbank('<%=carList.get(i).getCar_id()%>','<%=pickup%>','<%=end%>','<%=carList.get(i).getCar_price_normal()*rentday%>','<%if(id == null){%><%=snsid%><%}else{%><%=id%><%};%>','<%=SelCarType%>','card')">
+						<input type="button" class="selbtn" id="selbtn" value="무통장입금" onclick="vbank('<%=carList.get(i).getCar_id()%>','<%=pickup%>','<%=end%>','<%=carList.get(i).getCar_price_normal()*rentday%>','<%if(id == null){%><%=snsid%><%}else{%><%=id%><%};%>','<%=SelCarType%>','cash')">
 						</td>
 					<%
 					}

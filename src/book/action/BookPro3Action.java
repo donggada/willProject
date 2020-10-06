@@ -19,9 +19,9 @@ public class BookPro3Action implements Action {
 		Date date1 = new Date(new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("pickup")).getTime());
 		Date date2 = new Date(new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("end")).getTime());
 
-		long rentday = (date2.getTime() - date1.getTime()) / (24 * 60 * 60 * 1000);
+//		long rentday = (date2.getTime() - date1.getTime()) / (24 * 60 * 60 * 1000);
 		String id = request.getParameter("member_id");
-
+		int rentprice = Integer.parseInt(request.getParameter("rentprice"));
 //		String snsid = request.getParameter("snsid");
 
 //		경차(0),
@@ -90,7 +90,7 @@ public class BookPro3Action implements Action {
 		bb.setEnd_date(date2);
 		bb.setCar_id(request.getParameter("car_id"));
 		bb.setBook_state(1);
-		bb.setBook_price((int) rentday * Integer.parseInt(request.getParameter("rentprice")));
+		bb.setBook_price(rentprice);
 
 		request.setAttribute("bookList", bb);
 		forward = new ActionForward();

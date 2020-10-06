@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -33,6 +34,13 @@ public class CarListAction implements Action {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		Date pickDate = sdf.parse(pickup);
 		Date returnDate = sdf.parse(end);
+
+		int rentday = (int) ((returnDate.getTime() - pickDate.getTime()) / (24 * 60 * 60 * 1000));
+		
+		System.out.println(rentday);
+		
+		
+		
 		Map<String, Integer> idmap = new HashMap<String, Integer>();
 
 		for (BookBean b : bookList) {
@@ -42,10 +50,12 @@ public class CarListAction implements Action {
 		}
 
 		CarListService carListService20 = new CarListService();
-		ArrayList<CarBean> carList = null;
-		carList = carListService20.getCarList();
+		LinkedList<CarBean> carList = null;
+		carList = carListService20.getCarLinkedList();
+
 		Iterator<CarBean> iter = carList.iterator();
 
+		
 		while (iter.hasNext()) {
 			CarBean cb = iter.next();
 			String temp = "" + cb.getCar_id();
@@ -53,6 +63,7 @@ public class CarListAction implements Action {
 				iter.remove();
 			}
 		}
+		request.setAttribute("rentday", rentday);
 		request.setAttribute("carList", carList);
 		forward = new ActionForward();
 		forward.setPath("/book/BookForm2.jsp");

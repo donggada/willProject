@@ -33,7 +33,7 @@
 <br>
 
 금액 <br>
-<%=bb.getBook_price() %>
+<%=rentprice %>
 
 
 
