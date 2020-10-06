@@ -14,6 +14,7 @@ import org.json.simple.JSONObject;
 
 import admin.vo.CarBean;
 import book.vo.BookBean;
+import book.vo.CarBean.CAR_TYPE;
 import faq.vo.faqBoardbean;
 import member.dao.MemberDAO;
 import member.vo.MemberBean;
@@ -227,7 +228,7 @@ ArrayList<CarBean> CarList = null;
 			cb.setCar_id(rs.getInt("car_id"));
 			cb.setCar_maker(rs.getString("car_maker"));
 			cb.setCar_name(rs.getString("car_name"));
-			cb.setCar_type(rs.getString("car_type"));
+			cb.setCar_type(CAR_TYPE.values()[rs.getInt("car_type")].toString());
 	
 			
 			CarList.add(cb);
@@ -268,7 +269,7 @@ public ArrayList<CarBean> selectCarList(String carsearch1, String carsearch2, in
 			cb.setCar_id(rs.getInt("car_id"));
 			cb.setCar_maker(rs.getString("car_maker"));
 			cb.setCar_name(rs.getString("car_name"));
-			cb.setCar_type(rs.getString("car_type"));
+			cb.setCar_type(CAR_TYPE.values()[rs.getInt("car_type")].toString());
 			cb.setCar_num(rs.getString("car_num"));
 			SelectCarList.add(cb);
 		}
@@ -634,7 +635,7 @@ public JSONArray DetailCarList(int car_id) {
 			jo.put("id", rs.getInt("car_id"));
 			jo.put("num", rs.getInt("car_num"));
 			jo.put("maker", rs.getString("car_maker"));
-			jo.put("type", rs.getString("car_type"));
+			jo.put("type", CAR_TYPE.values()[rs.getInt("car_type")].toString());
 			jo.put("year", rs.getString("car_year"));
 			jo.put("oil", rs.getString("car_oil"));
 			jo.put("auto", rs.getString("car_is_auto"));
@@ -945,7 +946,7 @@ ArrayList<CarBean> CarList = null;
 			cb.setCar_id(rs.getInt("car_id"));
 			cb.setCar_maker(rs.getString("car_maker"));
 			cb.setCar_name(rs.getString("car_name"));
-			cb.setCar_type(rs.getString("car_type"));
+			cb.setCar_type(CAR_TYPE.values()[rs.getInt("car_type")].toString());
 	
 			
 			CarList.add(cb);
