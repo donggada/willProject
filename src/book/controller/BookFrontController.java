@@ -91,7 +91,12 @@ public class BookFrontController extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		} else if (command.equals("/coronaData.bk")) {
+		} 
+		else if(command.equals("/RealChat.bk")) {
+			forward = new ActionForward();
+			forward.setPath("chat.jsp");
+		} 
+		else if (command.equals("/coronaData.bk")) {
 			action = new CoronaDataParsingAction();
 			try {
 				forward = action.execute(request, response);

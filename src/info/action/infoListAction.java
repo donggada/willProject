@@ -17,12 +17,10 @@ public class infoListAction implements Action {
 	public ActionForward exectute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		HttpSession session = request.getSession();
-		String id = (String)session.getAttribute("id");
+		String id = (String)session.getAttribute("Member_id");
 		ActionForward forward = new ActionForward();
 		infoListService service = new infoListService();
 		ListBean lb = service.checkList(id);
-		
-		
 		int page=1;
 		int limit=10;
 		int listcount=0;
