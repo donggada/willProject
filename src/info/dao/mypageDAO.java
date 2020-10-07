@@ -75,9 +75,18 @@ private static mypageDAO instance;
 		{
 			e.printStackTrace();
 		}
-		
-		close(rs);
-		close(pstmt);
+		finally 
+		{
+			try 
+			{
+				rs.close();
+				pstmt.close();
+			} 
+			catch (SQLException e) 
+			{
+				e.printStackTrace();
+			}
+		}
 		
 		return lb;
 	}
@@ -114,9 +123,18 @@ private static mypageDAO instance;
 		{
 			e.printStackTrace();
 		}
-		
-		close(rs);
-		close(pstmt);
+		finally 
+		{
+			try 
+			{
+				rs.close();
+				pstmt.close();
+			} 
+			catch (SQLException e) 
+			{
+				e.printStackTrace();
+			}
+		}
 		
 		return list;
 	}
@@ -141,11 +159,123 @@ private static mypageDAO instance;
 		{
 			e.printStackTrace();
 		}
-		
-		close(rs);
-		close(pstmt);
+		finally 
+		{
+			try 
+			{
+				rs.close();
+				pstmt.close();
+			} 
+			catch (SQLException e) 
+			{
+				e.printStackTrace();
+			}
+		}
 		
 		return count;
+	}
+
+	public int infoUpdate(ListBean lb) {
+		
+		int check = 0;
+		PreparedStatement pstmt = null;
+		try 
+		{
+			String sql = "update member set member_name=?, member_age=?, member_tel=? where member_id=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, lb.getName());
+			pstmt.setString(2, lb.getAge());
+			pstmt.setString(3, lb.getTel());
+			pstmt.setString(4, lb.getId());
+			check = pstmt.executeUpdate();
+		} catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
+		finally 
+		{
+			try 
+			{
+				pstmt.close();
+			} 
+			catch (SQLException e) 
+			{
+				e.printStackTrace();
+			}
+		}
+		
+		return check;
+	}
+
+	public boolean checkDelete(String id, String pass) {
+		
+		boolean check = false;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try 
+		{
+			String sql = "select member_pass from member where member_id=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			if(rs.next())
+			{
+				if(rs.getString(1).equals(pass))
+				{
+					check = true;
+				}
+			}
+		} 
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
+		finally 
+		{
+			try 
+			{
+				rs.close();
+				pstmt.close();
+			} 
+			catch (SQLException e) 
+			{
+				e.printStackTrace();
+			}
+		}
+		
+		return check;
+	}
+
+	public int deletePro(String id) {
+		
+		PreparedStatement pstmt = null;
+		int check = -1;
+		
+		try 
+		{
+			String sql = "delete from member where member_id=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			check = pstmt.executeUpdate();
+		} 
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
+		finally 
+		{
+			try 
+			{
+				pstmt.close();
+			} 
+			catch (SQLException e) 
+			{
+				e.printStackTrace();
+			}
+		}
+
+		return check;
 	}
 	
 }

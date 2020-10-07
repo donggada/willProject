@@ -6,39 +6,31 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import info.svc.infoListService;
-import info.svc.infoUpdateService;
+import info.svc.infoDeleteService;
 import info.vo.ActionForward;
-import info.vo.ListBean;
 
-public class infoUpdateAction implements Action {
+public class infoDeleteAction implements Action {
 
 	@Override
 	public ActionForward exectute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		ActionForward forward = new ActionForward();
+		ActionForward actionForward = new ActionForward();
+		
 		request.setCharacterEncoding("utf-8");
 		HttpSession session = request.getSession();
-		String name = (String)request.getParameter("name");
-		String age = (String)request.getParameter("age");
-		String tel = (String)request.getParameter("tel");
 		String id = (String)session.getAttribute("Member_id");
+		String pass = (String)request.getParameter("pass");
 		
-		ListBean lb = new ListBean();
-		lb.setId(id);
-		lb.setName(name);
-		lb.setAge(age);
-		lb.setTel(tel);
-		
-		infoUpdateService service = new infoUpdateService();
-		boolean check = service.updateInfo(lb);
-		if(!check)
+		infoDeleteService service = new infoDeleteService();
+		int result = service.checkPass(id,pass);
+		if(result > 0)
 		{
+			session.invalidate();
 			response.setContentType("text/html;charset=UTF-8"); 
 			PrintWriter out = response.getWriter(); 
 			out.println("<script>"); 
-			out.println("alert('잠시후 다시 시도해 주세요')"); 
-			out.println("history.back()");
+			out.println("alert('삭제완료')"); 
+			out.println("location='index.jsp'");
 			out.println("</script>");
 			out.flush();
 		}
@@ -47,10 +39,11 @@ public class infoUpdateAction implements Action {
 			response.setContentType("text/html;charset=UTF-8"); 
 			PrintWriter out = response.getWriter(); 
 			out.println("<script>"); 
-			out.println("alert('수정완료')"); 
-			out.println("location='MemberInfo.if'");
+			out.println("alert('비밀번호 오류... 다시 확인바랍니다')"); 
+			out.println("location='deleteInfo.if'");
 			out.println("</script>");
 			out.flush();
+
 		}
 		return null;
 	}
