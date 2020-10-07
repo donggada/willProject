@@ -97,9 +97,6 @@ public class ReviewFrontController extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		}else if(command.equals("/carIntro.rw")) {
-			forward = new ActionForward();
-			forward.setPath("/carIntro/carIntro.jsp");
 		}
 		
 		

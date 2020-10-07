@@ -1,5 +1,15 @@
+<%@page import="book.vo.PageInfo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+    <%
+    PageInfo pageInfo = (PageInfo)request.getAttribute("pageInfo");
+    int listCount = pageInfo.getListCount();
+    int nowPage = pageInfo.getPage();
+    int maxPage = pageInfo.getMaxPage();
+    int startPage = pageInfo.getStartPage();
+    int endPage = pageInfo.getEndPage();
+    %>
 <!DOCTYPE html>
 <html class="no-js" lang="en">
 <head>
@@ -104,13 +114,23 @@
                              <div class="page-pagi">
                         <nav aria-label="Page navigation example">
                             <ul class="pagination">
-                                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item"><a class="page-link" href="#">4</a></li>
-                                <li class="page-item"><a class="page-link" href="#">5</a></li>
-                                <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                            <%if(nowPage<=1) {%>
+                                <li class="page-item"><a class="page-link">Previous</a></li>
+                                <%}else{ %>
+                                <li class="page-item"><a class="page-link" href="carIntro.rw?page=<%=nowPage-1 %>">Previous</a></li><%} %>
+                                
+                                <%for(int a=startPage; a<=endPage; a++){
+                                	if(a==nowPage){%>
+                                	<li class="page-item active"><a class="page-link"><%=a %></a><%}else{ %>
+                                	
+                                <li class="page-item"><a class="page-link" href="carIntro.rw?page=<%=a %>"><%=a %></a>
+                                <%} %>
+                                <%} %>
+                                
+                               <%if(nowPage>=maxPage){ %>
+                               <li class="page-item"><a class="page-link" href="#">Next</a>
+                               <%}else{ %>
+                                <li class="page-item"><a class="page-link" href="carIntro.rw?page=<%=nowPage+1 %>">Next</a><%} %>
                             </ul>
                         </nav>
                     </div>

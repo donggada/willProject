@@ -15,9 +15,11 @@ import book.action.BookListAction;
 import book.action.BookPro3Action;
 import book.action.BookProAction;
 import book.action.CarListAction;
+import book.action.CarListCountAction;
 import book.action.ChatBotAction;
 import book.action.CoronaDataParsingAction;
 import book.vo.ActionForward;
+import review.action.ReviewListAction;
 
 @WebServlet("*.bk")
 
@@ -104,6 +106,13 @@ public class BookFrontController extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} // coronaData.bk
+		}else if(command.equals("/carIntro.rw")) { //리뷰글 목록
+			action = new CarListCountAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 
 		if (forward != null) {
