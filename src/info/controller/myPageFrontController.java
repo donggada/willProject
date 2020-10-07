@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import info.action.Action;
+import info.action.infoDeleteAction;
 import info.vo.ActionForward;
 import info.action.infoListAction;
 import info.action.infoUpdateAction;
@@ -51,7 +52,25 @@ public class myPageFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
-
+		else if(command.equals("/deleteInfo.if"))
+		{
+			forward = new ActionForward();
+			
+			forward.setPath("myPage/deleteInfo.jsp");
+		}
+		else if(command.equals("/deleteInfoPro.if"))
+		{
+			action = new infoDeleteAction();
+			try 
+			{
+				forward = action.exectute(request, response);
+			} 
+			catch (Exception e)
+			{
+				e.printStackTrace();
+			}
+			
+		}
 		if (forward != null) 
 		{
 			if (forward.isRedirect()) 

@@ -96,8 +96,11 @@
 </tr>
 </table>
 </form>
+<div>
 <div id='button'>
 <input type="button" id="update" value="수정하기" onclick="onClickUpdate()">
+</div>
+<input type="button" value="회원탈퇴" onclick="location.href='deleteInfo.if'">
 </div>
 <!-- ------------------------------------------------------------------------------------------------------- -->
 <table>
