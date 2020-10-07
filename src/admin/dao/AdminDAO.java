@@ -357,7 +357,27 @@ ArrayList<CarBean> CarList = null;
 		while(rs.next()) {
 			CarBean cb =new CarBean();
 			cb.setCar_id(rs.getInt("count"));
-			cb.setCar_maker(rs.getString("taget"));		
+			switch (rs.getString("taget")) {
+			case "0": cb.setCar_maker("경차");
+				break;
+			case "1": cb.setCar_maker("소형");
+				break;
+			case "2": cb.setCar_maker("중형");
+				break;
+			case "3": cb.setCar_maker("준대형");
+				break;
+				break;
+			case "5": cb.setCar_maker("승합");
+				break;
+			case "6": cb.setCar_maker("SUV/RV");
+				break;
+			case "7": cb.setCar_maker("전기차");
+				break;
+			case "8": cb.setCar_maker("수입차");
+				break;
+			default:cb.setCar_maker(rs.getString("taget"));	
+				break;
+			}	
 	
 			
 			CarList.add(cb);
