@@ -1,5 +1,7 @@
 package book.dao;
 
+import static review.db.jdbcUtil.close;
+
 import java.lang.reflect.Member;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -634,7 +636,89 @@ public class CarDAO {
 
 	}
 
+		//전체 차량 수 조회
+		public int selectCarCount() {
+			int listCount = 0;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			
+			try {
+				
+				String sql = "SELECT COUNT(car_id) FROM car";
+				pstmt = con.prepareStatement(sql);
+				rs = pstmt.executeQuery();
+			
+				if(rs.next()) {
+				listCount = rs.getInt(1);
+				
+				}
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}finally {
+				close(rs);
+				close(pstmt);
+			}
+			return listCount;
+		}
+		//전체 차량 조회하기
+		public ArrayList<CarBean> selectCarList(int page, int limit) {
+			ArrayList<CarBean> carList = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			
+			try {
+				int startRow = (page-1) *3;
+				String sql = "SELECT * FROM car ORDER BY car_name DESC LIMIT ?,?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, startRow);
+				pstmt.setInt(2, limit);
+				rs = pstmt.executeQuery();
+				
+				carList = new ArrayList<CarBean>();
+				while(rs.next()) {
+					CarBean mb = new CarBean();
+
+					mb.setCar_cc(rs.getInt("car_cc"));
+					mb.setCar_color(rs.getString("car_color"));
+					mb.setCar_function(rs.getInt("car_function"));
+					mb.setCar_id(rs.getInt("car_id")); //
+					mb.setCar_is_auto(rs.getBoolean("car_is_auto"));
+					mb.setCar_is_navi(rs.getBoolean("car_is_navi"));
+					mb.setCar_is_open(rs.getBoolean("car_is_open"));
+					mb.setCar_is_pet(rs.getBoolean("car_is_pet"));
+					mb.setCar_is_rent(rs.getBoolean("car_is_rent"));
+					mb.setCar_is_smoke(rs.getBoolean("car_is_smoke"));
+					mb.setCar_license_type(rs.getInt("car_license_type"));
+					mb.setCar_license_year(rs.getInt("car_license_year"));
+					mb.setCar_maker(rs.getString("car_maker")); //
+					mb.setCar_name(rs.getString("car_name")); //
+					mb.setCar_need_year(rs.getInt("car_need_year"));
+					mb.setCar_oil(rs.getInt("car_oil"));
+					mb.setCar_people_max(rs.getInt("car_people_max")); //
+					mb.setCar_people_possible(rs.getInt("car_people_possible")); //
+					mb.setCar_price_normal(rs.getInt("car_price_normal"));
+					mb.setCar_price_sale(rs.getInt("car_price_sale"));
+					mb.setCar_trunk(rs.getInt("car_trunk"));
+					mb.setCar_type(rs.getInt("car_type")); //
+					mb.setCar_year(rs.getInt("car_year"));
+
+					carList.add(mb);
+					
+				}
+				
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}finally {
+				close(rs);
+				close(pstmt);
+			}
+			return carList;
+		}
+		
 }
+
+
+
 
 class LoginFailException extends Exception {
 
