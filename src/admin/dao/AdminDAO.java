@@ -667,6 +667,8 @@ public JSONArray DetailCarList(int car_id) {
 			jo.put("smoke", rs.getString("car_is_smoke"));
 			jo.put("color", rs.getString("car_is_smoke"));
 			jo.put("open", rs.getString("car_is_smoke"));
+			jo.put("name", rs.getString("car_name"));
+			
 			
 			
 			DetailCarList.add(jo);

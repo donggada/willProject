@@ -4,29 +4,46 @@
 <html>
 <head>
 <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <link href="Admin/css/styles.css" rel="stylesheet" />
-        <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
-     <link href="../QnA/QnA11/bootstrap.css" rel="stylesheet">
- <link href="../QnA/QnA11/bootstrap.min.css" rel="stylesheet"> 
+<title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<%String car_id=request.getParameter("car_id"); %>
+<!--=== Bootstrap CSS ===-->
+<link href="../assets/css/bootstrap.min.css" rel="stylesheet">
+<!--=== Slicknav CSS ===-->
+<link href="../assets/css/plugins/slicknav.min.css" rel="stylesheet">
+<!--=== Magnific Popup CSS ===-->
+<link href="../assets/css/plugins/magnific-popup.css" rel="stylesheet">
+<!--=== Owl Carousel CSS ===-->
+<link href="../assets/css/plugins/owl.carousel.min.css" rel="stylesheet">
+<!--=== Gijgo CSS ===-->
+<link href="../assets/css/plugins/gijgo.css" rel="stylesheet">
+<!--=== FontAwesome CSS ===-->
+<link href="../assets/css/font-awesome.css" rel="stylesheet">
+<!--=== Theme Reset CSS ===-->
+<link href="../assets/css/reset.css" rel="stylesheet">
+<!--=== Main Style CSS ===-->
+<link href="../style.css" rel="stylesheet">
+<!--=== Responsive CSS ===-->
+<link href="../assets/css/responsive.css" rel="stylesheet">
+<style type="text/css">
+*{background-color: black;}
 
+#car_num{color: #ffc107;}
+#car_maker{color: #ffc107;}
+#car_type{color: #ffc107;}
+#car_name{color: #ffc107;}
+</style>
+<%String car_id=request.getParameter("car_id"); %>
 <script type="text/javascript">
 var car_id=<%=car_id%>
 jQuery(document).ready(function () {
-	
 	  $.getJSON('DetailCarInfo.ad?car_id='+car_id,function(rdata){
 		 $.each(rdata,function(index,item){
-			 $('#car_id').append(item.id+" / "+item.maker+" / "+item.year);
-			 $('#car_num').append(item.num);
-			 $('#car_type').append(item.type+" / "+item.cc+"cc / "+item.oil);
-			 $('#car_im').append(item.carphoto);
-			 $('#car_option').append(item.trunk+" / "+item.pet+" / "+item.smoke+" / "+item.open);
+			 $('#car_img').append('<img src="../ChartCarimg/'+item.name+'.png" height="200">');
+			 $('#car_id').append(item.id);
+			 $('#car_num').append("차량 번호 : "+item.num);
+			 $('#car_maker').append("차종류 : "+item.maker);
+			 $('#car_name').append("차이름 : "+item.name);
+			 $('#car_type').append("차종류 : "+item.type);
 		 });
 	 });	
 	 
@@ -38,58 +55,20 @@ jQuery(document).ready(function () {
 </script>
 </head>
 <body>
+<!-- Single Pricing Table -->
+				<div class="col-lg-4 col-md-6 text-center">
+					<div class="single-pricing-table1">
+						<h3 id="car_img"></h3>
+						<h2 id="car_num"></h2>
 
-<div class="card mb-3">
-  <h3 class="card-header" id="car_id"> </h3>
-
-  <div class="card-body">
-    <h5 class="card-title" id="car_type"></h5>
-    <h6 class="card-subtitle text-muted" id="car_price"></h6>
-  </div>
-  <div id="car_im">
-  <img style="height: 200px; width: 100%; 
-  display: block;" src="" alt="Card image">
-  </div>
-  <div class="card-body">
-    <p class="card-text" id="car_num"> </p>
-  
-   <p class="card-text" id="car_option"> </p>
-
-<!--     <div class="custom-control custom-checkbox"> -->
-<!--       <input type="checkbox" class="custom-control-input" id="customCheck1" checked="checked"> -->
-<!--       <label class="custom-control-label" for="customCheck1">navi</label> -->
-<!--     </div> -->
-<!--     <div class="custom-control custom-checkbox"> -->
-<!--       <input type="checkbox" class="custom-control-input" id="customCheck2" > -->
-<!--       <label class="custom-control-label" for="customCheck2">open</label> -->
-<!--     </div> -->
-<!--       <div class="custom-control custom-checkbox"> -->
-<!--       <input type="checkbox" class="custom-control-input" id="customCheck3" > -->
-<!--       <label class="custom-control-label" for="customCheck3">pet</label> -->
-<!--     </div> -->
-<!--       <div class="custom-control custom-checkbox"> -->
-<!--       <input type="checkbox" class="custom-control-input" id="customCheck4" > -->
-<!--       <label class="custom-control-label" for="customCheck4">smoke</label> -->
-<!--     </div> -->
-<!--       <div class="custom-control custom-checkbox"> -->
-<!--       <input type="checkbox" class="custom-control-input" id="customCheck5"> -->
-<!--       <label class="custom-control-label" for="customCheck5">trunk</label> -->
-<!--     </div> -->
-    
- </div>
-
-  <div class="card-footer text-muted" style="text-align: right;">
-      <a onclick="window.close();" class="card-link" >닫기</a>
-  </div>
-</div>
-
-  </div>
-  </div>
-</div>
-</div>
-
-
-
-
+						<ul class="package-list">
+						<li id="car_maker"></li>
+						<li id="car_name"></li>
+						<li id="car_type"></li>
+						
+						</ul>
+					</div>
+				</div>
+				<!-- Single Pricing Table -->
 </body>
 </html>
