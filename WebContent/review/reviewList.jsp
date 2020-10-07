@@ -175,4 +175,4 @@ int endPage = pageInfo.getEndPage();
     <!--== Footer Area Start ==-->
    <jsp:include page="../inc/Footer.jsp" />
 </body>
-</html>
+</html></html>
