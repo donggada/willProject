@@ -366,6 +366,7 @@ ArrayList<CarBean> CarList = null;
 				break;
 			case "3": cb.setCar_maker("준대형");
 				break;
+			case "4": cb.setCar_maker("대형");
 				break;
 			case "5": cb.setCar_maker("승합");
 				break;
