@@ -134,15 +134,15 @@
 								<!--                                     </ul> --></li>
 							<li><a onclick="OpenMap()">코로나Map</a></li>
 							<li><a href="carIntro.rw">차량 소개</a></li>
+							<li><a href="ReviewList.rw">Review</a></li>
 							<li><a href="#">고객센터</a>
 								<ul>				
 									<li><a href="faqlist.fbo">FAQ</a></li>
 									<li><a href="qnawrite.bo">Q&A</a></li>
+									<li><a onclick="chat_bot()">1:1 문의</a></li>
 								</ul>
 							</li>
-							<li><a href="ReviewList.rw">Review</a>
-								</li>
-							<li><a href="#">Contact</a></li>
+							
 						</ul>
 					</nav>
 				</div>
@@ -153,6 +153,9 @@
 	<!--== Header Bottom End ==-->
 </header>
 <script type="text/javascript">
+function chat_bot() {
+	window.open('chat/chat_bot.jsp','new','width=800, height=600, resizable=no');
+}
 var popupX = (window.screen.width/2)-(500/2);
 //만들 팝업창 좌우 크기의 1/2 만큼 보정값으로 빼주었음
 
