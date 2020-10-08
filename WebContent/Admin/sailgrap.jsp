@@ -20,14 +20,14 @@
 // 	int maxPage = pageiInfo.getMaxpage();
 
 ArrayList<CarBean> cb=(ArrayList)request.getAttribute("SalesList");
-System.out.print(cb);
+//system.out.print(cb);
 ArrayList target=new ArrayList();
 ArrayList count= new ArrayList();
 if(cb!=null){
 for(int i = 0; i < cb.size(); i++){
 	target.add("'"+cb.get(i).getCar_name()+"'");
 	count.add(cb.get(i).getCar_id());
-	System.out.print(cb.get(i).getCar_id());
+	//system.out.print(cb.get(i).getCar_id());
 	 }
 }
 %>
