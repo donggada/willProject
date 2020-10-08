@@ -78,7 +78,7 @@
 		var SelCarType = f
 		var type = g
 		alert(g);
-		window.open("BookPro3.bk?car_id="+car_id+"&pickup="+pickup+"&end="+end+"&rentprice="+price+"&member_id="+member_id+"&SelCarType="+SelCarType+"&payType="+type,"카드결제","width=900,height=600");
+		window.open("BookPro3.bk?car_id="+car_id+"&pickup="+pickup+"&end="+end+"&rentprice="+price+"&member_id="+member_id+"&SelCarType="+SelCarType+"&payType="+type,"카드결제","width=1100,height=850");
 	}
 	
 	function noId(){
@@ -98,11 +98,55 @@
 	// 	});
 </script>
 
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<h3>예약 페이지 2</h3>
 
+<meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="style.css" rel="stylesheet">
+  <link href="QnA/QnA11/bootstrap.css" rel="stylesheet">
+ <link href="QnA/QnA11/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+ <jsp:include page="/inc/Header.jsp"></jsp:include>
+</head>
+
+<body class="loader-active">
+
+    <!--== Preloader Area Start ==-->
+    <div class="preloader">
+        <div class="preloader-spinner">
+            <div class="loader-content">
+                <img src="assets/img/preloader.gif" alt="JSOFT">
+            </div>
+        </div>
+    </div>
+    <!--== Preloader Area End ==-->
+
+    <jsp:include page="/inc/Header.jsp"></jsp:include>
+    <!--== Header Area End ==-->
+
+    <!--== Page Title Area Start ==-->
+    <section id="page-title-area" class="section-padding overlay">
+        <div class="container">
+            <div class="row">
+                <!-- Page Title Start -->
+                <div class="col-lg-12">
+                    <div class="section-title  text-center">
+                        <h2>BOOK List</h2>
+                        <span class="title-line"><i class="fa fa-car"></i></span>
+                        <p>Rental list page</p>
+                    </div>
+                </div>
+                <!-- Page Title End -->
+            </div>
+        </div>
+    </section>
+    <!--== Page Title Area End ==-->
+
+    <!--== Car List Area Start ==-->
 <%
 System.out.println(pickup);
 System.out.println(end);
@@ -121,16 +165,36 @@ function search(id){
 </script>
 
 <body>
+<br>
 
+
+        <div class="container">
+<!--             <div class="row"> -->
 <form action="BookForm2.bk" method="post">
-<h2>기간선택</h2>
+                        <div class="single-sidebar">
+                            <h3>Rental List</h3>
+                            <div class="sidebar-body">
+                                <ul class="recent-tips">
+                                    <li class="single-recent-tips">
+                                        <div class="recent-tip-thum">
+                                            <a href="#"><img src="assets/img/we-do/service1-img.png" alt="JSOFT"></a>
+                                        </div>
+                                        <div class="recent-tip-body">
+                                            <h4><a href="#">기간선택</a></h4>
+                                            <span class="date">
+          인수날짜 : <input type="date" id="pickup_date" name="pickup_date" value="<%=pickup %>"> 
+도착날짜 : <input type="date" id="end_date" name="end_date" value="<%=end %>"> </span>
+                                        </div>
+                                    </li>
 
-인수날짜 : <input type="date" id="pickup_date" name="pickup_date" value="<%=pickup %>"><br>
-도착날짜 : <input type="date" id="end_date" name="end_date" value="<%=end %>"><br>
-
-<h2>차량유형 선택</h2>	
- 
-<table id="Car_list">
+                                    <li class="single-recent-tips">
+                                        <div class="recent-tip-thum">
+                                            <a href="#"><img src="assets/img/we-do/service3-img.png" alt="JSOFT"></a>
+                                        </div>
+                                        <div class="recent-tip-body">
+                                            <h4><a href="#">차량유형 선택</a></h4>
+                                            <span class="date">
+                                            <table id="Car_list" style="float: left;">
 <tr>
 <td>경차<input type="radio" name="SelCar" value="경차" <%if(SelCarType.equals("경차")){ %>checked<%} %>></td>
 <td>소형<input type="radio" name="SelCar" value="소형" <%if(SelCarType.equals("소형")){ %>checked<%} %>></td>
@@ -147,45 +211,70 @@ function search(id){
 <td>수입차<input type="radio" name="SelCar"  value="수입차"  <%if(SelCarType.equals("수입차")){ %>checked<%} %>></td>
 </tr>
 </table>
+<input type="submit" value="재검색" ><br></span>
+                                        </div>
+                                    </li>
 
-<input type="submit" value="재검색"><br>
-</form>
-
-
-<form action="BookPro.bk" method="post">
-<input type="hidden" id="pickup_date" name="pickup_date" value="<%=pickup %>">
+                                    <li class="single-recent-tips">
+                                        <div class="recent-tip-thum">
+                                            <a href="#"><img src="assets/img/we-do/service2-img.png" alt="JSOFT"></a>
+                                        </div>
+                                        <div class="recent-tip-body">
+                                            <h4><a href="#">How to Enjoy Losses Angeles Car Rentals</a></h4>
+                                            <span class="date"><input type="hidden" id="pickup_date" name="pickup_date" value="<%=pickup %>">
+                                            
 <input type="hidden" id="end_date" name="end_date" value="<%=end %>">
+                                            </span>
+                                        </div>
+                                    </li>
 
-<table id="carselect">
+                                </ul>
+                            </div>
+                        </div>
+            </form>
+            
+        
 
 
 
-			<tr >
-				<td width="100">차량명</td>
-				<td width="400">제조사</td>
-				<td width="150">분류</td>
-				<td width="100">가격</td>
-				<td width="100">색상</td>
-				<td width="100">선택</td>
-			</tr>
-				
+
+
+
+ 
+ 
+
+
+
+
+ 
+ 
+
+
+
+ 
+ 
+ <form action="BookPro.bk" method="post">
+ 
+  <section id="car-list-area" class="section-padding">
+        <div class="container">
+            <div class="row">
+                <!-- Car List Content Start -->
+                <div class="col-lg-12">
+                    <div class="car-list-content">
+                        <div class="row">
+                            <!-- Single Car Start -->
+           
+           
+           
+           
+           
+            <table id="carselect">
+	
 				
 				
 			
 			
 			<%
-			
-// 			public enum CAR_TYPE{
-// 				경차(0,"경차"),
-// 				소형(1,"소형"),
-// 				중형(2,"중형"),
-// 				준대형(3,"준대형"),
-// 				대형(4,"대형"),
-// 				승합(5,"승합"),
-// 				SUVㅣRV(6,"SUV/RV"),
-// 				전기차(7,"전기차"),
-// 				수입차(8,"수입차");
-			
 			
 			
 			
@@ -198,31 +287,56 @@ function search(id){
 				if(carList.get(i).isCar_is_rent()==true && ct.equals(SelCarType)) {
 			 
 				%>
-				<tr >
-				<td width="100">차량명<%=carList.get(i).getCar_id() %></td>
-				<td width="400">제조사<%=carList.get(i).getCar_maker() %></td>
-				<td width="150">분류<%=carList.get(i).getCar_type() %></td>
-				<td width="100">가격<%=carList.get(i).getCar_price_normal()*rentday %></td>
-				<td width="100">색상<%=carList.get(i).getCar_color() %></td>
-			<%-- 				<td><input type="button" class="selbtn" id="selbtn" onclick= "location.href='BookPro.bk?car_id=<%=carList.get(i).getCar_id()%>&pickup=<%=pickup %>&end=<%=end %>&rentprice=<%=carList.get(i).getCar_price_normal() %>&member_id=<%if(id == null){%><%=snsid%><%}else{%><%=id%><%};%>'" value="예약하기"></td> --%>
-			
+                    <tr >
+                              <div class="col-lg-6 col-md-6">
+                                <div class="single-car-wrap">
+<!--                                     <div class="car-list-thumb car-thumb-1"> -->
+                                    <div>
+                                    <img src="ChartCarimg/<%=carList.get(i).getCar_name()%>.png">
+                                    </div>
+<!--                                     </div> -->
+                                    <div class="car-list-info without-bar">
+                                        <h2><a href="#"><%=carList.get(i).getCar_id() %></a></h2>
+                                        <h5><%=carList.get(i).getCar_maker() %>/<%=carList.get(i).getCar_type() %></h5>
+                                        <p>연식 : <%=carList.get(i).getCar_year() %>/ cc: <%=carList.get(i).getCar_cc() %>/ 트렁크 : <%=carList.get(i).getCar_trunk() %>
+                                       /차량 색상 <%=carList.get(i).getCar_color() %></p>
+                                        <ul class="car-info-list">
+                                            <li><%=carList.get(i).getCar_price_normal()*rentday %></li>
+                                            <li><%=carList.get(i).getCar_oil()%></li>
+                                            <li>Auto</li>
+                                        </ul>
+                                        <p class="rating">
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star unmark"></i>
+                                        </p>
+<!--                                         <a href="#" class="rent-btn">카드</a> -->
+<!--                                          <a href="#" class="rent-btn">무통장</a> -->
 				<%if(id == null){%>
-					
-					<td>
-					<input type="button" class="selbtn" id="selbtn" value="카드결제" onclick="noId()">
-					<input type="button" class="selbtn" id="selbtn" value="무통장입금" onclick="noId()">
-					</td>
+             	 <input type="button" class="rent-btn" id="selbtn" value="카드결제" onclick="noId()">
+					<input type="button" class="rent-btn" id="selbtn" value="무통장입금" onclick="noId()">
 						<%
 						}else{
 						%>
-					
-						<td>
-						<input type="button" class="selbtn" id="selbtn" value="카드결제" onclick="vbank('<%=carList.get(i).getCar_id()%>','<%=pickup%>','<%=end%>','<%=carList.get(i).getCar_price_normal()*rentday%>','<%if(id == null){%><%=snsid%><%}else{%><%=id%><%};%>','<%=SelCarType%>','card')">
-						<input type="button" class="selbtn" id="selbtn" value="무통장입금" onclick="vbank('<%=carList.get(i).getCar_id()%>','<%=pickup%>','<%=end%>','<%=carList.get(i).getCar_price_normal()*rentday%>','<%if(id == null){%><%=snsid%><%}else{%><%=id%><%};%>','<%=SelCarType%>','cash')">
-						</td>
+						<input type="button" class="rent-btn" id="selbtn" value="카드결제" onclick="vbank('<%=carList.get(i).getCar_id()%>','<%=pickup%>','<%=end%>','<%=carList.get(i).getCar_price_normal()*rentday%>','<%if(id == null){%><%=snsid%><%}else{%><%=id%><%};%>','<%=SelCarType%>','card')">
+						<input type="button" class="rent-btn" id="selbtn" value="무통장입금" onclick="vbank('<%=carList.get(i).getCar_id()%>','<%=pickup%>','<%=end%>','<%=carList.get(i).getCar_price_normal()*rentday%>','<%if(id == null){%><%=snsid%><%}else{%><%=id%><%};%>','<%=SelCarType%>','cash')">
+						
 					<%
 					}
 					%>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Single Car End -->
+ 
+
+
+					
+
+					
+
 				
 			<%
 			}
@@ -231,6 +345,33 @@ function search(id){
 			</table>
 
 </form>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Articles Content End -->
+                        </div>
+                    </article>
+                </div>
+                <!-- Single Articles End -->
+
+                
+
+            
+            </div>
+
+            <div class="row">
+
+            </div>
+        </div>
+    </div>
+    <!--== Car List Area End ==-->
+
+
+        <jsp:include page="/inc/Footer.jsp"></jsp:include>
+
+
 </body>
 
 
