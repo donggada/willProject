@@ -140,11 +140,11 @@
 
                        <form action="BookForm2.bk" method="post">
                             <div class="pick-date bookinput-item">
-                               <input type="date" id="pickup_date" name="pickup_date">
+                               <input type="date" id="pickup_date" name="pickup_date" style="height: 40px;" >
                             </div>
 
                             <div class="retern-date bookinput-item">
-                               <input type="date" id="end_date" name="end_date">
+                               <input type="date" id="end_date" name="end_date" style="height: 40px;">
                             </div>
 
                             <div class="car-choose bookinput-item">
