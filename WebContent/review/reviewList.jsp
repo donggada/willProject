@@ -97,7 +97,7 @@ int endPage = pageInfo.getEndPage();
                             <!-- Articles Thumbnail Start -->
                             <div class="col-lg-4">
                                 <div class="article-thumb">
-                                    <img src="../reviewUpload/<%=articleList.get(i).getReview_file() %>" alt="JSOFT" width="500" height="300">
+                                    <img src="reviewUpload/<%=articleList.get(i).getReview_file() %>" alt="JSOFT" width="500" height="300">
                             <!-- Articles Thumbnail End -->
                                 </div>
                             </div>
