@@ -144,6 +144,7 @@
 			<%=articleList.get(i).getCar_type() %>
 			</td>
 			<td>
+			<%=articleList.get(i).getCar_price_normal() %>
 			</td>
 					
 					

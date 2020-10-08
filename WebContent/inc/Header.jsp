@@ -129,27 +129,20 @@
 				<div class="col-lg-8 d-none d-xl-block">
 					<nav class="mainmenu alignright">
 						<ul style="list-style: none;">
-							<li class="active"><a href="#">Home</a> <!--                                     <ul> -->
+							<li class="active"><a href="index.jsp">Home</a> <!--                                     <ul> -->
 								<!--                                         <li><a href="index.jsp">Home 1</a></li> -->
 								<!--                                     </ul> --></li>
-							<li><a href="#">About</a></li>
-							<li><a href="#">services</a></li>
+							<li><a onclick="OpenMap()">코로나Map</a></li>
 							<li><a href="carIntro.rw">차량 소개</a></li>
-							<li><a href="index.jsp">Pages</a>
-								<ul>
-									<li><a href="package.html">Pricing</a></li>
-									<li><a href="driver.html">Driver</a></li>
+							<li><a href="#">고객센터</a>
+								<ul>				
 									<li><a href="faqlist.fbo">FAQ</a></li>
 									<li><a href="qnawrite.bo">Q&A</a></li>
-									<li><a href="gallery.html">Gallery</a></li>
-									<li><a href="help-desk.html">Help Desk</a></li>
-									<li><a href="login.html">Log In</a></li>
-									<li><a href="register.html">Register</a></li>
-									<li><a href="404.html">404</a></li>
-								</ul></li>
+								</ul>
+							</li>
 							<li><a href="ReviewList.rw">Review</a>
 								</li>
-							<li><a href="contact.html">Contact</a></li>
+							<li><a href="#">Contact</a></li>
 						</ul>
 					</nav>
 				</div>
@@ -160,6 +153,18 @@
 	<!--== Header Bottom End ==-->
 </header>
 <script type="text/javascript">
+var popupX = (window.screen.width/2)-(500/2);
+//만들 팝업창 좌우 크기의 1/2 만큼 보정값으로 빼주었음
+
+var popupY= (window.screen.height/2)-(500/2);
+//만들 팝업창 상하 크기의 1/2 만큼 보정값으로 빼주었음
+
+function OpenMap()
+{
+  // window.open("open할 window", "자식창 이름", "팝업창 옵션"); 
+ window.open('map/maptest.jsp', '코로나 Map', 'status=no, height=600, width=600, left='+ popupX + ', top='+ popupY + ', screenX='+ popupX + ', screenY= '+ popupY);
+}
+
  function logout() {
 	 sessionStorage.clear();
 	 alert("로그아웃");
