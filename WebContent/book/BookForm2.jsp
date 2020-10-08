@@ -78,7 +78,7 @@
 		var SelCarType = f
 		var type = g
 		alert(g);
-		window.open("BookPro3.bk?car_id="+car_id+"&pickup="+pickup+"&end="+end+"&rentprice="+price+"&member_id="+member_id+"&SelCarType="+SelCarType+"&payType="+type,"카드결제","width=900,height=600");
+		window.open("BookPro3.bk?car_id="+car_id+"&pickup="+pickup+"&end="+end+"&rentprice="+price+"&member_id="+member_id+"&SelCarType="+SelCarType+"&payType="+type,"카드결제","width=1100,height=850");
 	}
 	
 	function noId(){

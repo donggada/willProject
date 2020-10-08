@@ -71,14 +71,17 @@ public class BookDAO {
 				}
 			}
 
-			sql = "insert into book(book_num, car_id, pickup_date, end_date, book_date) values(?,?,?,?,now()) ";
+			sql = "insert into book(book_num, car_id, pickup_date, end_date,member_id, book_price, book_state, book_date) values(?,?,?,?,?,?,?,now()) ";
 			pstmt = con.prepareStatement(sql);
 
 			pstmt.setInt(1, finalNum);
 			pstmt.setString(2, article.getCar_id());
 			pstmt.setDate(3, article.getPickup_date()); // 수령
 			pstmt.setDate(4, article.getEnd_date()); // 반납
-
+			pstmt.setString(5, article.getMember_id());
+			pstmt.setInt(6, article.getBook_price());
+			pstmt.setInt(7, article.getBook_state());
+			
 			insertCount = pstmt.executeUpdate();
 
 		} catch (SQLException e) {
