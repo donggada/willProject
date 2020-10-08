@@ -298,10 +298,11 @@ function search(id){
                                     <div class="car-list-info without-bar">
                                         <h2><a href="#"><%=carList.get(i).getCar_id() %></a></h2>
                                         <h5><%=carList.get(i).getCar_maker() %>/<%=carList.get(i).getCar_type() %></h5>
-                                        <p>Vivamus eget nibh. Etiam cursus leo vel metus. Nulla facilisi. Aenean inorci luctus et ultrices posuere cubilia.</p>
+                                        <p>연식 : <%=carList.get(i).getCar_year() %>/ cc: <%=carList.get(i).getCar_cc() %>/ 트렁크 : <%=carList.get(i).getCar_trunk() %>
+                                       /차량 색상 <%=carList.get(i).getCar_color() %></p>
                                         <ul class="car-info-list">
                                             <li><%=carList.get(i).getCar_price_normal()*rentday %></li>
-                                            <li>Diesel</li>
+                                            <li><%=carList.get(i).getCar_oil()%></li>
                                             <li>Auto</li>
                                         </ul>
                                         <p class="rating">
