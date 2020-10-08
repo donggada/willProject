@@ -131,8 +131,10 @@
 						<ul style="list-style: none;">
 							<li class="active"><a href="index.jsp">Home</a> <!--                                     <ul> -->
 								<!--                                         <li><a href="index.jsp">Home 1</a></li> -->
-								<!--                                     </ul> --></li>
-							<li><a onclick="OpenMap()">코로나Map</a></li>
+                <!--                                     </ul> --></li>
+		
+              <li><a href="carIntro.bk">차량 소개</a></li>
+		  				<li><a onclick="OpenMap()">코로나Map</a></li>
 							<li><a href="carIntro.rw">차량 소개</a></li>
 							<li><a href="#">고객센터</a>
 								<ul>				

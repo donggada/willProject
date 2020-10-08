@@ -1,15 +1,5 @@
-<%@page import="book.vo.PageInfo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
-    <%
-    PageInfo pageInfo = (PageInfo)request.getAttribute("pageInfo");
-    int listCount = pageInfo.getListCount();
-    int nowPage = pageInfo.getPage();
-    int maxPage = pageInfo.getMaxPage();
-    int startPage = pageInfo.getStartPage();
-    int endPage = pageInfo.getEndPage();
-    %>
 <!DOCTYPE html>
 <html class="no-js" lang="en">
 <head>
@@ -76,71 +66,57 @@
         </div>
     </section>
     <!--== Page Title Area End ==-->
-    <section id="car-list-area" class="section-padding">
+    <!--== Gallery Page Content Start ==-->
+    <section id="gallery-page-content" class="section-padding">
         <div class="container">
-            <div class="row">
-                <!-- Car List Content Start -->
-                <div class="col-lg-12">
-                    <div class="car-list-content">
-                        <div class="row">
-                            <!-- Single Car Start -->
-                            <div class="col-lg-6 col-md-6">
-                                <div class="single-car-wrap">
-                                    <div class="car-list-thumb car-thumb-1"></div>
-                                    <div class="car-list-info without-bar">
-                                        <h2><a href="#">Aston Martin One-77</a></h2>
-                                        <h5>39$ Rent /per a day</h5>
-                                        <p>Vivamus eget nibh. Etiam cursus leo vel metus. Nulla facilisi. Aenean inorci luctus et ultrices posuere cubilia.</p>
-                                        <ul class="car-info-list">
-                                            <li>AC</li>
-                                            <li>Diesel</li>
-                                            <li>Auto</li>
-                                        </ul>
-                                        <p class="rating">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star unmark"></i>
-                                        </p>
-                                        <a href="#" class="rent-btn">Book It</a>
-                                    </div>
-                                </div>
-                            </div>
-                       <!-- Single Car End -->
-                        </div>
-                    </div>
-                     <!-- Page Pagination Start -->
-                             <div class="page-pagi">
-                        <nav aria-label="Page navigation example">
-                            <ul class="pagination">
-                            <%if(nowPage<=1) {%>
-                                <li class="page-item"><a class="page-link">Previous</a></li>
-                                <%}else{ %>
-                                <li class="page-item"><a class="page-link" href="carIntro.rw?page=<%=nowPage-1 %>">Previous</a></li><%} %>
-                                
-                                <%for(int a=startPage; a<=endPage; a++){
-                                	if(a==nowPage){%>
-                                	<li class="page-item active"><a class="page-link"><%=a %></a><%}else{ %>
-                                	
-                                <li class="page-item"><a class="page-link" href="carIntro.rw?page=<%=a %>"><%=a %></a>
-                                <%} %>
-                                <%} %>
-                                
-                               <%if(nowPage>=maxPage){ %>
-                               <li class="page-item"><a class="page-link" href="#">Next</a>
-                               <%}else{ %>
-                                <li class="page-item"><a class="page-link" href="carIntro.rw?page=<%=nowPage+1 %>">Next</a><%} %>
-                            </ul>
-                        </nav>
-                    </div>
-                    <!-- Page Pagination End -->
-                </div>
-                <!-- Car List Content End -->
-          </div>
+        	<div class="row">
+        		<div class="col-lg-12">
+					<div class="popular-cars-wrap">
+						<!-- Filtering Menu -->
+						<div class="popucar-menu text-center">
+							<a href="#" data-filter="*" class="active">all</a>
+							<a href="#" data-filter=".con">Conver</a>
+							<a href="#" data-filter=".hat">Truck</a>
+							<a href="#" data-filter=".mpv">MPV</a>
+							<a href="#" data-filter=".sedan">Sedan</a>
+							<a href="#" data-filter=".suv">SUV</a>
+						</div>
+						<!-- Filtering Menu -->
+       			
+						<div class="row popular-car-gird">
+							<!-- Single Popular Car Start -->
+							<div class="col-lg-4 col-md-6 con suv mpv">
+								<div class="single-popular-car">
+									<div class="p-car-thumbnails">
+										<a class="car-hover" href="assets/img/car/car-1.jpg">
+										  <img src="assets/img/car/car-1.jpg" alt="JSOFT">
+									   </a>
+									</div>
+
+									<div class="p-car-content">
+										<h3>
+											<a href="#">Dodge Ram 1500</a>
+											<span class="price"><i class="fa fa-tag"></i> $55/day</span>
+										</h3>
+
+										<h5>HATCHBACK</h5>
+
+										<div class="p-car-feature">
+											<a href="#">2017</a>
+											<a href="#">manual</a>
+											<a href="#">AIR CONDITION</a>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- Single Popular Car End -->
+						</div>
+        			</div>
+        		</div>
+        	</div>
         </div>
     </section>
-    <!--== Car List Area End ==-->
+    <!--== Gallery Page Content End ==-->
         <!--== Footer Area Start ==-->
     <jsp:include page="../inc/Footer.jsp" />
 </body>
