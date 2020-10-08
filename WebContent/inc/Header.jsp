@@ -134,7 +134,7 @@
 								<!--                                     </ul> --></li>
 							<li><a href="#">About</a></li>
 							<li><a href="#">services</a></li>
-							<li><a href="carIntro.rw">차량 소개</a></li>
+							<li><a href="carIntro.bk">차량 소개</a></li>
 							<li><a href="index.jsp">Pages</a>
 								<ul>
 									<li><a href="package.html">Pricing</a></li>

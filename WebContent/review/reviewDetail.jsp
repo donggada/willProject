@@ -15,27 +15,6 @@ String nowPage = (String)request.getAttribute("page");
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--=== Favicon ===-->
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-
-    <title>WillRent - ReviewDetail</title>
-<script src="js/jquery-3.5.1.js"></script>
-<script type="text/javascript">
-$(document).ready(function(){
-	$('#recobtn').click(function(){
-		$.ajax({
-			url:"ReviewRecoCheck.rw",
-			dataType: "json",
-			data:{
-				review_num:$('#review_num').val(),
-				page:$('#page').val()
-			},
-			success: function(returndata){
-				$('#test2').html(returndata.recoCount);
-				
-			}
-		});
-	});
-});
-</script>
 <!--=== Bootstrap CSS ===-->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
     <!--=== Slicknav CSS ===-->
@@ -54,7 +33,27 @@ $(document).ready(function(){
     <link href="style.css" rel="stylesheet">
     <!--=== Responsive CSS ===-->
     <link href="assets/css/responsive.css" rel="stylesheet">
-
+    
+    <title>WillRent - ReviewDetail</title>
+<script src="js/jquery-3.5.1.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$('#recobtn').click(function(){
+		$.ajax({
+			url:"ReviewRecoCheck.rw",
+			dataType: "json",
+			data:{
+				review_num:$('#review_num').val(),
+				page:$('#page').val()
+			},
+			success: function(returndata){
+				$('#recobtn').html("&#xf087; "+returndata.recoCount);
+				
+			}
+		});
+	});
+});
+</script>
 </head>
 <body class="loader-active">
 
@@ -129,7 +128,7 @@ $(document).ready(function(){
 <div id="recodiv" class="input-submit">
 <input type="hidden" name="review_num" id="review_num" value="<%=article.getReview_num() %>">
 <input type="hidden" name="page" id="page" value="<%=nowPage %>">
-<Button type="submit" value="추천하기" id="recobtn">추천</Button>
+<Button type="submit" value="추천하기" id="recobtn" class="fa">&#xf087; <%=article.getReview_recocount() %></Button>
 </div>
 </div>
 <%String id=(String)session.getAttribute("Member_id");
