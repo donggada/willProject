@@ -116,8 +116,12 @@
            
                   <li class="list-group-item">
                   첨부파일 : 
+                  <%if(article.getQnaBoard_file()!=null) {%>
                   <a href="qnaboardfiledowun.bo?file_name=<%=article.getQnaBoard_file()%>"> <%=article.getQnaBoard_file() %>
                   </li></a>
+                  <%}else{ %>
+                  	첨부파일 없음
+                  <%} %>
                 </ul>
                 <div class="card-footer text-muted">
                  작성일 : <%=article.getQnaBoard_date() %>  
@@ -164,7 +168,9 @@
                 <div class="card-body">
                     <textarea name="qnaBoard_reply" class="form-control" name="qnaBoard_reply" rows="4" readonly="readonly"><%if(article.getQnaboard_reply()!=null){ %>
                     <%=article.getQnaboard_reply()%>
-                    <%}{} %>
+                    <%}{%>
+                    	미답변
+                   <% } %>
                     </textarea>
                 </div>
         		  <ul class="list-group list-group-flush">
@@ -175,7 +181,11 @@
                 
                 
                 <div class="card-footer text-muted">
+                <%if(article.getQnaBoard_reply_date()!=null){ %>
                작성일 : <%=article.getQnaBoard_reply_date()%>
+               <%}{ %>
+               미답변
+               <%} %>
                 </div>
               </div>
               </div>

@@ -96,7 +96,7 @@ $(document).ready(function(){
                         <h2><%=article.getReview_subject() %><span class="price">작성자: <b><%=article.getMember_id() %></b></span></h2>
                         <%if(article.getReview_file()!=null){ %>
                         <div>
-                           <img src="../WillProject-1/reviewUpload/<%=article.getReview_file()%>"><br>
+                           <img src="reviewUpload/<%=article.getReview_file()%>"><br>
                         </div><%} %>
                         <div class="car-details-info">
                             <p><%=article.getReview_content() %></p>
