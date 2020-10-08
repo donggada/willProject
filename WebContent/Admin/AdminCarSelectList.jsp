@@ -81,8 +81,8 @@
 			<%for(int i = 0; i < articleList.size(); i++) {%>
 			
 				<tr>
-				<th scope="row">
-					<%=articleList.get(i).getCar_id()%>	
+				<th scope="row" onclick="DetailCarInfo(<%=articleList.get(i).getCar_id()%>)" style="text-align: center;">
+					<%=articleList.get(i).getCar_num()%>	
 					</th>
 					
 					<th scope="row">
@@ -98,6 +98,7 @@
 			<%=articleList.get(i).getCar_type() %>
 			</td>
 			<td>
+			<%=articleList.get(i).getCar_price_normal() %>
 			</td>
 					
 					
@@ -198,6 +199,18 @@ function removeCheck(idx) {
      return false;
  
  }
+}
+
+var popupX = (window.screen.width/2)-(500/2);
+//만들 팝업창 좌우 크기의 1/2 만큼 보정값으로 빼주었음
+
+var popupY= (window.screen.height/2)-(500/2);
+//만들 팝업창 상하 크기의 1/2 만큼 보정값으로 빼주었음
+
+function DetailCarInfo(car_id)
+{
+  // window.open("open할 window", "자식창 이름", "팝업창 옵션"); 
+ window.open('Admin/DetailCarInfo.jsp?car_id='+car_id, 'DetailCarInfo', 'status=no, height=490, width=500, left='+ popupX + ', top='+ popupY + ', screenX='+ popupX + ', screenY= '+ popupY);
 }
 </script>
      

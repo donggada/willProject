@@ -229,6 +229,8 @@ ArrayList<CarBean> CarList = null;
 			cb.setCar_maker(rs.getString("car_maker"));
 			cb.setCar_name(rs.getString("car_name"));
 			cb.setCar_type(CAR_TYPE.values()[rs.getInt("car_type")].toString());
+			cb.setCar_price_normal(rs.getInt("car_price_normal"));
+			
 	
 			
 			CarList.add(cb);
@@ -271,6 +273,7 @@ public ArrayList<CarBean> selectCarList(String carsearch1, String carsearch2, in
 			cb.setCar_name(rs.getString("car_name"));
 			cb.setCar_type(CAR_TYPE.values()[rs.getInt("car_type")].toString());
 			cb.setCar_num(rs.getString("car_num"));
+			cb.setCar_price_normal(rs.getInt("car_price_normal"));
 			SelectCarList.add(cb);
 		}
 		
