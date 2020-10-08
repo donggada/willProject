@@ -819,8 +819,6 @@
 	<!--== Scroll Top Area Start ==-->
 	<div id="chat">
 		<!-- <img alt="카카오" src="img/pc_img_kakao.jpg" onclick="script:alert('아직은 미지원 입니다 ^^b');"><br> -->
-		<img alt="웹 채팅" src="img/pc_btn_chat.png"
-			onclick="window.open('chat/chat_bot.jsp','new','width=800, height=600, resizable=no')">
 	</div>
 	<div class="scroll-top">
 		<img src="assets/img/scroll-top.png" alt="JSOFT">
