@@ -107,14 +107,14 @@ public class BookFrontController extends HttpServlet {
 				e.printStackTrace();
 			} // coronaData.bk
 		}else if(command.equals("/carIntro.bk")) { //리뷰글 목록
-			forward = new ActionForward();
-			forward.setPath("/carIntro/carIntro.jsp");
-//			action = new CarListCountAction();
-//			try {
-//				forward = action.execute(request, response);
-//			} catch (Exception e) {
-//				e.printStackTrace();
-//			}
+//			forward = new ActionForward();
+//			forward.setPath("/carIntro/carIntro.jsp");
+			action = new CarListCountAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 
 		if (forward != null) {

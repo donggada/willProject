@@ -668,7 +668,7 @@ public class CarDAO {
 			
 			try {
 				int startRow = (page-1) *3;
-				String sql = "SELECT * FROM car ORDER BY car_name DESC LIMIT ?,?";
+				String sql = "SELECT * FROM car LIMIT ?,?";
 				pstmt = con.prepareStatement(sql);
 				pstmt.setInt(1, startRow);
 				pstmt.setInt(2, limit);
@@ -677,7 +677,7 @@ public class CarDAO {
 				carList = new ArrayList<CarBean>();
 				while(rs.next()) {
 					CarBean mb = new CarBean();
-
+					
 					mb.setCar_cc(rs.getInt("car_cc"));
 					mb.setCar_color(rs.getString("car_color"));
 					mb.setCar_function(rs.getInt("car_function"));
