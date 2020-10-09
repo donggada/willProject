@@ -4,7 +4,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%
-ArrayList<CarBean> articleList = (ArrayList<CarBean>)request.getAttribute("articleList");
+	ArrayList<CarBean> articleList = (ArrayList<CarBean>)request.getAttribute("articleList");
     PageInfo pageInfo = (PageInfo)request.getAttribute("pageInfo");
     int listCount = pageInfo.getListCount();
     int nowPage = pageInfo.getPage();
@@ -103,7 +103,7 @@ ArrayList<CarBean> articleList = (ArrayList<CarBean>)request.getAttribute("artic
 										%>
 						<div class="row popular-car-gird">
 							<!-- Single Popular Car Start -->
-							<div class="col-lg-4 col-md-6 <%=articleList.get(i).getCar_maker() %>">
+							<div class="col-lg-4 col-md-6 <%=articleList.get(i).getCar_maker() %>" style="position: absolute; left: 0px; top: 0px;">
 								<div class="single-popular-car">
 									<div class="p-car-thumbnails">
 										<a class="car-hover" href="assets/img/car/<%=articleList.get(i).getCar_name() %>.JPG">
@@ -114,7 +114,7 @@ ArrayList<CarBean> articleList = (ArrayList<CarBean>)request.getAttribute("artic
 									<div class="p-car-content">
 										<h3>
 											<a href="#"><%=articleList.get(i).getCar_name() %></a>
-											<span class="price"><i class="fa fa-tag"></i> $55/day</span>
+											<span class="price"><i class="fa fa-tag"></i> </span>
 										</h3>
 										
 										<h5>차 메이커</h5>
@@ -135,6 +135,7 @@ ArrayList<CarBean> articleList = (ArrayList<CarBean>)request.getAttribute("artic
 							</div>
 							<!-- Single Popular Car End -->
 						</div>
+						
 							<%}%>
         			</div>
         		</div>
@@ -143,6 +144,35 @@ ArrayList<CarBean> articleList = (ArrayList<CarBean>)request.getAttribute("artic
         	<%}%>
     </section>
     <!--== Gallery Page Content End ==-->
+    
+    <div id="blog-page-content" class="section-padding">
+        <div class="container">
+            <div class="row">
+    <div class="page-pagi">
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination">
+                                <%if(nowPage<=1) {%>
+                                <li class="page-item"><a class="page-link">Previous</a></li>
+                                <%}else{ %>
+                                <li class="page-item"><a class="page-link" href="carIntro.bk?page=<%=nowPage-1 %>">Previous</a></li><%} %>
+                                
+                                <%for(int a=startPage; a<=endPage; a++){
+                                	if(a==nowPage){%>
+                                	<li class="page-item active"><a class="page-link"><%=a %></a><%}else{ %>
+                                	
+                                <li class="page-item"><a class="page-link" href="carIntro.bk?page=<%=a %>"><%=a %></a>
+                                <%} %>
+                                <%} %>
+                                
+                               <%if(nowPage>=maxPage){ %>
+                               <li class="page-item"><a class="page-link" href="#">Next</a>
+                               <%}else{ %>
+                                <li class="page-item"><a class="page-link" href="carIntro.bk?page=<%=nowPage+1 %>">Next</a><%} %>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+                </div></div>
         <!--== Footer Area Start ==-->
     <jsp:include page="../inc/Footer.jsp" />
 </body>

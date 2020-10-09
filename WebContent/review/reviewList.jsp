@@ -80,30 +80,26 @@ int endPage = pageInfo.getEndPage();
         </div>
     </section>
     <!--== Page Title Area End ==-->
-
-   
-                <%
-							if(articleList != null && listCount>0){%>
+    
+  <!--== Car List Area Start ==-->
+							<%if(articleList != null && listCount>0){%>
     <div id="blog-page-content" class="section-padding">
         <div class="container">
             <div class="row">
-                <div class="col-lg-15">
-                                        
+                <!-- Single Articles Start -->
+                <div class="col-lg-12">
                     <article class="single-article">
                         <div class="row">
-                        <%
-								for(int i=0; i<articleList.size(); i++) {
-										%>
-                            <!-- Articles Thumbnail Start -->
-                            <div class="col-lg-4">
+<%							for(int i=0; i<articleList.size(); i++) {%>
+                        <!-- Articles Thumbnail Start -->
+                            <div class="col-lg-5">
                                 <div class="article-thumb">
-                                    <img src="reviewUpload/<%=articleList.get(i).getReview_file() %>" alt="JSOFT" width="500" height="300">
-                            <!-- Articles Thumbnail End -->
+                                    <img src="reviewUpload/<%=articleList.get(i).getReview_file()%>" alt="JSOFT">
                                 </div>
                             </div>
-
-                            <!-- Articles Content Start -->
-                            <div class="col-lg-5">
+                            <!-- Articles Thumbnail End -->
+							<!-- Articles Content Start -->
+                            <div class="col-lg-7">
                                 <div class="display-table">
                                     <div class="display-table-cell">
                                         <div class="article-body">
@@ -111,21 +107,28 @@ int endPage = pageInfo.getEndPage();
                                             <div class="article-meta">
                                                 <a class="author">작성자 <span><%=articleList.get(i).getMember_id() %></span></a>
                                                 <a class="commnet">추천 <span><%=articleList.get(i).getReview_recocount() %></span></a>
-                                                <a class="commnet">조회수 <span><%=articleList.get(i).getReview_readcount() %></span></a>
-                                            </div>
+                                                <a class="commnet">조회수 <span><%=articleList.get(i).getReview_readcount() %></span></a>                                            </div>
                                             <div class="article-date"><span class="month"><%=articleList.get(i).getReview_date() %></span></div>
 										    <a href="ReviewDetail.rw?review_num=<%=articleList.get(i).getReview_num() %>&page=<%=nowPage %>" class="readmore-btn">보기<i class="fa fa-long-arrow-right"></i></a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                                             <%}%>
-								</div>
-								</article>
-								</div>
-								</div>
-								<%}%>
-                           
+                            <!-- Articles Content End -->
+                        <%} %>
+        				</div>
+                    </article>
+                </div>
+                <!-- Single Articles End -->
+            </div>
+        </div>
+    </div>
+    <%} %>
+    <!--== Car List Area End ==-->
+    
+	<!-- Page Pagination Start -->
+      <div id="blog-page-content" class="section-padding">
+        <div class="container">
             <div class="row">
                 <!-- Page Pagination Start -->
                 <div class="col-lg-12">
