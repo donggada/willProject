@@ -108,7 +108,7 @@ function bookSearch(){
 
                                 <div class="col-lg-6 col-md-6">
                                     <div class="website-input">
-                                        <input type="text" placeholder="차량번호" name="car_id" id="car_id">
+                                        <input type="text" placeholder="차량정보" name="car_id" id="car_id">
                                     </div>
                                 </div>
                                  <div class="col-lg-6 col-md-6">

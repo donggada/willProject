@@ -52,10 +52,10 @@ public class CarListService {
 			int listCount = 0;
 			
 			Connection con = getConnection();
-			CarDAO reviewDAO = CarDAO.getInstance();
-			reviewDAO.setConnection(con);
+			CarDAO carDAO = CarDAO.getInstance();
+			carDAO.setConnection(con);
 			
-			listCount = reviewDAO.selectCarCount();
+			listCount = carDAO.selectCarCount();
 			close(con);
 			
 			return listCount;
