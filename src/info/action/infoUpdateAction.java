@@ -22,6 +22,12 @@ public class infoUpdateAction implements Action {
 		String name = (String)request.getParameter("name");
 		String age = (String)request.getParameter("age");
 		String tel = (String)request.getParameter("tel");
+		String pass = (String)request.getParameter("pass");
+		String license = (String)request.getParameter("license");
+		String smoke = (String)request.getParameter("smoke");
+		String pet = (String)request.getParameter("pet");
+		String baby = (String)request.getParameter("baby");
+		
 		String id = (String)session.getAttribute("Member_id");
 		
 		ListBean lb = new ListBean();
@@ -29,6 +35,11 @@ public class infoUpdateAction implements Action {
 		lb.setName(name);
 		lb.setAge(age);
 		lb.setTel(tel);
+		lb.setPass(pass);
+		lb.setLicense(license);
+		lb.setSmoke(smoke);
+		lb.setPet(pet);
+		lb.setBaby(baby);
 		
 		infoUpdateService service = new infoUpdateService();
 		boolean check = service.updateInfo(lb);
