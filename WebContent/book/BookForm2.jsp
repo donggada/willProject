@@ -14,13 +14,24 @@
       String end = request.getParameter("end_date"); 
       String SelCarType = request.getParameter("SelCar"); 
       
+      String pet = request.getParameter("option_pet");
+      String baby = request.getParameter("option_baby");
+      String smoke = request.getParameter("option_smoke");
+      
+      
       LinkedList<CarBean> carList = (LinkedList<CarBean>)request.getAttribute("carList");
 //       ArrayList<BookBean> bookList =(ArrayList<BookBean>)request.getAttribute("bookList");
 
 	 	int rentday = (int)request.getAttribute("rentday");
 	 	System.out.println(rentday);
-	System.out.println(snsid);
+		System.out.println(snsid);
 		System.out.println(id);
+		
+		System.out.println("북폼2"+baby);
+		System.out.println(pet);
+		System.out.println("Somke : " + smoke);
+		
+		
 		
     %>
     
@@ -210,7 +221,24 @@ function search(id){
 <td>전기차<input type="radio" name="SelCar"  value="전기차" <%if(SelCarType.equals("전기차")){ %>checked<%} %>></td>
 <td>수입차<input type="radio" name="SelCar"  value="수입차"  <%if(SelCarType.equals("수입차")){ %>checked<%} %>></td>
 </tr>
-</table>
+</table><br>
+
+
+<br>
+<br>
+ <h4><a href="#">추가 선택 사항</a></h4><br>
+ (미선택시 회원가입시 입력 사항으로 초기 검색 됩니다.)<br>
+ 
+ 
+ <input type="checkbox" name="option_baby" value="아기" />아기 카시트
+<input type="checkbox" name="option_smoke" value="흡연" />흡연여부
+<input type="checkbox" name="option_pet" value="동물" />애완동물
+
+
+<%-- <input type="checkbox" name="option_baby" value="아기" <%if(baby.equals("아기")){%>checked <%}%>/>아기 카시트 --%>
+<%-- <input type="checkbox" name="option_smoke" value="흡연" <%if(smoke.equals("흡연")){%>checked <%}%>/>흡연여부 --%>
+<%-- <input type="checkbox" name="option_pet" value="동물" <%if(pet.equals("동물")){%> checked <%}%>/>애완동물 --%>
+	<br>						 `
 <input type="submit" value="재검색" ><br></span>
                                         </div>
                                     </li>

@@ -118,6 +118,24 @@ public class MemberListService {
 		return memberList;
 	}
 	
-	
+	public MemberBean selectMemberBean(String id) {
+	MemberBean memberBean = null;
+		
+		
+		Connection con = getConnection();
+		
+		AdminDAO adao = AdminDAO.adao;
+		
+		
+		adao.setConnection(con);
+		
+		
+		memberBean = adao.selectMemberBean(id);
+		
+		
+		close(con);
+		
+		return memberBean;
+	}
 
 }

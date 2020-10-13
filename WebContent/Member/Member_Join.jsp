@@ -129,8 +129,8 @@
                                  <div class="pickup-location book-item">
                                     <h4>선택사항</h4>
                                     흡연여부<input type="checkbox" name="smoke" value="흡연">
-									애완동물<input type="checkbox" name="pet" value="동물">
-									아기(카시트)<input type="checkbox" name="baby" value="아기">
+				애완동물<input type="checkbox" name="pet" value="동물">
+				아기(카시트)<input type="checkbox" name="baby" value="아기">
                                     
                                 </div>
                               

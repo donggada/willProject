@@ -990,7 +990,48 @@ ArrayList<CarBean> CarList = null;
 	return CarList;
 }
 
-
+public MemberBean selectMemberBean(String id) {
+	
+	MemberBean bb = new MemberBean();
+	PreparedStatement pstmt = null;
+	ResultSet rs = null;
+	try {
+		String sql = "SELECT * FROM member where member_id=?";
+	
+		pstmt = con.prepareStatement(sql);
+		pstmt.setString(1, id);
+		rs = pstmt.executeQuery();
+		
+		
+		if(rs.next()) {
+			bb.setMember_num(rs.getInt("member_num"));
+			bb.setMember_name(rs.getString("member_name"));
+			bb.setMember_id(rs.getString("member_id"));
+			bb.setMember_pass(rs.getString("member_pass"));
+			bb.setMember_email(rs.getString("member_email"));
+			bb.setMember_age(rs.getString("member_age"));
+			bb.setMember_gender(rs.getString("member_gender"));
+			bb.setMember_tel(rs.getString("member_tel"));
+			bb.setMember_adress(rs.getString("member_adress"));
+			bb.setMember_license(rs.getString("member_license"));
+			bb.setMember_smoke(rs.getString("member_smoke"));
+			bb.setMember_pet(rs.getString("member_pet"));
+			bb.setMember_boby(rs.getString("member_baby"));
+			bb.setMember_grade(rs.getString("member_grade"));
+		}
+		
+	} catch (SQLException e) {
+		e.printStackTrace();
+		System.out.println("AdminDAO - selectMemberList() 에러!"+e);
+	} finally {
+		
+		close(rs); 
+		close(pstmt);
+	}
+	
+	return bb;
+	
+}
 
 
 }
