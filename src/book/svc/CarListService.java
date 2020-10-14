@@ -30,7 +30,7 @@ public class CarListService {
 		return carList;
 	}
 	
-	public LinkedList<CarBean> getCarLinkedList() {
+	public LinkedList<CarBean> getCarLinkedList(boolean smoke, boolean pet, boolean baby) {
 
 		
 		Connection con = getConnection();
@@ -39,7 +39,7 @@ public class CarListService {
 
 		carDAO.setConnection(con);
 		
-		LinkedList<CarBean> carList = carDAO.getCarLinkedListBean();
+		LinkedList<CarBean> carList = carDAO.getCarLinkedListBeanOption(smoke,pet,baby);
 
 		close(con);
 		
