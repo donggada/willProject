@@ -15,6 +15,7 @@ import admin.action.CarListAction;
 import admin.action.DetailBooktListAction;
 import admin.action.DetailCarListAction;
 import admin.action.GraphProAction;
+import admin.action.InsertCarAction;
 import admin.action.MemberDeleteProAction;
 import admin.action.MemberListAction;
 import admin.action.MemberModifyAction;
@@ -22,6 +23,7 @@ import admin.action.MemberModifyProAction;
 import admin.action.MemberSearchListAction;
 import admin.action.PopUpPageOffAction;
 import admin.action.PopUpPageOnAction;
+import admin.action.PopupPageProAction;
 import admin.action.PopupPageUploadAction;
 import admin.action.QnABoardAction;
 import admin.action.ReviewListAction;
@@ -146,6 +148,24 @@ public class adminFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 			
+		}else if(command.equals("/Pop/PopupPagePro.ad")) {
+			action=new PopupPageProAction();
+			try {
+				forward=action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(command.equals("/insertCar.ad")) {
+			action=new InsertCarAction();
+			try {
+				forward=action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		}else if(command.equals("/insertCarFrom.ad")) {
+			forward=new ActionForward();
+			forward.setPath("/Admin/InsertCar.jsp");
 		}
 		
 		
