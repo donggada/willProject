@@ -667,7 +667,7 @@ public class CarDAO {
 			ResultSet rs = null;
 			
 			try {
-				int startRow = (page-1) *5;
+				int startRow = (page-1) *10;
 				String sql = "SELECT * FROM car LIMIT ?,?";
 				pstmt = con.prepareStatement(sql);
 				pstmt.setInt(1, startRow);
