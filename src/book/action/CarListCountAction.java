@@ -19,7 +19,7 @@ public class CarListCountAction implements Action {
 				ActionForward forward = null;
 				
 				int page = 1;
-				int limit = 5;
+				int limit = 10;
 				
 				if(request.getParameter("page") != null) {
 					page = Integer.parseInt(request.getParameter("page"));
