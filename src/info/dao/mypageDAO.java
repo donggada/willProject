@@ -54,6 +54,7 @@ private static mypageDAO instance;
 			{
 				lb = new ListBean();
 				lb.setId(rs.getString(2));
+				lb.setPass(rs.getString(3));
 				lb.setName(rs.getString(4));
 				lb.setAge(rs.getString(5));
 				lb.setGender(rs.getString(6));
@@ -181,12 +182,19 @@ private static mypageDAO instance;
 		PreparedStatement pstmt = null;
 		try 
 		{
-			String sql = "update member set member_name=?, member_age=?, member_tel=? where member_id=?";
+			String sql = "update member set member_pass=?, member_name=?, member_age=?, member_tel=? "
+					+ ", member_license=? , member_smoke=? , member_pet=? , member_baby=? "
+					+ "where member_id=?";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, lb.getName());
-			pstmt.setString(2, lb.getAge());
-			pstmt.setString(3, lb.getTel());
-			pstmt.setString(4, lb.getId());
+			pstmt.setString(1, lb.getPass());
+			pstmt.setString(2, lb.getName());
+			pstmt.setString(3, lb.getAge());
+			pstmt.setString(4, lb.getTel());
+			pstmt.setString(5, lb.getLicense());
+			pstmt.setString(6, lb.getSmoke());
+			pstmt.setString(7, lb.getPet());
+			pstmt.setString(8, lb.getBaby());
+			pstmt.setString(9, lb.getId());
 			check = pstmt.executeUpdate();
 		} catch (SQLException e) 
 		{
