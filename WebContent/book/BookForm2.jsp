@@ -41,6 +41,7 @@
 		
 		
 		
+
 		
 		
     %>
@@ -240,6 +241,7 @@ function search(id){
  (미선택시 회원가입시 입력 사항으로 초기 검색 됩니다.)<br>
  
  
+
 <!-- <input type="checkbox" name="option_baby" value="아기" />아기 카시트 -->
 <!-- <input type="checkbox" name="option_smoke" value="흡연" />흡연여부 -->
 <!-- <input type="checkbox" name="option_pet" value="동물" />애완동물 -->
@@ -248,6 +250,7 @@ function search(id){
 <input type="checkbox" name="option_baby" value="아기" <%if(baby != null){%>checked <%}%>/>아기 카시트
 <input type="checkbox" name="option_smoke" value="흡연" <%if(smoke != null){%>checked <%}%>/>흡연여부
 <input type="checkbox" name="option_pet" value="동물" <%if(pet != null){%> checked <%}%>/>애완동물
+
 	<br>						 `
 <input type="submit" value="재검색" ><br></span>
                                         </div>
