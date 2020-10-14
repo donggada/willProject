@@ -25,6 +25,10 @@ if(id != null){
 	smoke = mb.getMember_smoke();
 	baby = mb.getMember_boby();
 }
+if(pet==null){
+	
+	System.out.println("pet  은 널 입니다.");
+}
 
 System.out.println("인덱스 처음"+baby);
 System.out.println(pet);
@@ -196,9 +200,18 @@ System.out.println(smoke);
                             </div>
 
                             <div class="bookcar-btn bookinput-item">
-                             <input type="hidden" name="option_baby" value ="<%if(id == null){%><%=baby%><%}else{%><%=baby%><%} %>">
-							 <input type="hidden" name="option_smoke" value ="<%if(id == null){%><%=smoke%><%}else{%><%=smoke%><%} %>">
-							 <input type="hidden" name="option_pet" value ="<%if(id == null){%><%=pet%><%}else{%><%=pet%><%} %>">
+                            
+                            
+                           <%if(baby != null) {%>
+                           <input type="hidden" name="option_baby" value ="<%=baby%>">
+                            <%} %>
+                                                       <%if(smoke != null) {%>
+                           <input type="hidden" name="option_baby" value ="<%=smoke%>">
+                            <%} %>
+                                                       <%if(pet != null) {%>
+                           <input type="hidden" name="option_baby" value ="<%=pet%>">
+                            <%} %>
+							
                                 <button type="submit">Book Car</button>
                             </div>
                         </form>
