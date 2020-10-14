@@ -28,6 +28,35 @@ public class CarListAction implements Action {
 		bookList = bls.getBookList();
 		request.setAttribute("bookList", bookList);
 
+		String pet = request.getParameter("option_pet");
+		String baby = request.getParameter("option_baby");
+		String smoke = request.getParameter("option_smoke");
+
+		boolean pet2;
+		boolean baby2;
+		boolean smoke2;
+
+		if (pet == null) {
+			pet2 = false;
+		} else {
+			pet2 = true;
+		}
+
+		
+		if (baby == null) {
+			baby2 = false;
+		} else {
+			baby2 = true;
+		}
+		
+
+		if (smoke == null) {
+			smoke2 = false;
+		} else {
+			smoke2 = true;
+		}
+
+		
 		String pickup = request.getParameter("pickup_date");
 		String end = request.getParameter("end_date");
 
@@ -36,11 +65,9 @@ public class CarListAction implements Action {
 		Date returnDate = sdf.parse(end);
 
 		int rentday = (int) ((returnDate.getTime() - pickDate.getTime()) / (24 * 60 * 60 * 1000));
-		
+
 		System.out.println(rentday);
-		
-		
-		
+
 		Map<String, Integer> idmap = new HashMap<String, Integer>();
 
 		for (BookBean b : bookList) {
@@ -51,11 +78,10 @@ public class CarListAction implements Action {
 
 		CarListService carListService20 = new CarListService();
 		LinkedList<CarBean> carList = null;
-		carList = carListService20.getCarLinkedList();
+		carList = carListService20.getCarLinkedList(smoke2,pet2,baby2);
 
 		Iterator<CarBean> iter = carList.iterator();
 
-		
 		while (iter.hasNext()) {
 			CarBean cb = iter.next();
 			String temp = "" + cb.getCar_id();
@@ -63,6 +89,7 @@ public class CarListAction implements Action {
 				iter.remove();
 			}
 		}
+
 		request.setAttribute("rentday", rentday);
 		request.setAttribute("carList", carList);
 		forward = new ActionForward();

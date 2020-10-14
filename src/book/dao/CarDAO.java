@@ -14,6 +14,7 @@ import java.util.Vector;
 
 //import book.db.DBConnection;
 import book.vo.CarBean;
+import jdk.nashorn.internal.ir.RuntimeNode.Request;
 
 public class CarDAO {
 
@@ -423,6 +424,8 @@ public class CarDAO {
 
 		return memberList;
 	}
+	
+	
 	public LinkedList<CarBean> getCarLinkedListBean() {
 		int Count = 0;
 //		Connection con = null;
@@ -676,7 +679,7 @@ public class CarDAO {
 			ResultSet rs = null;
 			
 			try {
-				int startRow = (page-1) *5;
+				int startRow = (page-1) *10;
 				String sql = "SELECT * FROM car LIMIT ?,?";
 				pstmt = con.prepareStatement(sql);
 				pstmt.setInt(1, startRow);
@@ -724,6 +727,80 @@ public class CarDAO {
 			return carList;
 		}
 		
+
+		
+		public LinkedList<CarBean> getCarLinkedListBeanOption(boolean smoke, boolean pet, boolean baby) {
+			int Count = 0;
+//			Connection con = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			LinkedList<CarBean> memberList = new LinkedList<CarBean>();
+
+			try {
+//				con = DBConnection.getInstance().GetConnetion();
+
+				String sql = "select * from car where car_is_smoke=? and car_is_pet=? and car_is_open=?";
+				
+				pstmt = con.prepareStatement(sql);
+				
+				pstmt.setBoolean(1, smoke);
+				pstmt.setBoolean(2, pet);
+				pstmt.setBoolean(3, baby);
+				
+				
+			
+				rs = pstmt.executeQuery();
+
+				while (rs.next()) {
+
+					CarBean mb = new CarBean();
+
+					mb.setCar_cc(rs.getInt("car_cc"));
+					mb.setCar_color(rs.getString("car_color"));
+					mb.setCar_function(rs.getInt("car_function"));
+					mb.setCar_id(rs.getInt("car_id")); //
+					mb.setCar_is_auto(rs.getBoolean("car_is_auto"));
+					mb.setCar_is_navi(rs.getBoolean("car_is_navi"));
+					mb.setCar_is_open(rs.getBoolean("car_is_open"));
+					mb.setCar_is_pet(rs.getBoolean("car_is_pet"));
+					mb.setCar_is_rent(rs.getBoolean("car_is_rent"));
+					mb.setCar_is_smoke(rs.getBoolean("car_is_smoke"));
+					mb.setCar_license_type(rs.getInt("car_license_type"));
+					mb.setCar_license_year(rs.getInt("car_license_year"));
+					mb.setCar_maker(rs.getString("car_maker")); //
+					mb.setCar_name(rs.getString("car_name")); //
+					mb.setCar_need_year(rs.getInt("car_need_year"));
+					mb.setCar_oil(rs.getInt("car_oil"));
+					mb.setCar_people_max(rs.getInt("car_people_max")); //
+					mb.setCar_people_possible(rs.getInt("car_people_possible")); //
+					mb.setCar_price_normal(rs.getInt("car_price_normal"));
+					mb.setCar_price_sale(rs.getInt("car_price_sale"));
+					mb.setCar_trunk(rs.getInt("car_trunk"));
+					mb.setCar_type(rs.getInt("car_type")); //
+					mb.setCar_year(rs.getInt("car_year"));
+
+					memberList.add(mb);
+				}
+
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} finally {
+				try {
+					rs.close();
+					pstmt.close();
+					con.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
+			}
+
+			return memberList;
+		}
+		
+		
 }
 
 
@@ -735,5 +812,7 @@ class LoginFailException extends Exception {
 		super(message);
 		// TODO Auto-generated constructor stub
 	}
+	
+	
 
 }

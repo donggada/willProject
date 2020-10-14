@@ -1,10 +1,45 @@
 
 
+<%@page import="admin.svc.MemberListService"%>
+<%@page import="member.vo.MemberBean"%>
+<%@page import="admin.dao.AdminDAO"%>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html class="no-js" lang="zxx">
+<%
+String snsid = (String)session.getAttribute("Member_snsid");
+String id = (String)session.getAttribute("Member_id");
+
+MemberBean mb = null;
+String baby = null;
+String smoke = null;
+String pet = null;
+
+if(id != null){
+	
+	MemberListService ms = new MemberListService();
+	mb = ms.selectMemberBean(id);
+// 	AdminDAO ad =  AdminDAO.getMdao();
+	
+	pet = mb.getMember_pet();
+	smoke = mb.getMember_smoke();
+	baby = mb.getMember_boby();
+}
+
+if(pet==null){
+	
+	System.out.println("pet  은 널 입니다.");
+}
+
+
+System.out.println("인덱스 처음"+baby);
+System.out.println(pet);
+System.out.println(smoke);
+
+%>
+
 <script src="js/jquery-3.5.1.js"></script>
 <script type="text/javascript">
 var popupX = (window.screen.width/2)-(500/2);
@@ -183,11 +218,25 @@ var popupY= (window.screen.height/2)-(500/2);
                             </div>
 
                             <div class="bookcar-btn bookinput-item">
+
+                            
+                            
+                           <%if(baby != null) {%>
+                           <input type="hidden" name="option_baby" value ="<%=baby%>">
+                            <%} %>
+                                                       <%if(smoke != null) {%>
+                           <input type="hidden" name="option_baby" value ="<%=smoke%>">
+                            <%} %>
+                                                       <%if(pet != null) {%>
+                           <input type="hidden" name="option_baby" value ="<%=pet%>">
+                            <%} %>
+							
+
                                 <button type="submit">Book Car</button>
                             </div>
                         </form>
                     </div>
-                </div>
+                </div>	
             </div>
         </div>
     </div>
