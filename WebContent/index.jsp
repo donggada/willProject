@@ -1,10 +1,23 @@
 
+
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html class="no-js" lang="zxx">
 <script src="js/jquery-3.5.1.js"></script>
 <script type="text/javascript">
+var popupX = (window.screen.width/2)-(500/2);
+//만들 팝업창 좌우 크기의 1/2 만큼 보정값으로 빼주었음
+
+var popupY= (window.screen.height/2)-(500/2);
+//만들 팝업창 상하 크기의 1/2 만큼 보정값으로 빼주었음
+
+
+	  // window.open("open할 window", "자식창 이름", "팝업창 옵션"); 
+	 //window.open('Pop/PoP.jsp', 'Event', 'status=no, height=600, width=600, left='+ popupX + ', top='+ popupY + ', screenX='+ popupX + ', screenY= '+ popupY);
+	
+
 	$(document).ready(
 			function() {
 				var today = new Date();
@@ -31,6 +44,9 @@
 									.toISOString().substring(0, 10);
 							pickup.setDate(pickup.getDate() + 7);
 						});
+				
+				
+				
 			});
 
 	//     $('table tr td').click(function() {
