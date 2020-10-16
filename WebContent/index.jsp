@@ -1,7 +1,9 @@
 
+
 <%@page import="admin.svc.MemberListService"%>
 <%@page import="member.vo.MemberBean"%>
 <%@page import="admin.dao.AdminDAO"%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -40,6 +42,17 @@ System.out.println(smoke);
 
 <script src="js/jquery-3.5.1.js"></script>
 <script type="text/javascript">
+var popupX = (window.screen.width/2)-(500/2);
+//만들 팝업창 좌우 크기의 1/2 만큼 보정값으로 빼주었음
+
+var popupY= (window.screen.height/2)-(500/2);
+//만들 팝업창 상하 크기의 1/2 만큼 보정값으로 빼주었음
+
+
+	  // window.open("open할 window", "자식창 이름", "팝업창 옵션"); 
+	 //window.open('Pop/PoP.jsp', 'Event', 'status=no, height=600, width=600, left='+ popupX + ', top='+ popupY + ', screenX='+ popupX + ', screenY= '+ popupY);
+	
+
 	$(document).ready(
 			function() {
 				var today = new Date();
@@ -66,6 +79,7 @@ System.out.println(smoke);
 									.toISOString().substring(0, 10);
 							pickup.setDate(pickup.getDate() + 7);
 						});
+
 			
 				
 				$('#indexSubmit').submit(function(){
@@ -886,8 +900,6 @@ System.out.println(smoke);
 	<!--== Scroll Top Area Start ==-->
 	<div id="chat">
 		<!-- <img alt="카카오" src="img/pc_img_kakao.jpg" onclick="script:alert('아직은 미지원 입니다 ^^b');"><br> -->
-		<img alt="웹 채팅" src="img/pc_btn_chat.png"
-			onclick="window.open('chat/chat_bot.jsp','new','width=800, height=600, resizable=no')">
 	</div>
 	<div class="scroll-top">
 		<img src="assets/img/scroll-top.png" alt="JSOFT">

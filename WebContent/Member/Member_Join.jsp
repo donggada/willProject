@@ -344,7 +344,7 @@ jQuery(document).ready(function () {
 	
 	$('#insertbtn').click(function(){
 		if($('#checkIdResult').html().trim()=="아이디 사용가능"){
-				if($('#checkPasswdResult'.html().trim()=="적합한 패스워드"){
+				if($('#checkPasswdResult').html().trim()=="적합한 패스워드"){
 					if($('#checkResult1').html().trim()=="인증되었습니다."){
 		
 						}else{
