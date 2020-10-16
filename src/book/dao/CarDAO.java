@@ -14,7 +14,6 @@ import java.util.Vector;
 
 //import book.db.DBConnection;
 import book.vo.CarBean;
-import jdk.nashorn.internal.ir.RuntimeNode.Request;
 
 public class CarDAO {
 
@@ -726,19 +725,51 @@ public class CarDAO {
 			PreparedStatement pstmt = null;
 			ResultSet rs = null;
 			LinkedList<CarBean> memberList = new LinkedList<CarBean>();
-
+			System.out.println("getCarLinkedListBeanOption 구간");
+			System.out.println(smoke);
+			System.out.println(pet);
+			System.out.println(baby);
+			
+			
 			try {
 //				con = DBConnection.getInstance().GetConnetion();
-
-				String sql = "select * from car where car_is_smoke=? and car_is_pet=? and car_is_open=?";
 				
-				pstmt = con.prepareStatement(sql);
+				StringBuffer sqlResult = new StringBuffer();
 				
-				pstmt.setBoolean(1, smoke);
-				pstmt.setBoolean(2, pet);
-				pstmt.setBoolean(3, baby);
+				sqlResult.append("select * from car where");
 				
+				if(smoke) {
+					sqlResult.append(" car_is_smoke=? and");
+				}
 				
+				if(pet) {
+					sqlResult.append(" car_is_pet=? and");
+				}
+				
+				if(baby) {
+					sqlResult.append(" car_is_open=?");
+				}else {
+					
+					sqlResult = new StringBuffer(sqlResult.substring(0,sqlResult.length()-3));
+				}
+				
+				System.out.println(sqlResult.toString());
+				
+				pstmt = con.prepareStatement(sqlResult.toString());
+				
+				int i=1	;
+				if(smoke) {
+					pstmt.setBoolean(i, smoke);
+					i++;
+				}
+				if(pet) {
+					pstmt.setBoolean(i, pet);
+					i++;
+				}
+				if(baby) {
+					pstmt.setBoolean(i, baby);
+					
+				}
 			
 				rs = pstmt.executeQuery();
 

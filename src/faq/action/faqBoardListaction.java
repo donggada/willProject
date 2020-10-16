@@ -5,13 +5,11 @@ import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.sun.org.apache.xalan.internal.xsltc.compiler.sym;
 
 import faq.svc.faqBoardListservice;
 import faq.vo.actionForward;
 import faq.vo.faqBoardbean;
 import faq.vo.pageinfo;
-import sun.security.krb5.internal.PAForUserEnc;
 
 public class faqBoardListaction implements action {
 
