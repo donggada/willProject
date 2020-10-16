@@ -79,7 +79,21 @@ var popupY= (window.screen.height/2)-(500/2);
 									.toISOString().substring(0, 10);
 							pickup.setDate(pickup.getDate() + 7);
 						});
+
+			
 				
+				$('#indexSubmit').submit(function(){
+					var id = $('#id').val() ;
+					if(id=="null"){
+						
+						alert("로그인해 주세요")
+					return false;
+					}
+
+					return true;
+			      });    
+				
+			
 				
 				
 			});
@@ -140,6 +154,8 @@ var popupY= (window.screen.height/2)-(500/2);
 
 <body class="loader-active">
 
+<input type="hidden" id="id" value="<%=id%>">
+
 	<!--== Preloader Area Start ==-->
 	<div class="preloader">
 		<div class="preloader-spinner">
@@ -191,7 +207,7 @@ var popupY= (window.screen.height/2)-(500/2);
                                 </select>
                             </div>
 
-                       <form action="BookForm2.bk" method="post">
+                       <form action="BookForm2.bk" method="post" id="indexSubmit">
                             <div class="pick-date bookinput-item">
                                <input type="date" id="pickup_date" name="pickup_date" style="height: 40px;" >
                             </div>
@@ -225,14 +241,14 @@ var popupY= (window.screen.height/2)-(500/2);
                            <input type="hidden" name="option_baby" value ="<%=baby%>">
                             <%} %>
                                                        <%if(smoke != null) {%>
-                           <input type="hidden" name="option_baby" value ="<%=smoke%>">
+                           <input type="hidden" name="option_smoke" value ="<%=smoke%>">
                             <%} %>
                                                        <%if(pet != null) {%>
-                           <input type="hidden" name="option_baby" value ="<%=pet%>">
+                           <input type="hidden" name="option_pet" value ="<%=pet%>">
                             <%} %>
 							
 
-                                <button type="submit">Book Car</button>
+                                <button type="submit" >Book Car</button>
                             </div>
                         </form>
                     </div>

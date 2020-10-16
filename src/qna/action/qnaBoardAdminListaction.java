@@ -12,7 +12,6 @@ import qna.svc.qnaBoardListservice;
 import qna.vo.actionForward;
 import qna.vo.pageinfo;
 import qna.vo.qnaBoardbean;
-import sun.security.krb5.internal.PAForUserEnc;
 
 public class qnaBoardAdminListaction implements action {
 

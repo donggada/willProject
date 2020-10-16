@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.smartcardio.ATR;
 
 import admin.svc.MemberListService;
 import admin.svc.MembermodifyService;
