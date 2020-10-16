@@ -1,5 +1,7 @@
 package admin.action;
 
+import java.io.PrintWriter;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -69,10 +71,20 @@ public class InsertCarAction implements Action {
 		isinsertcar=ic.Insertcar(cb);
 		
 		if(isinsertcar) {
+			response.setContentType("text/html;charset=UTF-8"); 
+			PrintWriter out1 = response.getWriter(); 
+			out1.println("<script>"); 
+			out1.println("alert('차량등록 성공!')"); 
+			out1.println("</script>"); 			
 			forward=new ActionForward();
-			forward.setPath("carList.ad");
+			forward.setPath("/Admin/InsertCar.jsp");
 		}else {
-			
+			response.setContentType("text/html;charset=UTF-8"); 
+			PrintWriter out1 = response.getWriter(); 
+			out1.println("<script>"); 
+			out1.println("alert('차량등록 실패!')"); 
+			out1.println("history.back()");
+			out1.println("</script>"); 			
 		}
 		
 		

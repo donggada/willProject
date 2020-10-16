@@ -155,7 +155,7 @@ public class adminFrontController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}else if(command.equals("/insertCar.ad")) {
+		}else if(command.equals("/Admin/insertCar.ad")) {
 			action=new InsertCarAction();
 			try {
 				forward=action.execute(request, response);
